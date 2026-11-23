@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { SeatbeltLabsMark } from "@/components/SeatbeltLabsMark";
 import { SourceLink } from "@/components/SourceLink";
 import { DOCS_URL, SPEC_ISSUES_URL, SPEC_TREE_URL, specUrl } from "@/lib/sources";
 
@@ -35,12 +34,9 @@ export default function AboutPage() {
             <a
               href="https://seatbeltlabs.com"
               rel="noopener noreferrer"
-              className="seatbelt-link"
+              className="seatbelt-wordmark"
             >
-              <span className="seatbelt-mark-plate">
-                <SeatbeltLabsMark />
-              </span>
-              <span className="seatbelt-wordmark">SEATBELT LABS</span>
+              SEATBELT LABS
             </a>
           </p>
         </div>

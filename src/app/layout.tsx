@@ -1,3 +1,4 @@
+import "@fontsource/archivo/800.css";
 import type { Metadata, Viewport } from "next";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";

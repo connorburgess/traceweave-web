@@ -210,12 +210,12 @@ function main() {
         const isAboutFile = rel === path.join("src", "app", "about", "page.tsx");
         const footerValid =
           isFooterFile &&
-          /<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?<SeatbeltLabsMark \/>[\s\S]*?SEATBELT LABS[\s\S]*?<\/a>[\s\S]*?© 2026 Seatbelt Labs/.test(
+          /<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?className="seatbelt-wordmark"[\s\S]*?>\s*SEATBELT LABS\s*<\/a>[\s\S]*?© 2026 Seatbelt Labs/.test(
             content
           );
         const aboutValid =
           isAboutFile &&
-          /Maintained by[\s\S]*?<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?<SeatbeltLabsMark \/>[\s\S]*?SEATBELT LABS[\s\S]*?<\/a>/.test(
+          /Maintained by[\s\S]*?<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?className="seatbelt-wordmark"[\s\S]*?>\s*SEATBELT LABS\s*<\/a>/.test(
             content
           );
         if (!footerValid && !aboutValid) {
@@ -360,13 +360,12 @@ function main() {
     }
   }
 
-  // 5. Ensure required licence instruments and brand mark exist, and that the
+  // 5. Ensure required licence instruments exist, and that the
   //    multi-medium scope cited on the home page is backed by README.md and ROADMAP.md.
   for (const requiredFile of [
     "LICENSE.md",
     "LICENSES/Apache-2.0.txt",
     "LICENSES/CC-BY-4.0.txt",
-    "public/brand/seatbelt-labs-mark.svg",
   ]) {
     if (!fs.existsSync(path.join(REPO_ROOT, requiredFile))) {
       errors.push(`Missing required file: ${requiredFile}`);

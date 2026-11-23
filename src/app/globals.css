@@ -670,62 +670,36 @@ tbody tr:last-child td {
 .footer-credit {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   gap: 0.65rem 1rem;
 }
 
 .maintained-by {
   display: inline-flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.6rem;
+  align-items: baseline;
+  gap: 0.5rem;
   margin-bottom: 0;
 }
 
-.seatbelt-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--ink);
+.seatbelt-wordmark {
+  display: inline-block;
+  font-family: "Archivo", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.075em;
+  font-stretch: 100%;
+  line-height: 1;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
   text-decoration: none;
-  vertical-align: middle;
 }
 
-.seatbelt-link:hover {
-  color: var(--accent);
-}
-
-.seatbelt-link:hover .seatbelt-wordmark {
+.seatbelt-wordmark:hover {
+  color: var(--ink);
   text-decoration: underline;
   text-underline-offset: 0.2em;
-}
-
-.seatbelt-mark-plate {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  flex-shrink: 0;
-}
-
-:root[data-theme="dark"] .seatbelt-mark-plate {
-  padding: 2px;
-  background: #e6ebf0;
-  border-radius: 8px;
-}
-
-.seatbelt-mark {
-  display: block;
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
-}
-
-.seatbelt-wordmark {
-  font-size: 0.84rem;
-  font-weight: 650;
-  letter-spacing: 0.08em;
-  line-height: 1;
 }
 
 /* Reduced motion */

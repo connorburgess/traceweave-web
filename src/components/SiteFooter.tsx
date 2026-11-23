@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { SeatbeltLabsMark } from "@/components/SeatbeltLabsMark";
 import { TraceweaveMark } from "@/components/TraceweaveMark";
 import { SPEC_DRAFT_VERSION } from "@/data/facts";
 import { DOCS_URL, SPEC_ISSUES_URL, SPEC_TREE_URL, specUrl } from "@/lib/sources";
@@ -94,12 +93,9 @@ export function SiteFooter() {
             <a
               href="https://seatbeltlabs.com"
               rel="noopener noreferrer"
-              className="seatbelt-link"
+              className="seatbelt-wordmark"
             >
-              <span className="seatbelt-mark-plate">
-                <SeatbeltLabsMark />
-              </span>
-              <span className="seatbelt-wordmark">SEATBELT LABS</span>
+              SEATBELT LABS
             </a>
             <span>© 2026 Seatbelt Labs</span>
           </div>

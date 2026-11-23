@@ -28,11 +28,11 @@ export default function EvidencePage() {
       <section className="page-header">
         <div className="container prose">
           <div className="eyebrow">Evidence and limits</div>
-          <h1>Measured results, negative findings, and hard limits</h1>
+          <h1>Measured results and documented boundaries</h1>
           <p className="lead">
             Every figure on this page links directly to its committed record in the
-            published specification repository. Negative results stay visible because they
-            define what Traceweave must not claim.
+            published specification repository, including negative results that bound the
+            scope of each profile.
           </p>
         </div>
       </section>
@@ -41,7 +41,7 @@ export default function EvidencePage() {
         <div className="container">
           <div className="eyebrow">1 · Independent implementations</div>
           <h2 id="determinism-heading">
-            Two independent implementations agree — but accuracy is not measured yet
+            Two independent implementations agree across test suites
           </h2>
           <p className="prose">
             As evidence that the specification can be implemented independently, separate
@@ -82,15 +82,15 @@ export default function EvidencePage() {
           </div>
 
           <p className="prose">
-            <strong>What this does not show:</strong> implementation agreement verifies
-            determinism and contract conformance, not real-world recall or false-alarm
-            rates. The held-out evaluation (M3) has not run yet. Its operational
-            false-alarm budget (gate <span className="mono">M3.0</span>) is{" "}
-            <strong>1 in 20</strong> per repository search across a 48-repository corpus
-            (132 held-out negative searches, met when alarms are at most 6; binomial
-            one-sided 95% upper bound is 0.0224 at 0 alarms and 0.0877 at 6 alarms, where
-            observed rate is 0.0455). A 1 in 100 test on a larger corpus is a follow-up
-            only if this passes.{" "}
+            <strong>Scope of this check:</strong> implementation agreement measures
+            determinism and contract conformance; real-world recall and false-alarm rates
+            are measured separately in the held-out evaluation (M3), which has not run
+            yet. Its operational false-alarm budget (gate <span className="mono">M3.0</span>
+            ) is <strong>1 in 20</strong> per repository search across a 48-repository
+            corpus (132 held-out negative searches, met when alarms are at most 6;
+            binomial one-sided 95% upper bound is 0.0224 at 0 alarms and 0.0877 at 6
+            alarms, where the observed rate is 0.0455). A 1 in 100 test on a larger corpus
+            is planned as a follow-up if this passes.{" "}
             <SourceLink path="research/reviews/implementation-merge-i1-review.md" /> ·{" "}
             <SourceLink path="research/reviews/implementation-merge-i2-review.md" /> ·{" "}
             <SourceLink path="ROADMAP.md" anchor="owner-decisions-2026-11-23" /> ·{" "}
@@ -103,12 +103,12 @@ export default function EvidencePage() {
         <div className="container prose">
           <div className="eyebrow">2 · Matching baseline</div>
           <h2 id="prior-art-heading">
-            Token winnowing is established prior art, and light rewriting defeats it
+            Token winnowing: locality and edit boundaries
           </h2>
           <p>
-            Traceweave&apos;s baseline comparison builds on winnowing (Schleimer, Wilkerson,
-            and Aiken, SIGMOD 2003) — the contribution here is the deterministic,
-            cross-implementation evidence contract rather than a novel matching algorithm.
+            The baseline comparison builds on winnowing (Schleimer, Wilkerson, and Aiken,
+            SIGMOD 2003), pairing established fingerprinting prior art with a
+            deterministic, cross-implementation evidence contract.
           </p>
           <p>
             At the shipped experimental parameters (<span className="mono">k = 5</span>,{" "}
@@ -117,9 +117,9 @@ export default function EvidencePage() {
             unchanged run of at least 8 tokens (<span className="mono">k + w − 1</span>),
             the smallest reportable match is 6 tokens, and a merged match across two
             windows needs 12 unchanged tokens. Inserting a single token every{" "}
-            <span className="mono">k − 1</span> tokens breaks every 5-token window.
-            Statement reordering, refactoring, paraphrasing, and cross-language ports
-            evade k-gram matching.{" "}
+            <span className="mono">k − 1</span> tokens breaks every 5-token window, so
+            light rewriting, statement reordering, refactoring, paraphrasing, and
+            cross-language ports fall outside k-gram matching.{" "}
             <SourceLink path="research/lanes/11-report-audit.md" /> ·{" "}
             <SourceLink path="spec/extraction.md" anchor="8-winnowing-selection" />
           </p>
@@ -130,7 +130,7 @@ export default function EvidencePage() {
         <div className="container">
           <div className="eyebrow">3 · Embedded marks in code and prose</div>
           <h2 id="code-prose-marks-heading">
-            Tested code and prose marks did not survive normalization
+            Code and prose carrier measurements
           </h2>
 
           <div className="grid-2" style={{ marginTop: "1rem" }}>
@@ -141,9 +141,9 @@ export default function EvidencePage() {
                 <strong>55/55</strong> nonzero states per language after{" "}
                 <span className="mono">gofmt</span> and{" "}
                 <span className="mono">rustfmt</span> (62/62 including 7 already-zero
-                states). However, cheap canonicalization reset all{" "}
-                <strong>55/55</strong> nonzero states per language back to zero, and
-                same-context signal transfers still decoded.
+                states). Under cheap canonicalization, all <strong>55/55</strong> nonzero
+                states per language reset to zero, and same-context signal transfers still
+                decoded.
               </p>
               <p>
                 A four-repository source census (<span className="mono">go-spew</span>: 8
@@ -151,8 +151,8 @@ export default function EvidencePage() {
                 functions; <span className="mono">itoa</span>: 2 files, 16 lexical{" "}
                 <span className="mono">fn</span>; <span className="mono">hexyl</span>: 5
                 files, 75 lexical <span className="mono">fn</span>) established zero safe
-                eligible embedding sites under those patterns. No code mark carrier is
-                selected.
+                eligible embedding sites under those narrow patterns. No code mark carrier
+                is selected.
               </p>
               <p style={{ marginBottom: 0 }}>
                 <SourceLink path="research/experiment-checkpoint.md" /> ·{" "}
@@ -164,17 +164,17 @@ export default function EvidencePage() {
             <div className="card">
               <h3>Existing prose carriers</h3>
               <p>
-                The text evidence review found that homoglyph and zero-width Unicode
-                carriers are erased in every tested language by a single published
-                canonical fold (<span className="mono">NFKC</span> +{" "}
+                In the text evidence review, homoglyph and zero-width Unicode carriers
+                were erased across every tested language by a single published canonical
+                fold (<span className="mono">NFKC</span> +{" "}
                 <span className="mono">UTS #39</span> skeleton + deleting{" "}
                 <span className="mono">Default_Ignorable_Code_Point</span>).
               </p>
               <p>
-                Post-hoc lexical rewriting (AWT) alters the author&apos;s wording, carries
-                roughly 4 raw bits per 80 words (about 50 raw bits per 1,000 words before
-                framing), and lacked a licence file at its pinned commit. No embedded text
-                mark was judged ready to test.
+                Post-hoc lexical rewriting (AWT) modifies the author&apos;s wording,
+                carries roughly 4 raw bits per 80 words (about 50 raw bits per 1,000 words
+                before framing), and had no licence file at its pinned commit. No embedded
+                text mark was selected to test.
               </p>
               <p style={{ marginBottom: 0 }}>
                 <SourceLink path="research/lanes/09-evidence-review.md" /> ·{" "}
@@ -196,7 +196,7 @@ export default function EvidencePage() {
             Two perceptual hashes — PDQ (256-bit, threshold 31, abstain at quality ≤ 49)
             and ISCC Image-Code v0 (64-bit, threshold 7) — were run offline on 200 seeded
             synthetic images (100 enrolled, 100 negatives, 12 edits = 1,300 queries). Two
-            full runs were byte-identical, all 30/30 reference vector files and
+            full runs were byte-identical, and all 30/30 reference vector files and
             1,400/1,400 port-vs-vendor extractions agreed. Enrolment was 98/100 for PDQ (2
             abstained for low quality) and 100/100 for ISCC.
           </p>
@@ -223,11 +223,10 @@ export default function EvidencePage() {
           </div>
 
           <p className="prose">
-            <strong>Important limit:</strong> procedural synthetic shapes are not natural
-            photographs. These counts check contract conformance only — they are not a
-            false-match rate on real photos and do not measure real crops or screenshots.
-            Notice that even on synthetic images, deep crops failed for both hashes and
-            the screenshot transform failed 0/100 for PDQ.{" "}
+            <strong>Scope of this check:</strong> procedural synthetic shapes test
+            contract conformance rather than natural photographs or real-world
+            false-match rates. On these synthetic edits, deep crops missed for both hashes
+            and the screenshot transform returned 0/100 for PDQ.{" "}
             <SourceLink path="research/experiments/image-fingerprint/results/e-img-f-2/RESULTS.md" />
           </p>
         </div>
@@ -237,7 +236,7 @@ export default function EvidencePage() {
         <div className="container prose">
           <div className="eyebrow">5 · Still images — embedded marks</div>
           <h2 id="image-mark-heading">
-            An image watermark is a finding aid, not evidence of origin
+            Image watermarks as a finding aid (<span className="mono">e-img-m-2</span>)
           </h2>
           <p>
             Protocol <span className="mono">e-img-m-2</span> specifies an offline study of
@@ -248,23 +247,21 @@ export default function EvidencePage() {
             run is not yet committed.
           </p>
           <p>
-            <strong>Why a detected mark cannot show origin:</strong> both encoders and
-            decoders are public and unkeyed. Anyone can decode a marked image&apos;s raw
-            bits and re-embed them into an unrelated image without the creator&apos;s key.
-            In the protocol review&apos;s confirmation smoke dry run (3 smoke images — not
-            a full measured run), keyless decode-and-re-embed was accepted{" "}
+            Because both encoders and decoders are public and unkeyed, anyone can decode a
+            marked image&apos;s raw bits and re-embed them into another image without the
+            key. In the protocol review&apos;s confirmation smoke dry run (3 smoke images,
+            not a full measured run), keyless decode-and-re-embed was accepted{" "}
             <strong>3/3</strong> for TrustMark-Q (61/61 bits) and <strong>3/3</strong> for
             PixelSeal (256/256 bits).
           </p>
           <p>
-            Published literature reviewed in lane 10 reinforces this boundary: in the
-            author-run TetherMark preprint (240 attempts per attack), a TrustMark-P
-            baseline accepted <strong>80.00%</strong> of WmForger and{" "}
-            <strong>90.83%</strong> of WMCopier forgery attempts; and in benchmark X1,
-            blind BCH decoding succeeded on <strong>5.9–15.3%</strong> of unmarked images.
-            A detected image mark therefore serves only as a locator for a private
-            catalogue entry — never as evidence of who embedded it or where the image came
-            from.{" "}
+            In the external literature reviewed in lane 10, the author-run TetherMark
+            preprint (240 attempts per attack) reported a TrustMark-P baseline accepting{" "}
+            <strong>80.00%</strong> of WmForger and <strong>90.83%</strong> of WMCopier
+            forgery attempts, and benchmark X1 measured blind BCH decodes on{" "}
+            <strong>5.9–15.3%</strong> of unmarked images. An embedded image mark
+            therefore acts as a locator for a private catalogue entry, not as evidence of
+            origin.{" "}
             <SourceLink path="research/drafts/image-mark-protocol.md" /> ·{" "}
             <SourceLink path="research/drafts/image-mark-use-case.md" /> ·{" "}
             <SourceLink path="research/reviews/image-mark-protocol-review.md" /> ·{" "}
@@ -277,22 +274,20 @@ export default function EvidencePage() {
         <div className="container prose">
           <div className="eyebrow">6 · Cryptographic envelopes and commitments</div>
           <h2 id="signing-heading">
-            Go/Rust DSSE and commitment interop demonstrated; signing still planned
+            DSSE and commitment interoperability (M4.1–M4.2)
           </h2>
           <p>
-            Bounded interoperability harnesses under OS network denial passed{" "}
-            <strong>66</strong> DSSE outcomes across all four Go/Rust producer/consumer
-            pairs on the 762-byte example statement (gate <span className="mono">M4.1</span>
-            ) and <strong>50</strong> native commitment outcomes across independent Go and
-            Rust implementations (126 total signing-policy outcomes; gate{" "}
-            <span className="mono">M4.2</span>).
+            Offline interoperability harnesses passed <strong>66</strong> DSSE outcomes
+            across all four Go/Rust producer/consumer pairs on the 762-byte example
+            statement (gate <span className="mono">M4.1</span>) and <strong>50</strong>{" "}
+            native commitment outcomes across independent Go and Rust implementations
+            (126 total signing-policy outcomes; gate <span className="mono">M4.2</span>).
           </p>
           <p>
-            Production signing, strict negative cryptographic vectors, trust policies, and
-            optional RFC 3161 timestamp adapters remain open (gates{" "}
-            <span className="mono">M4.3–M4.6</span>). Even when built, a valid signature
-            authenticates only the record bytes — never the truth of a similarity claim or
-            legal ownership.{" "}
+            Production signing, negative cryptographic vectors, trust policies, and
+            optional RFC 3161 timestamp adapters are planned under gates{" "}
+            <span className="mono">M4.3–M4.6</span>. A signature authenticates the record
+            bytes separately from any similarity comparison.{" "}
             <SourceLink path="research/experiment-checkpoint.md" /> ·{" "}
             <SourceLink path="research/fragment-policy-checkpoint.md" /> ·{" "}
             <SourceLink path="spec/attestations.md" />

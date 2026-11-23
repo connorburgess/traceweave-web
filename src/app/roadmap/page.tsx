@@ -121,10 +121,10 @@ export default function RoadmapPage() {
       <section className="page-header">
         <div className="container prose">
           <div className="eyebrow">Roadmap</div>
-          <h1>Gate-based progress, with no promised dates</h1>
+          <h1>Verifiable milestones and gates</h1>
           <p className="lead">
-            Traceweave tracks work by verifiable gates rather than calendar deadlines. No
-            delivery dates and no detection ceilings are promised.
+            Traceweave tracks progress by verifiable gates rather than calendar dates.
+            Every gate closes only with committed evidence that someone else can re-check.
           </p>
         </div>
       </section>

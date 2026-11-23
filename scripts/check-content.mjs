@@ -81,11 +81,14 @@ const FORBIDDEN_PATTERNS = [
   { label: 'forbidden phrase "proves ownership"', regex: /\bproves?\s+ownership\b/i },
   { label: 'forbidden phrase "proof of ownership"', regex: /\bproof\s+of\s+ownership\b/i },
   { label: 'forbidden claim "protects your work"', regex: /\bprotects?\s+your\s+work\b/i },
+  { label: 'forbidden word "protects"', regex: /\bprotects\b/i },
   { label: 'forbidden phrase "detects plagiarism"', regex: /\bdetects?\s+plagiarism\b/i },
   { label: 'forbidden word "guarantee"', regex: /\bguarantees?\b|\bguaranteed\b|\bguaranteeing\b/i },
   { label: 'forbidden word "tamper-proof"', regex: /\btamper[\s-]?proof\b/i },
   { label: 'forbidden entity label "nonprofit"', regex: /\bnon[\s-]?profit\b/i },
   { label: 'forbidden entity label "foundation"', regex: /\bfoundation\b/i },
+  { label: 'litigation/DRM framing ("DRM")', regex: /\bDRM\b/ },
+  { label: 'litigation framing ("infringement")', regex: /\binfringement\b/i },
   {
     label: "absolute home-directory path",
     regex: /\/Users\/[A-Za-z0-9._-]+|\/home\/[A-Za-z0-9._-]+|[A-Za-z]:\\Users\\[A-Za-z0-9._-]+/,
@@ -377,6 +380,14 @@ function main() {
   }
   if (!roadmapText.includes("## Pilot languages") || !roadmapText.includes("## Later profiles and sequence")) {
     errors.push("ROADMAP.md in spec checkout missing expected pilot-languages or later-profiles sections");
+  }
+
+  // 6. Keep protocol names and gate IDs off the home page.
+  const homeSource = fs.readFileSync(path.join(REPO_ROOT, "src", "app", "page.tsx"), "utf8");
+  for (const term of ["DSSE", "in-toto", "RFC 3161", "M0–M5", "M4.", "M3.", "M2.", "UC-1"]) {
+    if (homeSource.includes(term)) {
+      errors.push(`src/app/page.tsx: keep protocol/gate jargon "${term}" on the roadmap/evidence pages, not the home page`);
+    }
   }
 
   if (errors.length > 0) {

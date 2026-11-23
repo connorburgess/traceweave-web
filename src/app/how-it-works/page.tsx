@@ -240,47 +240,47 @@ export default function HowItWorksPage() {
 
       <section className="section" aria-labelledby="separation-heading">
         <div className="container">
-          <div className="eyebrow">Design discipline</div>
-          <h2 id="separation-heading">Separate questions stay separate</h2>
+          <div className="eyebrow">Evidence architecture</div>
+          <h2 id="separation-heading">Independent layers, recorded separately</h2>
           <p className="prose">
-            Traceweave forbids collapsing technical similarity, cryptographic
-            authentication, timestamps, and legal permissions into a single pass/fail
-            score. Each layer has its own field and status (
-            <SourceLink path="spec/core.md" anchor="interpretation" />):
+            Traceweave keeps exact byte digests, similarity comparison, cryptographic
+            signing, timestamps, and origin notes in separate fields so each layer can be
+            verified on its own (<SourceLink path="spec/core.md" anchor="interpretation" />
+            ):
           </p>
 
           <div className="table-wrap">
             <table>
               <thead>
                 <tr>
-                  <th scope="col">Question</th>
-                  <th scope="col">Mechanism</th>
+                  <th scope="col">Layer</th>
+                  <th scope="col">What it records</th>
                   <th scope="col">Status</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Does a file match exact recorded bytes?</td>
-                  <td>SHA-256 subject digest &amp; private salted catalogue commitment (32-byte nonce)</td>
+                  <td>Exact artifact &amp; commitment</td>
+                  <td>SHA-256 subject digest and private salted catalogue commitment (32-byte nonce)</td>
                   <td><span className="badge badge-active">Draft format &amp; vectors</span></td>
                 </tr>
                 <tr>
-                  <td>Does another file share token fingerprints?</td>
-                  <td>Deterministic extraction, private catalogues, seed-merge report</td>
-                  <td><span className="badge badge-active">Implemented (Go/Rust draft)</span></td>
+                  <td>Fingerprint comparison</td>
+                  <td>Deterministic extraction, private catalogues, and seed-merge comparison reports</td>
+                  <td><span className="badge badge-active">Working (Go &amp; Rust case studies)</span></td>
                 </tr>
                 <tr>
-                  <td>Did a specific key sign this record, and when?</td>
-                  <td>DSSE / in-toto attestation, trust policy, optional RFC 3161 timestamp</td>
+                  <td>Signed &amp; timestamped records</td>
+                  <td>DSSE / in-toto attestation, explicit trust policy, and optional RFC 3161 timestamp</td>
                   <td><span className="badge">Planned (M4.3–M4.6)</span></td>
                 </tr>
                 <tr>
-                  <td>Where did the matched region originate, under what licence?</td>
+                  <td>Origin &amp; licence history</td>
                   <td>Separate review-packet record linked by <span className="mono">bodySha256</span></td>
                   <td><span className="badge">Planned (M2.7)</span></td>
                 </tr>
                 <tr>
-                  <td>Can an agent run local checks without leaking private files?</td>
+                  <td>Agent interoperability</td>
                   <td>Optional CLI-wrapping skill with transcript canary checks</td>
                   <td><span className="badge">Planned (SK.1–SK.2)</span></td>
                 </tr>

@@ -15,9 +15,8 @@ export function SiteFooter() {
               <span>Traceweave</span>
             </div>
             <p style={{ marginBottom: "0.6rem", maxWidth: "40ch" }}>
-              <strong>Experimental design draft ({SPEC_DRAFT_VERSION}).</strong>{" "}
-              Not a standard, not production software, and held-out evaluation has
-              not been run yet.
+              <strong>Experimental draft ({SPEC_DRAFT_VERSION}).</strong>{" "}
+              Not a standard and not yet evaluated on real-world data.
             </p>
             <p style={{ marginBottom: 0, maxWidth: "40ch", fontSize: "0.84rem" }}>
               Traceweave is an open specification for recognising your own work when it

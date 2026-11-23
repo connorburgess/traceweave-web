@@ -25,11 +25,11 @@ export default function CoveragePage() {
       <section className="page-header">
         <div className="container prose">
           <div className="eyebrow">Content profiles</div>
-          <h1>What Traceweave covers — and what is not built yet</h1>
+          <h1>What Traceweave covers across media</h1>
           <p className="lead">
-            The shared core record format is content-independent, but extraction rules,
-            transformations, and failure envelopes belong to each content profile. No
-            profile inherits accuracy or resilience claims from another.
+            One shared evidence format sits underneath profile-specific extractors. Each
+            medium defines its own extraction rules, transformations, and measured
+            boundaries independently.
           </p>
         </div>
       </section>

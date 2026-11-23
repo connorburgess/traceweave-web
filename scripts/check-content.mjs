@@ -207,12 +207,12 @@ function main() {
         const isAboutFile = rel === path.join("src", "app", "about", "page.tsx");
         const footerValid =
           isFooterFile &&
-          /© 2026[\s\S]*?<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?src="\/brand\/seatbelt-labs-mark\.svg"[\s\S]*?alt="Seatbelt Labs"[\s\S]*?<span>Seatbelt Labs<\/span>[\s\S]*?<\/a>/.test(
+          /© 2026[\s\S]*?<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?src="\/brand\/seatbelt-labs-mark\.svg"[\s\S]*?alt=""[\s\S]*?<span>Seatbelt Labs<\/span>[\s\S]*?<\/a>/.test(
             content
           );
         const aboutValid =
           isAboutFile &&
-          /Maintained by[\s\S]*?<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?src="\/brand\/seatbelt-labs-mark\.svg"[\s\S]*?alt="Seatbelt Labs"[\s\S]*?<span>Seatbelt Labs<\/span>[\s\S]*?<\/a>/.test(
+          /Maintained by[\s\S]*?<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?src="\/brand\/seatbelt-labs-mark\.svg"[\s\S]*?alt=""[\s\S]*?<span>Seatbelt Labs<\/span>[\s\S]*?<\/a>/.test(
             content
           );
         if (!footerValid && !aboutValid) {

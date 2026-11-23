@@ -86,8 +86,13 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <Link href="/" className="brand" onClick={() => setMenuOpen(false)}>
-          <TraceweaveMark size={26} />
+        <Link
+          href="/"
+          className="brand"
+          aria-label="Traceweave"
+          onClick={() => setMenuOpen(false)}
+        >
+          <TraceweaveMark size={28} />
           <span>Traceweave</span>
         </Link>
 

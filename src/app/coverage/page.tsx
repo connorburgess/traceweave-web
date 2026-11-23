@@ -62,10 +62,21 @@ export default function CoveragePage() {
                       <span className={badgeClass(item.statusTone)}>{item.status}</span>
                     </td>
                     <td>
+                      {item.image ? (
+                        <div className="coverage-media">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={item.image.src}
+                            alt={item.image.alt}
+                            width={item.image.width}
+                            height={item.image.height}
+                          />
+                        </div>
+                      ) : null}
                       <p style={{ marginBottom: "0.45rem" }}>{item.summary}</p>
                       <SourceLink
                         path={item.sourcePath}
-                        anchor={"anchor" in item ? item.anchor : undefined}
+                        anchor={item.anchor}
                       />
                     </td>
                   </tr>

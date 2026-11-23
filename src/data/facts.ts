@@ -306,7 +306,31 @@ export const CITED_FACTS: readonly CitedFact[] = [
   },
 ];
 
-export const COVERAGE_ITEMS = [
+export interface MediaSlot {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+/**
+ * Populated when imagery assets are delivered under assets/imagery/.
+ * Kept null so no placeholder boxes ship before real assets arrive.
+ */
+export const HOME_HERO_IMAGE: MediaSlot | null = null;
+
+export interface CoverageItem {
+  kind: string;
+  profiles: string;
+  status: string;
+  statusTone: "active" | "specified" | "researched" | "unstarted";
+  summary: string;
+  sourcePath: string;
+  anchor?: string;
+  image?: MediaSlot;
+}
+
+export const COVERAGE_ITEMS: readonly CoverageItem[] = [
   {
     kind: "Source code — first case studies (Go and Rust)",
     profiles: "go-tokens (draft-1), rust2024-tokens (draft-1)",

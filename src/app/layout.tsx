@@ -1,4 +1,11 @@
 import "@fontsource/archivo/800.css";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
+import "@fontsource/ibm-plex-mono/600.css";
+import "@fontsource/ibm-plex-sans/400.css";
+import "@fontsource/ibm-plex-sans/500.css";
+import "@fontsource/ibm-plex-sans/600.css";
+import "@fontsource/ibm-plex-sans/700.css";
 import type { Metadata, Viewport } from "next";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -7,7 +14,7 @@ import { DOCS_URL, SITE_URL, SPEC_REPO_URL } from "@/lib/sources";
 import "./globals.css";
 
 export const viewport: Viewport = {
-  themeColor: "#fafaf8",
+  themeColor: "#F9F9F7",
 };
 
 export const metadata: Metadata = {

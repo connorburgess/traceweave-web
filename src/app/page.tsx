@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SourceLink } from "@/components/SourceLink";
 import { WorkflowDiagram } from "@/components/WorkflowDiagram";
-import { ROADMAP_COUNTS } from "@/data/facts";
+import { HOME_HERO_IMAGE, ROADMAP_COUNTS } from "@/data/facts";
 import { DOCS_URL, SPEC_TREE_URL, specUrl } from "@/lib/sources";
 
 export const metadata: Metadata = {
@@ -47,43 +47,57 @@ export default function HomePage() {
     <>
       <section className="hero">
         <div className="container">
-          <div className="hero-copy">
-            <h1>
-              Recognise your own work when it turns up somewhere else.
-            </h1>
-            <p className="lead">
-              Traceweave is an open specification for recognising your own work when it
-              turns up somewhere else, and for producing evidence of the match that anyone
-              can re-run and check.
-            </p>
-            <p className="lead" style={{ marginBottom: 0 }}>
-              It is designed to cover any kind of work: source code, writing, images and
-              audio. One shared evidence format sits underneath, with a profile for each
-              medium. Your content never leaves your machine; only fingerprints are
-              compared.
-            </p>
-          </div>
+          <div className={HOME_HERO_IMAGE ? "hero-grid has-media" : "hero-grid"}>
+            <div className="hero-copy">
+              <h1>
+                Recognise your own work when it turns up somewhere else.
+              </h1>
+              <p className="lead">
+                Traceweave is an open specification for recognising your own work when it
+                turns up somewhere else, and for producing evidence of the match that anyone
+                can re-run and check.
+              </p>
+              <p className="lead" style={{ marginBottom: 0 }}>
+                It is designed to cover any kind of work: source code, writing, images and
+                audio. One shared evidence format sits underneath, with a profile for each
+                medium. Your content never leaves your machine; only fingerprints are
+                compared.
+              </p>
 
-          <div className="actions">
-            <Link href="/how-it-works" className="btn btn-primary">
-              How it works
-            </Link>
-            <a href={DOCS_URL} className="btn btn-secondary" rel="noopener noreferrer">
-              Read the docs ↗
-            </a>
-            <a href={SPEC_TREE_URL} className="btn btn-secondary" rel="noopener noreferrer">
-              Specification repository ↗
-            </a>
-            <Link href="/roadmap" className="btn btn-secondary">
-              Roadmap
-            </Link>
+              <div className="actions">
+                <Link href="/how-it-works" className="btn btn-primary">
+                  How it works
+                </Link>
+                <a href={DOCS_URL} className="btn btn-secondary" rel="noopener noreferrer">
+                  Read the docs ↗
+                </a>
+                <a href={SPEC_TREE_URL} className="btn btn-secondary" rel="noopener noreferrer">
+                  Specification repository ↗
+                </a>
+                <Link href="/roadmap" className="btn btn-secondary">
+                  Roadmap
+                </Link>
+              </div>
+            </div>
+
+            {HOME_HERO_IMAGE ? (
+              <div className="hero-media">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={HOME_HERO_IMAGE.src}
+                  alt={HOME_HERO_IMAGE.alt}
+                  width={HOME_HERO_IMAGE.width}
+                  height={HOME_HERO_IMAGE.height}
+                />
+              </div>
+            ) : null}
           </div>
 
           <div
             className="card-muted"
             role="region"
             aria-label="Current project status"
-            style={{ marginTop: "2rem", maxWidth: "74ch" }}
+            style={{ marginTop: "2rem", maxWidth: "72ch" }}
           >
             <p style={{ marginBottom: "0.55rem" }}>
               <strong>Where it stands today:</strong> source code is working end to end,

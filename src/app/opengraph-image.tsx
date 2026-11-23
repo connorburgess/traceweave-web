@@ -20,9 +20,10 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "64px 72px",
-          background: "#111417",
-          color: "#eef1f4",
+          background: "#0D1014",
+          color: "#F2F4F7",
           fontFamily: "sans-serif",
+          borderTop: "4px solid #34E5BC",
         }}
       >
         <div
@@ -36,37 +37,45 @@ export default function OpenGraphImage() {
             <svg
               width="48"
               height="48"
-              viewBox="0 0 28 28"
+              viewBox="0 0 32 32"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect
-                x="1.5"
-                y="1.5"
-                width="25"
-                height="25"
-                rx="6"
-                stroke="#3c4654"
-                strokeWidth="1.5"
-              />
               <path
-                d="M6.5 9.5H12.5L15.5 18.5H21.5"
-                stroke="#52cfc4"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                d="M2 2H8V4H4V8H2V2ZM24 2H30V8H28V4H24V2ZM2 24H4V28H8V30H2V24ZM28 24H30V30H24V28H28V24Z"
+                fill="#F2F4F7"
               />
+              <rect x="8" y="8" width="6" height="6" fill="#F2F4F7" />
+              <rect x="18" y="18" width="6" height="6" fill="#F2F4F7" />
               <path
-                d="M6.5 18.5H11.2M16.8 9.5H21.5"
-                stroke="#eef1f4"
-                strokeWidth="2.4"
-                strokeLinecap="round"
+                fillRule="evenodd"
+                d="M8 18H14V24H8V18ZM10 20V22H12V20H10Z"
+                fill="#F2F4F7"
               />
-              <circle cx="14" cy="14" r="2.2" fill="#52cfc4" />
+              <rect x="14" y="10" width="4" height="2" fill="#34E5BC" />
+              <rect x="18" y="8" width="6" height="6" fill="#34E5BC" />
             </svg>
-            <span style={{ fontSize: "34px", fontWeight: 700, letterSpacing: "-0.02em" }}>
+            <span
+              style={{
+                fontSize: "34px",
+                fontWeight: 600,
+                letterSpacing: "-0.02em",
+                color: "#F2F4F7",
+              }}
+            >
               Traceweave
             </span>
+          </div>
+          <div
+            style={{
+              fontSize: "18px",
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              color: "#34E5BC",
+              textTransform: "uppercase",
+            }}
+          >
+            OPEN SPECIFICATION
           </div>
         </div>
 
@@ -74,10 +83,10 @@ export default function OpenGraphImage() {
           <div
             style={{
               fontSize: "44px",
-              fontWeight: 700,
+              fontWeight: 600,
               lineHeight: 1.16,
               letterSpacing: "-0.025em",
-              color: "#eef1f4",
+              color: "#F2F4F7",
             }}
           >
             Traceweave is an open specification for recognising your own work when it turns up
@@ -88,7 +97,7 @@ export default function OpenGraphImage() {
             style={{
               fontSize: "24px",
               lineHeight: 1.42,
-              color: "#b0b9c6",
+              color: "#9DA5B2",
             }}
           >
             Designed to cover source code, writing, images and audio on one shared evidence
@@ -101,14 +110,14 @@ export default function OpenGraphImage() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            borderTop: "1px solid #2a313b",
+            borderTop: "1px solid #2E3540",
             paddingTop: "24px",
-            fontSize: "22px",
-            color: "#95a0b0",
+            fontSize: "20px",
+            color: "#9DA5B2",
           }}
         >
-          <span style={{ color: "#52cfc4", fontWeight: 600 }}>traceweave.org</span>
-          <span>Fingerprint → Private catalogue → Checkable report</span>
+          <span style={{ color: "#34E5BC", fontWeight: 600 }}>traceweave.org</span>
+          <span>Fingerprint · Private catalogue · Checkable report</span>
         </div>
       </div>
     ),

@@ -1,6 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none">
-  <rect width="28" height="28" rx="6" fill="#111417"/>
-  <path d="M6.5 9.5H12.5L15.5 18.5H21.5" stroke="#52cfc4" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M6.5 18.5H11.2M16.8 9.5H21.5" stroke="#eef1f4" stroke-width="2.3" stroke-linecap="round"/>
-  <circle cx="14" cy="14" r="2.1" fill="#52cfc4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-labelledby="tw-b-fav-title">
+  <title id="tw-b-fav-title">Traceweave Evidence Ledger favicon</title>
+  <rect x="0" y="0" width="32" height="32" rx="2" fill="#0D1014"/>
+  <g transform="translate(2 2) scale(0.875)">
+    <path d="M2 2H8V4H4V8H2V2ZM24 2H30V8H28V4H24V2ZM2 24H4V28H8V30H2V24ZM28 24H30V30H24V28H28V24Z" fill="#F2F4F7"/>
+    <rect x="8" y="8" width="6" height="6" fill="#F2F4F7"/>
+    <rect x="18" y="18" width="6" height="6" fill="#F2F4F7"/>
+    <path fill-rule="evenodd" d="M8 18H14V24H8V18ZM10 20V22H12V20H10Z" fill="#F2F4F7"/>
+    <rect x="14" y="10" width="4" height="2" fill="#34E5BC"/>
+    <rect x="18" y="8" width="6" height="6" fill="#34E5BC"/>
+  </g>
 </svg>

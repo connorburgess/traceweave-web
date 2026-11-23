@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SourceLink } from "@/components/SourceLink";
 import { DOCS_URL, SPEC_ISSUES_URL, SPEC_TREE_URL, specUrl } from "@/lib/sources";
 
@@ -22,6 +23,24 @@ export default function AboutPage() {
             Traceweave is an independent technical specification and reference-tooling
             effort. It is not a company, standards body, certification program, or legal
             entity.
+          </p>
+          <p style={{ marginBottom: 0 }}>
+            Maintained by{" "}
+            <a
+              href="https://seatbeltlabs.com"
+              rel="noopener noreferrer"
+              className="seatbelt-link"
+            >
+              <Image
+                src="/brand/seatbelt-labs-mark.svg"
+                alt="Seatbelt Labs"
+                width={20}
+                height={20}
+                className="seatbelt-mark"
+              />
+              <span>Seatbelt Labs</span>
+            </a>
+            .
           </p>
         </div>
       </section>

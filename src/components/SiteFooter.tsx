@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { TraceweaveMark } from "@/components/TraceweaveMark";
 import { SPEC_DRAFT_VERSION } from "@/data/facts";
@@ -91,8 +92,19 @@ export function SiteFooter() {
         <div className="footer-bottom">
           <div>
             © 2026{" "}
-            <a href="https://seatbeltlabs.com" rel="noopener noreferrer">
-              Seatbelt Labs
+            <a
+              href="https://seatbeltlabs.com"
+              rel="noopener noreferrer"
+              className="seatbelt-link"
+            >
+              <Image
+                src="/brand/seatbelt-labs-mark.svg"
+                alt="Seatbelt Labs"
+                width={20}
+                height={20}
+                className="seatbelt-mark"
+              />
+              <span>Seatbelt Labs</span>
             </a>{" "}
             · Prose licensed under{" "}
             <a href={specUrl("LICENSES/CC-BY-4.0.txt")} rel="noopener noreferrer">

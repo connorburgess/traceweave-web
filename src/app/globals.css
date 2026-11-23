@@ -727,9 +727,26 @@ tbody tr:last-child td {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   gap: 0.75rem 1.5rem;
   font-size: 0.82rem;
   color: var(--ink-subtle);
+}
+
+.seatbelt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  vertical-align: middle;
+}
+
+.seatbelt-mark {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 /* Reduced motion */

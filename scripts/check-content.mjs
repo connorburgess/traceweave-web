@@ -204,14 +204,20 @@ function main() {
       }
       if (line.includes("Seatbelt Labs")) {
         const isFooterFile = rel === path.join("src", "components", "SiteFooter.tsx");
-        const footerHasExactCopyright =
+        const isAboutFile = rel === path.join("src", "app", "about", "page.tsx");
+        const footerValid =
           isFooterFile &&
-          /© 2026[\s\S]*?<a href="https:\/\/seatbeltlabs\.com" rel="noopener noreferrer">\s*Seatbelt Labs\s*<\/a>/.test(
+          /© 2026[\s\S]*?<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?src="\/brand\/seatbelt-labs-mark\.svg"[\s\S]*?alt="Seatbelt Labs"[\s\S]*?<span>Seatbelt Labs<\/span>[\s\S]*?<\/a>/.test(
             content
           );
-        if (!footerHasExactCopyright) {
+        const aboutValid =
+          isAboutFile &&
+          /Maintained by[\s\S]*?<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?src="\/brand\/seatbelt-labs-mark\.svg"[\s\S]*?alt="Seatbelt Labs"[\s\S]*?<span>Seatbelt Labs<\/span>[\s\S]*?<\/a>/.test(
+            content
+          );
+        if (!footerValid && !aboutValid) {
           errors.push(
-            `${rel}:${idx + 1}: "Seatbelt Labs" is permitted only in the exact footer copyright link`
+            `${rel}:${idx + 1}: "Seatbelt Labs" is permitted only in the footer copyright link and the About page "Maintained by" line`
           );
         }
       }
@@ -351,14 +357,15 @@ function main() {
     }
   }
 
-  // 5. Ensure required licence instruments exist.
-  for (const licenseFile of [
+  // 5. Ensure required licence instruments and brand mark exist.
+  for (const requiredFile of [
     "LICENSE.md",
     "LICENSES/Apache-2.0.txt",
     "LICENSES/CC-BY-4.0.txt",
+    "public/brand/seatbelt-labs-mark.svg",
   ]) {
-    if (!fs.existsSync(path.join(REPO_ROOT, licenseFile))) {
-      errors.push(`Missing required licence file: ${licenseFile}`);
+    if (!fs.existsSync(path.join(REPO_ROOT, requiredFile))) {
+      errors.push(`Missing required file: ${requiredFile}`);
     }
   }
 

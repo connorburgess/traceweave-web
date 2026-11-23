@@ -308,12 +308,12 @@ export const CITED_FACTS: readonly CitedFact[] = [
 
 export const COVERAGE_ITEMS = [
   {
-    kind: "Source code — Go and Rust",
+    kind: "Source code — first case studies (Go and Rust)",
     profiles: "go-tokens (draft-1), rust2024-tokens (draft-1)",
     status: "Implemented (draft)",
     statusTone: "active" as const,
     summary:
-      "Specified and implemented in two independent reference implementations (Rust and Go, hand-written lexers) with exact and normalized channels, local private catalogues, and byte-identical comparison reports. Held-out corpus evaluation (M3) has not been run yet.",
+      "First two code case-study profiles, working end to end across two independent implementations (Rust and Go, hand-written lexers) as evidence that the specification can be implemented independently. Includes exact and normalized channels, local private catalogues, and byte-identical comparison reports. Held-out corpus evaluation (M3) has not been run yet.",
     sourcePath: "ROADMAP.md",
     anchor: "later-profiles-and-sequence",
   },

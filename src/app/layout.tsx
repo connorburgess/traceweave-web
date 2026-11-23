@@ -19,20 +19,20 @@ export const metadata: Metadata = {
     template: "%s — Traceweave",
   },
   description:
-    "An open, non-commercial, independent specification (experimental draft 0.1.0-draft.1) for recognising reused content using private local catalogues and producing deterministic, re-runnable comparison reports.",
+    "Traceweave is an open specification for recognising your own work when it turns up somewhere else, and for producing evidence of the match that anyone can re-run and check.",
   openGraph: {
     type: "website",
     url: SITE_URL,
     siteName: "Traceweave",
     title: "Traceweave — Open specification for checkable content reuse evidence",
     description:
-      "Recognise your own content when it reappears elsewhere and produce deterministic comparison evidence someone else can re-run and check. Experimental draft.",
+      "Traceweave is an open specification for recognising your own work when it turns up somewhere else, and for producing evidence of the match that anyone can re-run and check.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Traceweave — Open specification for checkable content reuse evidence",
     description:
-      "Open, non-commercial specification for private local content fingerprinting and deterministic comparison reports. Experimental draft.",
+      "Traceweave is an open specification for recognising your own work when it turns up somewhere else, and for producing evidence of the match that anyone can re-run and check.",
   },
   robots: {
     index: true,
@@ -50,7 +50,7 @@ const STRUCTURED_DATA = {
       name: "Traceweave",
       url: SITE_URL,
       description:
-        "Main website for the Traceweave experimental open specification for content fingerprinting, private catalogues, and deterministic comparison reports.",
+        "Traceweave is an open specification for recognising your own work when it turns up somewhere else, and for producing evidence of the match that anyone can re-run and check.",
       inLanguage: "en",
     },
     {
@@ -60,7 +60,7 @@ const STRUCTURED_DATA = {
       codeRepository: SPEC_REPO_URL,
       url: SITE_URL,
       description:
-        "An open, non-commercial, independent experimental specification for deterministic token-fingerprint extraction, private local catalogues, and byte-identical comparison reports, with two independent reference implementations in Rust and Go.",
+        "Traceweave is an open specification for recognising your own work when it turns up somewhere else, and for producing evidence of the match that anyone can re-run and check. Designed to cover source code, writing, images and audio on one shared evidence format, with Go and Rust as the first two case studies.",
       programmingLanguage: ["Rust", "Go"],
       license: [
         "https://creativecommons.org/licenses/by/4.0/",

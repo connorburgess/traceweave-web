@@ -85,27 +85,29 @@ export default function OpenGraphImage() {
           </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "22px", maxWidth: "960px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px", maxWidth: "1000px" }}>
           <div
             style={{
-              fontSize: "54px",
+              fontSize: "44px",
               fontWeight: 700,
-              lineHeight: 1.12,
-              letterSpacing: "-0.03em",
+              lineHeight: 1.16,
+              letterSpacing: "-0.025em",
               color: "#eef1f4",
             }}
           >
-            Recognise your own content and produce evidence anyone can re-run.
+            Traceweave is an open specification for recognising your own work when it turns up
+            somewhere else, and for producing evidence of the match that anyone can re-run and
+            check.
           </div>
           <div
             style={{
-              fontSize: "26px",
-              lineHeight: 1.4,
+              fontSize: "24px",
+              lineHeight: 1.42,
               color: "#b0b9c6",
             }}
           >
-            Open, non-commercial specification for private local fingerprint catalogues and
-            deterministic, byte-identical comparison reports.
+            Designed to cover source code, writing, images and audio on one shared evidence
+            format. Your content never leaves your machine; only fingerprints are compared.
           </div>
         </div>
 

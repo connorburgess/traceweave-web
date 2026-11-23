@@ -20,11 +20,12 @@ export default function HowItWorksPage() {
       <section className="page-header">
         <div className="container prose">
           <div className="eyebrow">How it works</div>
-          <h1>From local files to a byte-identical comparison report</h1>
+          <h1>From local files to a deterministic, byte-identical comparison report</h1>
           <p className="lead">
-            Traceweave breaks comparison into three deterministic steps so you can keep
-            source code private and let someone else verify every count in the resulting
-            report.
+            Traceweave puts one shared evidence format underneath profile-specific
+            extractors. Every comparison runs in three local steps so your content stays on
+            your machine and anyone with the same catalogues can reproduce the exact report
+            bytes.
           </p>
         </div>
       </section>
@@ -193,8 +194,9 @@ export default function HowItWorksPage() {
             <p style={{ marginBottom: 0 }}>
               <strong>Canonical digest:</strong> the RFC 8785 canonical report body hashes
               to{" "}
-              <code>{WORKED_EXAMPLE.bodySha256}</code>. Two independent implementations
-              (Rust and Go) emit those exact bytes for this vector.
+              <code>{WORKED_EXAMPLE.bodySha256}</code>. As evidence that the specification
+              can be implemented independently, both the Rust and Go implementations emit
+              those exact deterministic, byte-identical report bytes for this vector.
             </p>
           </div>
 

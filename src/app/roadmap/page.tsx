@@ -242,7 +242,7 @@ export default function RoadmapPage() {
       <section className="section" aria-labelledby="later-heading">
         <div className="container">
           <div className="eyebrow">Later profiles and release criteria</div>
-          <h2 id="later-heading">Expansion tracks beyond core Go and Rust</h2>
+          <h2 id="later-heading">Expansion tracks beyond the first case-study profiles</h2>
           <div className="table-wrap">
             <table>
               <thead>

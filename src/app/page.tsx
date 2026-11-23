@@ -8,7 +8,7 @@ import { DOCS_URL, SPEC_TREE_URL, specUrl } from "@/lib/sources";
 export const metadata: Metadata = {
   title: "Traceweave — Open specification for checkable content reuse evidence",
   description:
-    "An open, non-commercial, independent specification (experimental draft) for recognising reused content with private local catalogues and deterministic comparison reports.",
+    "Traceweave is an open specification for recognising your own work when it turns up somewhere else, and for producing evidence of the match that anyone can re-run and check.",
   alternates: {
     canonical: "/",
   },
@@ -19,7 +19,7 @@ const WHO_IT_IS_FOR = [
     role: "Software maintainers",
     caseId: "UC-1",
     summary:
-      "Check whether a local candidate project contains a fragment of your reference Go or Rust code, with exact byte spans and fragment containment kept separate from whole-file similarity.",
+      "Check whether a local candidate project contains a fragment of your reference source code (with Go and Rust as the first two case studies), keeping exact byte spans and fragment containment separate from whole-file similarity.",
   },
   {
     role: "Licence & origin reviewers",
@@ -62,13 +62,18 @@ export default function HomePage() {
 
           <div style={{ maxWidth: "74ch" }}>
             <h1>
-              Recognise your own content elsewhere, with evidence anyone can re-run.
+              Recognise your own work when it turns up somewhere else.
             </h1>
             <p className="lead">
-              Traceweave is an open, non-commercial, independent specification — backed by
-              two independent reference implementations in Rust and Go — for comparing
-              content fingerprints kept in private local catalogues and emitting
-              deterministic, byte-identical comparison reports.
+              Traceweave is an open specification for recognising your own work when it
+              turns up somewhere else, and for producing evidence of the match that anyone
+              can re-run and check.
+            </p>
+            <p className="lead" style={{ marginBottom: 0 }}>
+              It is designed to cover any kind of work: source code, writing, images and
+              audio. One shared evidence format sits underneath, with a profile for each
+              medium. Your content never leaves your machine; only fingerprints are
+              compared.
             </p>
           </div>
 
@@ -86,20 +91,49 @@ export default function HomePage() {
               Roadmap &amp; gates
             </Link>
           </div>
+
+          <div
+            className="card-muted"
+            role="region"
+            aria-label="Current project status"
+            style={{ marginTop: "2rem", maxWidth: "74ch" }}
+          >
+            <p style={{ marginBottom: "0.55rem" }}>
+              <strong>Where it stands today:</strong> source code is working end to end,
+              with Go and Rust as the first two case studies. TypeScript, JavaScript and
+              plain text are specified. Images have been measured in two studies. More
+              languages, audio, and signed, timestamped registration records are planned.
+              It is experimental and not yet evaluated on real-world data.
+            </p>
+            <p style={{ marginBottom: 0, fontSize: "0.84rem" }}>
+              Scope and status sources: <SourceLink path="README.md" /> ·{" "}
+              <SourceLink
+                path="ROADMAP.md"
+                anchor="pilot-languages"
+                label="ROADMAP.md#pilot-languages"
+              />{" "}
+              ·{" "}
+              <SourceLink
+                path="ROADMAP.md"
+                anchor="later-profiles-and-sequence"
+                label="ROADMAP.md#later-profiles-and-sequence"
+              />
+            </p>
+          </div>
         </div>
       </section>
 
       <section className="section-tight" aria-labelledby="workflow-heading">
         <div className="container">
-          <div className="eyebrow">How it works today</div>
-          <h2 id="workflow-heading">Three local steps, zero source uploads</h2>
+          <div className="eyebrow">How it works</div>
+          <h2 id="workflow-heading">Three local steps, zero content uploads</h2>
           <p className="prose">
-            Today, Traceweave compares token fingerprints of Go and Rust source code held
-            in private, local catalogues that contain no source text, and emits a canonical
-            comparison report that another party with the same catalogues can reproduce byte
-            for byte. Profiles for TypeScript/JavaScript and plain text are specified; still
-            images are researched; signed, timestamped registration records and agent
-            interoperability are planned.
+            Each medium profile extracts fingerprints locally into a private catalogue
+            that contains no raw source text, then compares catalogues to produce a
+            re-runnable comparison report. Source code — with Go and Rust as the first two
+            case studies, validated across two independent implementations to show the
+            specification can be built independently — exercises this pipeline end to end
+            today.
           </p>
           <WorkflowDiagram />
           <p style={{ marginBottom: 0 }}>
@@ -185,9 +219,9 @@ export default function HomePage() {
             </p>
             <ul className="clean-list limit-list">
               <li>
-                <strong>Available in draft today:</strong> deterministic local Go and Rust
-                token fingerprinting, private catalogues without source text, and
-                re-runnable comparison reports.
+                <strong>Available in draft today:</strong> end-to-end local source code
+                fingerprinting (with Go and Rust as the first two case studies), private
+                catalogues without source text, and re-runnable comparison reports.
               </li>
               <li>
                 <strong>Planned (not built yet):</strong> signed, timestamped registration

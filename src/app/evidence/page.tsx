@@ -39,13 +39,15 @@ export default function EvidencePage() {
 
       <section className="section-tight" aria-labelledby="determinism-heading">
         <div className="container">
-          <div className="eyebrow">1 · Reference implementations</div>
+          <div className="eyebrow">1 · Independent implementations</div>
           <h2 id="determinism-heading">
             Two independent implementations agree — but accuracy is not measured yet
           </h2>
           <p className="prose">
-            Independent Rust and Go implementations with hand-written lexers were
-            cross-checked offline across synthetic and differential test suites:
+            As evidence that the specification can be implemented independently, separate
+            Rust and Go implementations with hand-written lexers were built for the first
+            two code case-study profiles (Go and Rust) and cross-checked offline across
+            synthetic and differential test suites:
           </p>
 
           <div className="stat-grid">

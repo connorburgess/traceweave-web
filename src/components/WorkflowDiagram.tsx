@@ -63,7 +63,7 @@ export function WorkflowDiagram() {
             fontFamily="var(--font-sans)"
             fontSize="13.5"
           >
-            Turns local code into
+            Turns local files into
           </text>
           <text
             x="30"
@@ -72,7 +72,7 @@ export function WorkflowDiagram() {
             fontFamily="var(--font-sans)"
             fontSize="13.5"
           >
-            deterministic token hashes
+            deterministic fingerprints
           </text>
           <text
             x="30"
@@ -81,7 +81,7 @@ export function WorkflowDiagram() {
             fontFamily="var(--font-sans)"
             fontSize="13.5"
           >
-            and exact UTF-8 byte spans.
+            and exact content spans.
           </text>
         </g>
 
@@ -177,7 +177,7 @@ export function WorkflowDiagram() {
             fontFamily="var(--font-sans)"
             fontSize="13.5"
           >
-            never source code text.
+            never your raw content.
           </text>
         </g>
 

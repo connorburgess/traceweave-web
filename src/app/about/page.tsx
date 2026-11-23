@@ -6,7 +6,7 @@ import { DOCS_URL, SPEC_ISSUES_URL, SPEC_TREE_URL, specUrl } from "@/lib/sources
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Traceweave is an open, non-commercial, independent specification project. How decisions and reviews work, how to contribute or report security issues, and licensing.",
+    "Traceweave is an open, non-commercial, independent specification for recognising your own work when it turns up somewhere else, and for producing evidence of the match that anyone can re-run and check.",
   alternates: {
     canonical: "/about",
   },
@@ -20,9 +20,15 @@ export default function AboutPage() {
           <div className="eyebrow">About Traceweave</div>
           <h1>An open, non-commercial, independent specification</h1>
           <p className="lead">
-            Traceweave is an independent technical specification and reference-tooling
-            effort. It is not a company, standards body, certification program, or legal
-            entity.
+            Traceweave is an open specification for recognising your own work when it
+            turns up somewhere else, and for producing evidence of the match that anyone
+            can re-run and check.
+          </p>
+          <p>
+            It is an open, non-commercial, independent effort — not a company, standards
+            body, certification program, or legal entity. Independent reference
+            implementations in Rust and Go exist as evidence that the specification can be
+            implemented independently, not as a closed product.
           </p>
           <p style={{ marginBottom: 0 }}>
             Maintained by{" "}

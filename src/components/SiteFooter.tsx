@@ -20,8 +20,9 @@ export function SiteFooter() {
               not been run yet.
             </p>
             <p style={{ marginBottom: 0, maxWidth: "40ch", fontSize: "0.84rem" }}>
-              An open, non-commercial, independent specification for recognising
-              reused content and producing checkable evidence.
+              Traceweave is an open specification for recognising your own work when it
+              turns up somewhere else, and for producing evidence of the match that anyone
+              can re-run and check.
             </p>
           </div>
 

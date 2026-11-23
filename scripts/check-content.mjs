@@ -357,7 +357,8 @@ function main() {
     }
   }
 
-  // 5. Ensure required licence instruments and brand mark exist.
+  // 5. Ensure required licence instruments and brand mark exist, and that the
+  //    multi-medium scope cited on the home page is backed by README.md and ROADMAP.md.
   for (const requiredFile of [
     "LICENSE.md",
     "LICENSES/Apache-2.0.txt",
@@ -367,6 +368,15 @@ function main() {
     if (!fs.existsSync(path.join(REPO_ROOT, requiredFile))) {
       errors.push(`Missing required file: ${requiredFile}`);
     }
+  }
+
+  const readmeText = fs.readFileSync(path.join(specDir, "README.md"), "utf8");
+  const roadmapText = fs.readFileSync(path.join(specDir, "ROADMAP.md"), "utf8");
+  if (!readmeText.includes("text, images, and audio")) {
+    errors.push('README.md in spec checkout no longer lists "text, images, and audio"');
+  }
+  if (!roadmapText.includes("## Pilot languages") || !roadmapText.includes("## Later profiles and sequence")) {
+    errors.push("ROADMAP.md in spec checkout missing expected pilot-languages or later-profiles sections");
   }
 
   if (errors.length > 0) {

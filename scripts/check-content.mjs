@@ -70,6 +70,13 @@ const ALLOWED_EXTERNAL_HOSTS = new Set([
   "www.w3.org",
 ]);
 
+const ALLOWED_EMAILS = new Set(["connor@seatbeltlabs.com"]);
+
+const ALLOWED_EMAIL_FILES = new Set([
+  path.join("src", "app", "about", "page.tsx"),
+  path.join("src", "components", "SiteFooter.tsx"),
+]);
+
 const FORBIDDEN_PATTERNS = [
   { label: 'forbidden phrase "proves ownership"', regex: /\bproves?\s+ownership\b/i },
   { label: 'forbidden phrase "proof of ownership"', regex: /\bproof\s+of\s+ownership\b/i },
@@ -82,10 +89,6 @@ const FORBIDDEN_PATTERNS = [
   {
     label: "absolute home-directory path",
     regex: /\/Users\/[A-Za-z0-9._-]+|\/home\/[A-Za-z0-9._-]+|[A-Za-z]:\\Users\\[A-Za-z0-9._-]+/,
-  },
-  {
-    label: "email address",
-    regex: /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/,
   },
   {
     label: "AI attribution or generator credit",
@@ -163,6 +166,7 @@ function main() {
   // 1. Forbidden phrases, absolute home paths, emails, AI credits, and copyright/name allow-list.
   const selfRel = path.join("scripts", "check-content.mjs");
   const copyrightRe = /(?:©|Copyright)\s+\d{4}\s+([^·.\n<]+)/g;
+  const emailRe = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g;
   for (const file of allFiles) {
     const rel = path.relative(REPO_ROOT, file);
     if (rel === selfRel) continue;
@@ -173,6 +177,18 @@ function main() {
       for (const rule of FORBIDDEN_PATTERNS) {
         if (rule.regex.test(line)) {
           errors.push(`${rel}:${idx + 1}: ${rule.label} -> ${line.trim()}`);
+        }
+      }
+      emailRe.lastIndex = 0;
+      let em;
+      while ((em = emailRe.exec(line)) !== null) {
+        const addr = em[0].toLowerCase();
+        if (!ALLOWED_EMAILS.has(addr)) {
+          errors.push(`${rel}:${idx + 1}: disallowed email address "${em[0]}"`);
+        } else if (!ALLOWED_EMAIL_FILES.has(rel)) {
+          errors.push(
+            `${rel}:${idx + 1}: allowed email address "${em[0]}" is only permitted on the About page and in the footer`
+          );
         }
       }
       copyrightRe.lastIndex = 0;

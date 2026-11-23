@@ -81,6 +81,9 @@ export function SiteFooter() {
                   Licences ↗
                 </a>
               </li>
+              <li>
+                <a href="mailto:connor@seatbeltlabs.com">Contact</a>
+              </li>
             </ul>
           </div>
         </div>

@@ -82,6 +82,10 @@ export default function AboutPage() {
                   reporting if enabled, or ask for a private channel without posting the
                   exploit or sensitive material.
                 </li>
+                <li>
+                  <strong>Contact:</strong>{" "}
+                  <a href="mailto:connor@seatbeltlabs.com">connor@seatbeltlabs.com</a>.
+                </li>
               </ul>
               <div className="actions" style={{ marginTop: "1.1rem" }}>
                 <a

@@ -6,10 +6,7 @@ import { DOCS_URL, SITE_URL, SPEC_REPO_URL } from "@/lib/sources";
 import "./globals.css";
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fafaf8" },
-    { media: "(prefers-color-scheme: dark)", color: "#111417" },
-  ],
+  themeColor: "#fafaf8",
 };
 
 export const metadata: Metadata = {
@@ -40,7 +37,7 @@ export const metadata: Metadata = {
   },
 };
 
-const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem("traceweave-theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();`;
+const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem("traceweave-theme");if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();`;
 
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",

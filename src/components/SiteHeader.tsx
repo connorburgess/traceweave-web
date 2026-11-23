@@ -14,10 +14,11 @@ const NAV_ITEMS = [
   { href: "/about", label: "About" },
 ] as const;
 
-type ThemeMode = "system" | "light" | "dark";
+type ThemeMode = "light" | "dark";
 
 const THEME_STORAGE_KEY = "traceweave-theme";
 const THEME_EVENT = "traceweave-theme-change";
+let memoryTheme: ThemeMode | null = null;
 
 function subscribeTheme(callback: () => void) {
   window.addEventListener("storage", callback);
@@ -31,15 +32,15 @@ function subscribeTheme(callback: () => void) {
 function getThemeSnapshot(): ThemeMode {
   try {
     const saved = window.localStorage.getItem(THEME_STORAGE_KEY);
-    if (saved === "light" || saved === "dark") return saved;
+    if (saved === "dark" || saved === "light") return saved;
   } catch {
-    // Storage unavailable; fall back to system.
+    // Storage unavailable; fall back to in-memory toggle or light default.
   }
-  return "system";
+  return memoryTheme ?? "light";
 }
 
 function getServerThemeSnapshot(): ThemeMode {
-  return "system";
+  return "light";
 }
 
 export function SiteHeader() {
@@ -52,10 +53,10 @@ export function SiteHeader() {
   );
 
   useEffect(() => {
-    if (theme === "system") {
-      document.documentElement.removeAttribute("data-theme");
+    if (theme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
     } else {
-      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.removeAttribute("data-theme");
     }
   }, [theme]);
 
@@ -69,23 +70,18 @@ export function SiteHeader() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [menuOpen]);
 
-  function cycleTheme() {
-    const next: ThemeMode =
-      theme === "system" ? "light" : theme === "light" ? "dark" : "system";
+  function toggleTheme() {
+    const next: ThemeMode = theme === "dark" ? "light" : "dark";
+    memoryTheme = next;
     try {
-      if (next === "system") {
-        window.localStorage.removeItem(THEME_STORAGE_KEY);
-      } else {
-        window.localStorage.setItem(THEME_STORAGE_KEY, next);
-      }
+      window.localStorage.setItem(THEME_STORAGE_KEY, next);
     } catch {
-      // Ignore storage errors.
+      // Ignore storage errors; memoryTheme keeps the toggle functional.
     }
     window.dispatchEvent(new Event(THEME_EVENT));
   }
 
-  const themeLabel =
-    theme === "system" ? "Theme: Auto" : theme === "light" ? "Theme: Light" : "Theme: Dark";
+  const isDark = theme === "dark";
 
   return (
     <header className="site-header">
@@ -118,13 +114,12 @@ export function SiteHeader() {
           <button
             type="button"
             className="icon-button"
-            onClick={cycleTheme}
-            aria-label={`Switch colour theme (currently ${theme})`}
+            onClick={toggleTheme}
+            aria-label="Dark theme"
+            aria-pressed={isDark}
           >
-            <span aria-hidden="true">
-              {theme === "dark" ? "◐" : theme === "light" ? "☀" : "◑"}
-            </span>
-            <span>{themeLabel}</span>
+            <span aria-hidden="true">{isDark ? "☾" : "☀"}</span>
+            <span>{isDark ? "Dark" : "Light"}</span>
           </button>
 
           <button

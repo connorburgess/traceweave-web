@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { SeatbeltLabsMark } from "@/components/SeatbeltLabsMark";
 import { TraceweaveMark } from "@/components/TraceweaveMark";
 import { SPEC_DRAFT_VERSION } from "@/data/facts";
 import { DOCS_URL, SPEC_ISSUES_URL, SPEC_TREE_URL, specUrl } from "@/lib/sources";
@@ -90,23 +90,21 @@ export function SiteFooter() {
         </div>
 
         <div className="footer-bottom">
-          <div>
-            © 2026{" "}
+          <div className="footer-credit">
             <a
               href="https://seatbeltlabs.com"
               rel="noopener noreferrer"
               className="seatbelt-link"
             >
-              <Image
-                src="/brand/seatbelt-labs-mark.svg"
-                alt=""
-                width={20}
-                height={20}
-                className="seatbelt-mark"
-              />
-              <span>Seatbelt Labs</span>
-            </a>{" "}
-            · Prose licensed under{" "}
+              <span className="seatbelt-mark-plate">
+                <SeatbeltLabsMark />
+              </span>
+              <span className="seatbelt-wordmark">SEATBELT LABS</span>
+            </a>
+            <span>© 2026 Seatbelt Labs</span>
+          </div>
+          <div>
+            Prose licensed under{" "}
             <a href={specUrl("LICENSES/CC-BY-4.0.txt")} rel="noopener noreferrer">
               CC BY 4.0
             </a>
@@ -114,10 +112,7 @@ export function SiteFooter() {
             <a href={specUrl("LICENSES/Apache-2.0.txt")} rel="noopener noreferrer">
               Apache-2.0
             </a>
-            .
-          </div>
-          <div>
-            Static site · No tracking, cookies, or third-party scripts.
+            . Static site · No tracking, cookies, or third-party scripts.
           </div>
         </div>
       </div>

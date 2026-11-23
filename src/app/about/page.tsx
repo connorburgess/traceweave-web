@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { SeatbeltLabsMark } from "@/components/SeatbeltLabsMark";
 import { SourceLink } from "@/components/SourceLink";
 import { DOCS_URL, SPEC_ISSUES_URL, SPEC_TREE_URL, specUrl } from "@/lib/sources";
 
@@ -30,23 +30,18 @@ export default function AboutPage() {
             implementations in Rust and Go exist as evidence that the specification can be
             implemented independently, not as a closed product.
           </p>
-          <p style={{ marginBottom: 0 }}>
-            Maintained by{" "}
+          <p className="maintained-by">
+            <span>Maintained by</span>
             <a
               href="https://seatbeltlabs.com"
               rel="noopener noreferrer"
               className="seatbelt-link"
             >
-              <Image
-                src="/brand/seatbelt-labs-mark.svg"
-                alt=""
-                width={20}
-                height={20}
-                className="seatbelt-mark"
-              />
-              <span>Seatbelt Labs</span>
+              <span className="seatbelt-mark-plate">
+                <SeatbeltLabsMark />
+              </span>
+              <span className="seatbelt-wordmark">SEATBELT LABS</span>
             </a>
-            .
           </p>
         </div>
       </section>

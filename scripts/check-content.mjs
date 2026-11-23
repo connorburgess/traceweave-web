@@ -205,22 +205,22 @@ function main() {
           );
         }
       }
-      if (line.includes("Seatbelt Labs")) {
+      if (/seatbelt labs/i.test(line)) {
         const isFooterFile = rel === path.join("src", "components", "SiteFooter.tsx");
         const isAboutFile = rel === path.join("src", "app", "about", "page.tsx");
         const footerValid =
           isFooterFile &&
-          /© 2026[\s\S]*?<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?src="\/brand\/seatbelt-labs-mark\.svg"[\s\S]*?alt=""[\s\S]*?<span>Seatbelt Labs<\/span>[\s\S]*?<\/a>/.test(
+          /<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?<SeatbeltLabsMark \/>[\s\S]*?SEATBELT LABS[\s\S]*?<\/a>[\s\S]*?© 2026 Seatbelt Labs/.test(
             content
           );
         const aboutValid =
           isAboutFile &&
-          /Maintained by[\s\S]*?<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?src="\/brand\/seatbelt-labs-mark\.svg"[\s\S]*?alt=""[\s\S]*?<span>Seatbelt Labs<\/span>[\s\S]*?<\/a>/.test(
+          /Maintained by[\s\S]*?<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?<SeatbeltLabsMark \/>[\s\S]*?SEATBELT LABS[\s\S]*?<\/a>/.test(
             content
           );
         if (!footerValid && !aboutValid) {
           errors.push(
-            `${rel}:${idx + 1}: "Seatbelt Labs" is permitted only in the footer copyright link and the About page "Maintained by" line`
+            `${rel}:${idx + 1}: "Seatbelt Labs" / "SEATBELT LABS" is permitted only in the footer credit and the About page "Maintained by" line`
           );
         }
       }

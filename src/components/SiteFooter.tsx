@@ -87,7 +87,11 @@ export function SiteFooter() {
 
         <div className="footer-bottom">
           <div>
-            © 2026 Seatbelt Labs · Prose licensed under{" "}
+            © 2026{" "}
+            <a href="https://seatbeltlabs.com" rel="noopener noreferrer">
+              Seatbelt Labs
+            </a>{" "}
+            · Prose licensed under{" "}
             <a href={specUrl("LICENSES/CC-BY-4.0.txt")} rel="noopener noreferrer">
               CC BY 4.0
             </a>

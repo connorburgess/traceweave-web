@@ -59,6 +59,17 @@ const ALLOWED_COPYRIGHT_NAMES = new Set([
   "Traceweave contributors",
 ]);
 
+const ALLOWED_EXTERNAL_HOSTS = new Set([
+  "traceweave.org",
+  "docs.traceweave.org",
+  "github.com",
+  "seatbeltlabs.com",
+  "schema.org",
+  "creativecommons.org",
+  "www.apache.org",
+  "www.w3.org",
+]);
+
 const FORBIDDEN_PATTERNS = [
   { label: 'forbidden phrase "proves ownership"', regex: /\bproves?\s+ownership\b/i },
   { label: 'forbidden phrase "proof of ownership"', regex: /\bproof\s+of\s+ownership\b/i },
@@ -168,19 +179,51 @@ function main() {
       let cm;
       while ((cm = copyrightRe.exec(line)) !== null) {
         const holder = cm[1].trim();
+        if (!holder || holder === '{" "}') continue;
         if (!ALLOWED_COPYRIGHT_NAMES.has(holder)) {
           errors.push(
             `${rel}:${idx + 1}: unlisted copyright holder "${holder}" (allowed: ${[...ALLOWED_COPYRIGHT_NAMES].join(", ")})`
           );
         }
       }
-      if (
-        line.includes("Seatbelt Labs") &&
-        !(rel === path.join("src", "components", "SiteFooter.tsx") && line.includes("© 2026 Seatbelt Labs"))
-      ) {
-        errors.push(
-          `${rel}:${idx + 1}: "Seatbelt Labs" is permitted only in the exact footer copyright line`
-        );
+      if (line.includes("Seatbelt Labs")) {
+        const isFooterFile = rel === path.join("src", "components", "SiteFooter.tsx");
+        const footerHasExactCopyright =
+          isFooterFile &&
+          /© 2026[\s\S]*?<a href="https:\/\/seatbeltlabs\.com" rel="noopener noreferrer">\s*Seatbelt Labs\s*<\/a>/.test(
+            content
+          );
+        if (!footerHasExactCopyright) {
+          errors.push(
+            `${rel}:${idx + 1}: "Seatbelt Labs" is permitted only in the exact footer copyright link`
+          );
+        }
+      }
+    }
+  }
+
+  // 1b. Check external URLs in src/ against ALLOWED_EXTERNAL_HOSTS and forbid tracking params.
+  const srcFilesForUrls = walkFiles(path.join(REPO_ROOT, "src"), new Set([".ts", ".tsx"]));
+  const urlRe = /https?:\/\/[^\s"'`)<>]+/g;
+  for (const file of srcFilesForUrls) {
+    const rel = path.relative(REPO_ROOT, file);
+    const content = fs.readFileSync(file, "utf8");
+    let m;
+    while ((m = urlRe.exec(content)) !== null) {
+      const rawUrl = m[0].replace(/[.,;]+$/, "");
+      if (rawUrl.includes("${")) continue;
+      try {
+        const parsed = new URL(rawUrl);
+        if (!ALLOWED_EXTERNAL_HOSTS.has(parsed.hostname)) {
+          errors.push(`${rel}: disallowed external host "${parsed.hostname}" in ${rawUrl}`);
+        }
+        for (const key of parsed.searchParams.keys()) {
+          if (/^utm_|^ref$|^fbclid$|^gclid$/i.test(key)) {
+            errors.push(`${rel}: tracking parameter "${key}" in ${rawUrl}`);
+          }
+        }
+      } catch {
+        errors.push(`${rel}: malformed URL "${rawUrl}"`);
       }
     }
   }

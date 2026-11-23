@@ -26,7 +26,7 @@ const CORE_MILESTONES = [
     id: "M1",
     name: "Freeze one code experiment",
     gates: "M1.1–M1.6",
-    met: "1 of 6 met (M1.3)",
+    met: "4 of 6 met (M1.1, M1.2, M1.3, M1.5)",
     summary:
       "Go and Rust token extraction contract, hand-derived positive/negative vectors, catalogue and report schemas, requirement map, and strict pinned reproduction in both implementations.",
   },
@@ -34,7 +34,7 @@ const CORE_MILESTONES = [
     id: "M2",
     name: "Local comparison",
     gates: "M2.1–M2.11",
-    met: "6 of 11 met (M2.1, M2.4, M2.5, M2.8, M2.10, M2.11)",
+    met: "8 of 11 met (M2.1, M2.4, M2.5, M2.6, M2.7, M2.8, M2.10, M2.11)",
     summary:
       "Offline walkthrough (verified on macOS and Linux CI), frozen fixture manifest, control classes including vendor boilerplate, separate fragment containment, atomic private storage, review packets (M2.7), and candidate-generation records (M2.9).",
   },

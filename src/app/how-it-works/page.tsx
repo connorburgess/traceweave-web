@@ -279,7 +279,7 @@ export default function HowItWorksPage() {
                 <tr>
                   <td>Origin &amp; licence history</td>
                   <td>Separate review-packet record linked by <span className="mono">bodySha256</span></td>
-                  <td><span className="badge">Planned (M2.7)</span></td>
+                  <td><span className="badge">Draft schema &amp; fixtures (M2.7; CLI open)</span></td>
                 </tr>
                 <tr>
                   <td>Agent interoperability</td>

@@ -220,9 +220,9 @@ export default function HomePage() {
                 Licence-history packets follow.
               </li>
               <li>
-                <strong>Outside its scope:</strong> Traceweave does not lock content, and
-                it does not decide ownership, authorship or permission. It supplies
-                checkable facts for the people who do.
+                <strong>What you do with it is up to you.</strong> Traceweave produces
+                checkable facts about your work. It does not lock content, and it does not
+                make the call on ownership or permission.
               </li>
             </ul>
             <p style={{ marginTop: "1rem", marginBottom: 0 }}>

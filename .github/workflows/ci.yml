@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint, typecheck, content check, and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out website repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Check out published specification branch for content verification
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: connorburgess/traceweave-spec
+          ref: roadmap-v2
+          path: .spec-checkout
+          persist-credentials: false
+
+      # Uses the Node.js runtime pre-installed on ubuntu-latest so every action
+      # in this workflow stays pinned to a verified commit SHA.
+      - name: Verify Node.js runtime
+        run: |
+          node -v
+          npm -v
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Content and source-traceability check
+        run: npm run check:content -- --spec-dir .spec-checkout
+
+      - name: Static production build
+        run: npm run build

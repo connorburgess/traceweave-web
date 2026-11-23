@@ -47,7 +47,7 @@ export default function HomePage() {
     <>
       <section className="hero">
         <div className="container">
-          <div style={{ maxWidth: "74ch" }}>
+          <div className="hero-copy">
             <h1>
               Recognise your own work when it turns up somewhere else.
             </h1>
@@ -132,7 +132,7 @@ export default function HomePage() {
       <section className="section" aria-labelledby="scope-heading">
         <div className="container">
           <div className="eyebrow">Evidence and scope</div>
-          <h2 id="scope-heading">What a comparison records — and its scope</h2>
+          <h2 id="scope-heading">What a comparison records</h2>
           <p className="prose">
             Traceweave records technical similarity separately from timestamps,
             signatures, and human origin review so each piece of evidence can be checked

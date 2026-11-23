@@ -14,24 +14,26 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <section className="page-header">
-      <div className="container prose">
-        <div className="eyebrow">404 · Not found</div>
-        <h1>That page does not exist.</h1>
-        <p className="lead">
-          The address you followed is not part of traceweave.org. For deeper
-          technical references, schemas, and contract text, check the
-          documentation site.
-        </p>
-        <div className="actions">
-          <Link href="/" className="btn btn-primary">
-            Back to home
-          </Link>
-          <Link href="/how-it-works" className="btn btn-secondary">
-            How it works
-          </Link>
-          <a href={DOCS_URL} className="btn btn-secondary" rel="noopener noreferrer">
-            Documentation site ↗
-          </a>
+      <div className="container">
+        <div className="hero-copy">
+          <div className="eyebrow">404 · Not found</div>
+          <h1>That page does not exist.</h1>
+          <p className="lead">
+            The address you followed is not part of traceweave.org. For deeper
+            technical references, schemas, and contract text, check the
+            documentation site.
+          </p>
+          <div className="actions">
+            <Link href="/" className="btn btn-primary">
+              Back to home
+            </Link>
+            <Link href="/how-it-works" className="btn btn-secondary">
+              How it works
+            </Link>
+            <a href={DOCS_URL} className="btn btn-secondary" rel="noopener noreferrer">
+              Documentation site ↗
+            </a>
+          </div>
         </div>
       </div>
     </section>

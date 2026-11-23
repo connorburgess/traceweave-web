@@ -23,14 +23,16 @@ export default function CoveragePage() {
   return (
     <>
       <section className="page-header">
-        <div className="container prose">
-          <div className="eyebrow">Content profiles</div>
-          <h1>What Traceweave covers across media</h1>
-          <p className="lead">
-            One shared evidence format sits underneath profile-specific extractors. Each
-            medium defines its own extraction rules, transformations, and measured
-            boundaries independently.
-          </p>
+        <div className="container">
+          <div className="hero-copy">
+            <div className="eyebrow">Content profiles</div>
+            <h1>What Traceweave covers</h1>
+            <p className="lead" style={{ marginBottom: 0 }}>
+              One shared evidence format sits underneath profile-specific extractors. Each
+              medium defines its own extraction rules, transformations, and measured
+              boundaries independently.
+            </p>
+          </div>
         </div>
       </section>
 

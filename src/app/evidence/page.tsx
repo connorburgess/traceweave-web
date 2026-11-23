@@ -26,14 +26,16 @@ export default function EvidencePage() {
   return (
     <>
       <section className="page-header">
-        <div className="container prose">
-          <div className="eyebrow">Evidence and limits</div>
-          <h1>Measured results and documented boundaries</h1>
-          <p className="lead">
-            Every figure on this page links directly to its committed record in the
-            published specification repository, including negative results that bound the
-            scope of each profile.
-          </p>
+        <div className="container">
+          <div className="hero-copy">
+            <div className="eyebrow">Evidence and limits</div>
+            <h1>Measured results and documented boundaries</h1>
+            <p className="lead" style={{ marginBottom: 0 }}>
+              Every figure on this page links directly to its committed record in the
+              published specification repository, including negative results that bound the
+              scope of each profile.
+            </p>
+          </div>
         </div>
       </section>
 

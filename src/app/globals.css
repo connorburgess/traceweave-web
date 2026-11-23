@@ -197,6 +197,18 @@ pre code {
   max-width: var(--measure);
 }
 
+.container.prose {
+  max-width: var(--max-width);
+}
+
+.container.prose > * {
+  max-width: var(--measure);
+}
+
+.hero-copy {
+  max-width: 72ch;
+}
+
 .section {
   padding-block: clamp(2.5rem, 5vw, 4rem);
   border-top: 1px solid var(--border);
@@ -371,7 +383,7 @@ pre code {
   font-size: clamp(1.06rem, 1.5vw, 1.24rem);
   line-height: 1.55;
   color: var(--ink-secondary);
-  max-width: 62ch;
+  max-width: 72ch;
   margin-bottom: 1.5rem;
 }
 

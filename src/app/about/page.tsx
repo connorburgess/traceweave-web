@@ -15,30 +15,32 @@ export default function AboutPage() {
   return (
     <>
       <section className="page-header">
-        <div className="container prose">
-          <div className="eyebrow">About Traceweave</div>
-          <h1>An open, non-commercial, independent specification</h1>
-          <p className="lead">
-            Traceweave is an open specification for recognising your own work when it
-            turns up somewhere else, and for producing evidence of the match that anyone
-            can re-run and check.
-          </p>
-          <p>
-            It is an open, non-commercial, independent effort — not a company, standards
-            body, certification program, or legal entity. Independent reference
-            implementations in Rust and Go exist as evidence that the specification can be
-            implemented independently, not as a closed product.
-          </p>
-          <p className="maintained-by">
-            <span>Maintained by</span>
-            <a
-              href="https://seatbeltlabs.com"
-              rel="noopener noreferrer"
-              className="seatbelt-wordmark"
-            >
-              SEATBELT LABS
-            </a>
-          </p>
+        <div className="container">
+          <div className="hero-copy">
+            <div className="eyebrow">About Traceweave</div>
+            <h1>An open, non-commercial, independent specification</h1>
+            <p className="lead">
+              Traceweave is an open specification for recognising your own work when it
+              turns up somewhere else, and for producing evidence of the match that anyone
+              can re-run and check.
+            </p>
+            <p>
+              It is an open, non-commercial, independent effort — not a company, standards
+              body, certification program, or legal entity. Independent reference
+              implementations in Rust and Go exist as evidence that the specification can be
+              implemented independently, not as a closed product.
+            </p>
+            <p className="maintained-by">
+              <span>Maintained by</span>
+              <a
+                href="https://seatbeltlabs.com"
+                rel="noopener noreferrer"
+                className="seatbelt-wordmark"
+              >
+                SEATBELT LABS
+              </a>
+            </p>
+          </div>
         </div>
       </section>
 

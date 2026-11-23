@@ -18,15 +18,17 @@ export default function HowItWorksPage() {
   return (
     <>
       <section className="page-header">
-        <div className="container prose">
-          <div className="eyebrow">How it works</div>
-          <h1>From local files to a deterministic, byte-identical comparison report</h1>
-          <p className="lead">
-            Traceweave puts one shared evidence format underneath profile-specific
-            extractors. Every comparison runs in three local steps so your content stays on
-            your machine and anyone with the same catalogues can reproduce the exact report
-            bytes.
-          </p>
+        <div className="container">
+          <div className="hero-copy">
+            <div className="eyebrow">How it works</div>
+            <h1>From local files to a deterministic, byte-identical comparison report</h1>
+            <p className="lead" style={{ marginBottom: 0 }}>
+              Traceweave puts one shared evidence format underneath profile-specific
+              extractors. Every comparison runs in three local steps so your content stays on
+              your machine and anyone with the same catalogues can reproduce the exact report
+              bytes.
+            </p>
+          </div>
         </div>
       </section>
 

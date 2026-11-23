@@ -119,13 +119,15 @@ export default function RoadmapPage() {
   return (
     <>
       <section className="page-header">
-        <div className="container prose">
-          <div className="eyebrow">Roadmap</div>
-          <h1>Verifiable milestones and gates</h1>
-          <p className="lead">
-            Traceweave tracks progress by verifiable gates rather than calendar dates.
-            Every gate closes only with committed evidence that someone else can re-check.
-          </p>
+        <div className="container">
+          <div className="hero-copy">
+            <div className="eyebrow">Roadmap</div>
+            <h1>Verifiable milestones and gates</h1>
+            <p className="lead" style={{ marginBottom: 0 }}>
+              Traceweave tracks progress by verifiable gates rather than calendar dates.
+              Every gate closes only with committed evidence that someone else can re-check.
+            </p>
+          </div>
         </div>
       </section>
 

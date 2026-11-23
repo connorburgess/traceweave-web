@@ -3,21 +3,24 @@ import type { CitedFact } from "@/lib/sources";
 export const SPEC_DRAFT_VERSION = "0.1.0-draft.1";
 
 export const ROADMAP_COUNTS = {
-  asOf: "2026-11-22",
+  asOf: "2026-11-23",
   updated: "2026-11-23",
   sourcePath: "ROADMAP.md",
   anchor: "progress-count",
   core: {
     label: "Core M0–M5",
     total: 47,
-    met: 11,
+    met: 14,
     negativeResult: 0,
-    open: 36,
+    open: 33,
     metIds: [
       "M0.1",
       "M0.2",
       "M0.3",
       "M0.4",
+      "M1.3",
+      "M2.1",
+      "M2.4",
       "M2.5",
       "M2.8",
       "M2.10",
@@ -29,11 +32,20 @@ export const ROADMAP_COUNTS = {
   },
   later: {
     label: "Later profiles, EXT and RC",
-    total: 41,
-    met: 3,
+    total: 55,
+    met: 8,
     negativeResult: 0,
-    open: 38,
-    metIds: ["IMGF.2", "IMGF.3", "IMGF.4"],
+    open: 47,
+    metIds: [
+      "IMGF.2",
+      "IMGF.3",
+      "IMGF.4",
+      "IMG.0",
+      "IMG.1",
+      "IMG.2",
+      "IMG.3",
+      "IMG.4",
+    ],
   },
 } as const;
 
@@ -129,14 +141,20 @@ export const CITED_FACTS: readonly CitedFact[] = [
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Core M0–M5 roadmap gate counts",
-    numbers: ["47", "11", "0", "36"],
+    numbers: ["47", "14", "0", "33", { value: "11", sourceMatch: "M2.1–M2.11" }],
   },
   {
     id: "roadmap-later-gates",
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Later profiles, EXT and RC gate counts",
-    numbers: ["41", "3", "0", "38"],
+    numbers: ["55", "8", "0", "47"],
+  },
+  {
+    id: "python-profile-draft",
+    sourcePath: "research/drafts/extraction-profile-python.md",
+    label: "Frozen Python draft-1 profile vector count and reference version",
+    numbers: ["98", "3.14.6"],
   },
   {
     id: "m3-budget",
@@ -278,10 +296,32 @@ export const CITED_FACTS: readonly CitedFact[] = [
     numbers: ["61", "49", "256", "167", "38.0"],
   },
   {
-    id: "image-mark-smoke",
+    id: "image-mark-results",
+    sourcePath: "research/experiments/image-mark/results/e-img-m-2/RESULTS.md",
+    label: "Committed synthetic image-mark study e-img-m-2 measured counts",
+    numbers: [
+      "100",
+      "100/100",
+      "20,000",
+      "10,000",
+      "9,900",
+      "38.0",
+      "44.96",
+      "51.55",
+      "1",
+      "99",
+      "48",
+      "18",
+      "82",
+      "90",
+      "0",
+    ],
+  },
+  {
+    id: "image-mark-recheck",
     sourcePath: "research/reviews/image-mark-protocol-review.md",
-    label: "Confirmation pass smoke dry-run keyless re-embed counts",
-    numbers: ["3/3", "61/61", "256/256", "22"],
+    label: "Non-author recheck of e-img-m-2 across 7,500 queries and 22 unit tests",
+    numbers: ["7,500", "22"],
   },
   {
     id: "image-mark-literature",
@@ -351,6 +391,15 @@ export const COVERAGE_ITEMS: readonly CoverageItem[] = [
     sourcePath: "profiles/typescript.md",
   },
   {
+    kind: "Python",
+    profiles: "py-tokens (draft-1, frozen)",
+    status: "Specified",
+    statusTone: "specified" as const,
+    summary:
+      "Stage-1 profile py-tokens is frozen for implementation after a clean-room review reproduced all 98 vectors from the text alone, covering Python 3.14.6 lexical rules including zero-width NEWLINE, INDENT, and DEDENT tokens. Not yet promoted to profiles/ or implemented in the reference Rust or Go binaries.",
+    sourcePath: "research/drafts/extraction-profile-python.md",
+  },
+  {
     kind: "Plain text and Markdown",
     profiles: "text-plain (draft-1, frozen); text-markdown (draft-2)",
     status: "Specified",
@@ -370,12 +419,12 @@ export const COVERAGE_ITEMS: readonly CoverageItem[] = [
   },
   {
     kind: "Still images — embedded marks",
-    profiles: "TrustMark-Q and PixelSeal (protocol e-img-m-2)",
-    status: "Researched (study frozen)",
+    profiles: "TrustMark-Q and PixelSeal (study e-img-m-2)",
+    status: "Researched (synthetic run committed)",
     statusTone: "researched" as const,
     summary:
-      "Protocol e-img-m-2 is frozen and reviewed, with no full measured run committed in the published specification checkout yet. Because the public encoders and decoders use no key, anyone can copy a mark onto an unrelated image — a detected mark is only a finding aid, not evidence of origin.",
-    sourcePath: "research/drafts/image-mark-use-case.md",
+      "Completed 100-image synthetic measured run (e-img-m-2, gates IMG.0–IMG.4 met). Both schemes survived most edits (100/100 clean), but keyless decode-and-re-embed succeeded 100/100 for both and residual transplant succeeded 82/100 and 90/100 — confirming an embedded mark is only a finding aid, not evidence of origin.",
+    sourcePath: "research/experiments/image-mark/results/e-img-m-2/RESULTS.md",
   },
   {
     kind: "Audio",
@@ -402,10 +451,10 @@ export const PLANNED_CAPABILITIES = [
   {
     title: "Signed, timestamped registration records",
     gates: "M4.3–M4.6",
-    status: "Planned",
+    status: "Planned (design draft-2)",
     summary:
-      "Library-based DSSE signing and verification, an in-toto statement adapter, explicit trust policies, and an optional RFC 3161 timestamp adapter. Interop proofs (M4.1, M4.2) exist; shipping signing/verification is open.",
-    sourcePath: "spec/attestations.md",
+      "Library-based DSSE signing and verification, an in-toto statement adapter, explicit trust policies, and timestamp evidence. Design draft-2 is reviewed; implementation is open pending timestamp-service decisions.",
+    sourcePath: "research/drafts/registration-record.md",
   },
   {
     title: "Review packets for licence and origin history",
@@ -425,11 +474,11 @@ export const PLANNED_CAPABILITIES = [
     sourcePath: "research/drafts/c2pa-mapping.md",
   },
   {
-    title: "Agent interoperability skill",
-    gates: "SK.1–SK.2",
+    title: "Agent interoperability skill and A2A",
+    gates: "SK.1–SK.5",
     status: "Planned",
     summary:
-      "An optional skill wrapping stable CLI commands so diagnostics pass through unchanged and private catalogues, paths, and keys never leak into model-visible transcripts.",
+      "An optional CLI-wrapping skill keeping private catalogues, paths, and keys out of model-visible transcripts (SK.1–SK.2), plus local-first A2A registration and verification skills (SK.3–SK.5).",
     sourcePath: "ROADMAP.md",
     anchor: "later-profiles-and-sequence",
   },

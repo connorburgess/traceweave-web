@@ -183,7 +183,7 @@ export default function HowItWorksPage() {
             </table>
           </div>
 
-          <div className="card-muted prose" style={{ maxWidth: "100%" }}>
+          <div className="card-muted">
             <p style={{ marginBottom: "0.65rem" }}>
               <strong>Why two metrics matter:</strong> in the exact channel, every
               fingerprint from <span className="mono">sum.go</span> appears inside{" "}

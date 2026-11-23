@@ -57,7 +57,7 @@
   --tw-focus-ring: 0 0 0 2px #FFFFFF, 0 0 0 4px #096B56;
 
   --max-width: 1080px;
-  --measure: 68ch;
+  --measure: 42rem;
 }
 
 [data-theme="dark"] {
@@ -212,6 +212,7 @@ code {
   padding: 0.1em 0.35em;
   border: 1px solid var(--tw-border);
   border-radius: var(--tw-radius-sm);
+  overflow-wrap: anywhere;
 }
 
 pre {
@@ -220,6 +221,7 @@ pre {
   border: 1px solid var(--tw-border);
   border-radius: var(--tw-radius-md);
   padding: var(--tw-space-4) 1.125rem;
+  max-width: 100%;
   overflow-x: auto;
   font-size: 0.82rem;
   line-height: 1.55;
@@ -231,6 +233,7 @@ pre code {
   border: 0;
   padding: 0;
   font-size: inherit;
+  overflow-wrap: normal;
 }
 
 /* Layout containers */
@@ -249,12 +252,12 @@ pre code {
   max-width: var(--max-width);
 }
 
-.container.prose > * {
+.container.prose > :not(.actions) {
   max-width: var(--measure);
 }
 
 .hero-copy {
-  max-width: 72ch;
+  max-width: var(--measure);
 }
 
 .hero-grid {
@@ -465,7 +468,7 @@ pre code {
   font-size: clamp(1.02rem, 1.4vw, 1.15rem);
   line-height: 1.6;
   color: var(--tw-text-muted);
-  max-width: 72ch;
+  max-width: var(--measure);
   margin-bottom: var(--tw-space-4);
 }
 
@@ -539,10 +542,37 @@ pre code {
   gap: var(--tw-space-4);
 }
 
+/* 5-card grid: 3 across row 1, 2 full-width-balanced across row 2 (no orphan cell) */
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--tw-space-4);
+}
+
+.grid-5 > :nth-child(-n + 3) {
+  grid-column: span 2;
+}
+
+.grid-5 > :nth-child(n + 4) {
+  grid-column: span 3;
+}
+
+.grid-2 > *,
+.grid-3 > *,
+.grid-5 > *,
+.stat-grid > * {
+  min-width: 0;
+}
+
 @media (max-width: 780px) {
   .grid-2,
-  .grid-3 {
-    grid-template-columns: 1fr;
+  .grid-3,
+  .grid-5 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .grid-5 > :nth-child(-n + 3),
+  .grid-5 > :nth-child(n + 4) {
+    grid-column: auto;
   }
 }
 
@@ -551,6 +581,8 @@ pre code {
   border: 1px solid var(--tw-border);
   border-radius: var(--tw-radius-md);
   padding: 1.25rem 1.35rem;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .card-muted {
@@ -559,6 +591,14 @@ pre code {
   border-left: 3px solid var(--tw-accent);
   border-radius: var(--tw-radius-md);
   padding: 1.1rem 1.3rem;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* Uniform text measure inside every full-width card and callout */
+.container > .card > *,
+.card-muted > * {
+  max-width: var(--measure);
 }
 
 .card-title-row {
@@ -613,13 +653,13 @@ pre code {
   background: var(--tw-accent);
 }
 
-/* Diagram wrapper */
+/* Diagram wrapper (reset default <figure> inline margins so panel aligns flush with container) */
 .diagram-frame {
   background: var(--tw-surface-raised);
   border: 1px solid var(--tw-border);
   border-radius: var(--tw-radius-md);
   padding: clamp(1rem, 2.5vw, 1.5rem);
-  margin-block: 1.25rem;
+  margin: 1.25rem 0;
 }
 
 .diagram-caption {
@@ -627,13 +667,17 @@ pre code {
   color: var(--tw-text-muted);
   margin-top: 0.9rem;
   margin-bottom: 0;
+  max-width: var(--measure);
 }
 
-/* Tables */
+/* Tables (inset outline keeps table flush with container left/right edges) */
 .table-wrap {
   width: 100%;
+  max-width: 100%;
   overflow-x: auto;
-  border: 1px solid var(--tw-border);
+  border: 0;
+  outline: 1px solid var(--tw-border);
+  outline-offset: -1px;
   border-radius: var(--tw-radius-sm);
   background: var(--tw-surface-raised);
   margin-block: 1rem 1.5rem;
@@ -678,9 +722,25 @@ tbody tr:last-child td {
 /* Metric callouts */
 .stat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--tw-space-4);
   margin-block: 1.25rem;
+}
+
+.stat-grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 960px) {
+  .stat-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .stat-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .stat-card {
@@ -688,6 +748,7 @@ tbody tr:last-child td {
   border: 1px solid var(--tw-border);
   border-radius: var(--tw-radius-md);
   padding: 1rem 1.15rem;
+  min-width: 0;
 }
 
 .stat-value {
@@ -697,6 +758,7 @@ tbody tr:last-child td {
   color: var(--tw-text);
   line-height: 1.15;
   font-variant-numeric: tabular-nums;
+  padding-left: 0.05em;
 }
 
 .stat-label {
@@ -707,13 +769,12 @@ tbody tr:last-child td {
 
 /* Citation footnote link */
 .source-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
+  display: inline;
   font-family: var(--tw-font-mono);
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--tw-accent);
+  overflow-wrap: anywhere;
 }
 
 /* Footer */

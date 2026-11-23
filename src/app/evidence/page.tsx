@@ -52,7 +52,7 @@ export default function EvidencePage() {
             synthetic and differential test suites:
           </p>
 
-          <div className="stat-grid">
+          <div className="stat-grid stat-grid-4">
             <div className="stat-card">
               <div className="stat-value">9,887,008</div>
               <div className="stat-label">
@@ -241,20 +241,26 @@ export default function EvidencePage() {
             Image watermarks as a finding aid (<span className="mono">e-img-m-2</span>)
           </h2>
           <p>
-            Protocol <span className="mono">e-img-m-2</span> specifies an offline study of
-            two post-hoc neural image marks — TrustMark-Q (tested on its 61 direct HMAC
-            data bits, threshold 49) and PixelSeal (256 payload bits, threshold 167), with
-            a 38.0 dB PSNR quality floor. In the published specification checkout, the
-            protocol is frozen and reviewed (22 unit tests passing), and the full measured
-            run is not yet committed.
+            Study <span className="mono">e-img-m-2</span> ran offline on 100 synthetic
+            marked images and 100 hosts for two post-hoc neural image marks — TrustMark-Q
+            (tested on its 61 direct HMAC data bits, threshold 49) and PixelSeal (256
+            payload bits, threshold 167), with a 38.0 dB PSNR quality floor (0/100 below
+            floor; medians 44.96 dB and 51.55 dB). Two full runs were byte-identical, and
+            a non-author recount reproduced every figure with 0 mismatches across 7,500
+            queries (22 unit tests passing; gates <span className="mono">IMG.0–IMG.4</span>{" "}
+            met).
           </p>
           <p>
-            Because both encoders and decoders are public and unkeyed, anyone can decode a
-            marked image&apos;s raw bits and re-embed them into another image without the
-            key. In the protocol review&apos;s confirmation smoke dry run (3 smoke images,
-            not a full measured run), keyless decode-and-re-embed was accepted{" "}
-            <strong>3/3</strong> for TrustMark-Q (61/61 bits) and <strong>3/3</strong> for
-            PixelSeal (256/256 bits).
+            Both schemes matched <strong>100/100</strong> clean marked images and produced
+            0 accepts on implementation checks (20,000 unmarked, 10,000 wrong-key, and
+            9,900 wrong-entry comparisons per scheme). Under removal attempts, ReMark left{" "}
+            <strong>1/100</strong> accepted for TrustMark-Q and <strong>99/100</strong>{" "}
+            for PixelSeal, while JPEG quality 10 left <strong>48/100</strong> and{" "}
+            <strong>18/100</strong>. Because both encoders and decoders are public and
+            unkeyed, keyless decode-and-re-embed into an unrelated host was accepted{" "}
+            <strong>100/100</strong> for both TrustMark-Q and PixelSeal, and plain
+            residual transplant was accepted <strong>82/100</strong> (TrustMark-Q) and{" "}
+            <strong>90/100</strong> (PixelSeal).
           </p>
           <p>
             In the external literature reviewed in lane 10, the author-run TetherMark
@@ -264,10 +270,14 @@ export default function EvidencePage() {
             <strong>5.9–15.3%</strong> of unmarked images. An embedded image mark
             therefore acts as a locator for a private catalogue entry, not as evidence of
             origin.{" "}
-            <SourceLink path="research/drafts/image-mark-protocol.md" /> ·{" "}
+            <SourceLink path="research/experiments/image-mark/results/e-img-m-2/RESULTS.md" />{" "}
+            · <SourceLink path="research/drafts/image-mark-protocol.md" /> ·{" "}
             <SourceLink path="research/drafts/image-mark-use-case.md" /> ·{" "}
-            <SourceLink path="research/reviews/image-mark-protocol-review.md" /> ·{" "}
-            <SourceLink path="research/lanes/10-evidence-review.md" />
+            <SourceLink
+              path="research/reviews/image-mark-protocol-review.md"
+              anchor="results-recheck-e-img-m-2"
+            />{" "}
+            · <SourceLink path="research/lanes/10-evidence-review.md" />
           </p>
         </div>
       </section>

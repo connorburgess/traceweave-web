@@ -26,7 +26,7 @@ const CORE_MILESTONES = [
     id: "M1",
     name: "Freeze one code experiment",
     gates: "M1.1–M1.6",
-    met: "0 of 6 met",
+    met: "1 of 6 met (M1.3)",
     summary:
       "Go and Rust token extraction contract, hand-derived positive/negative vectors, catalogue and report schemas, requirement map, and strict pinned reproduction in both implementations.",
   },
@@ -34,9 +34,9 @@ const CORE_MILESTONES = [
     id: "M2",
     name: "Local comparison",
     gates: "M2.1–M2.11",
-    met: "4 of 11 met (M2.5, M2.8, M2.10, M2.11)",
+    met: "6 of 11 met (M2.1, M2.4, M2.5, M2.8, M2.10, M2.11)",
     summary:
-      "Offline walkthrough, frozen fixture manifest, control classes including vendor boilerplate, separate fragment containment, atomic private storage, review packets (M2.7), and candidate-generation records (M2.9).",
+      "Offline walkthrough (verified on macOS and Linux CI), frozen fixture manifest, control classes including vendor boilerplate, separate fragment containment, atomic private storage, review packets (M2.7), and candidate-generation records (M2.9).",
   },
   {
     id: "M2E",
@@ -79,6 +79,11 @@ const LATER_TRACKS = [
     state: "ts-tokens frozen for stage 1; implementation and M3 split open.",
   },
   {
+    track: "PY (PY.1–PY.4)",
+    scope: "Python profile (py-tokens)",
+    state: "py-tokens draft-1 frozen for stage-1 implementation after clean-room review; specified, not implemented.",
+  },
+  {
     track: "IMGF (IMGF.1–IMGF.6)",
     scope: "Still-image fingerprints (PDQ & ISCC)",
     state: "3 met (IMGF.2–IMGF.4 synthetic conformance run); item map, C++ comparison, and owner-gated natural-image check open.",
@@ -86,7 +91,7 @@ const LATER_TRACKS = [
   {
     track: "IMG (IMG.0–IMG.5)",
     scope: "Still-image embedded marks (TrustMark-Q & PixelSeal)",
-    state: "Protocol e-img-m-2 frozen and reviewed; UC-7 wording and full measured run open.",
+    state: "5 met (IMG.0–IMG.4, synthetic measured run e-img-m-2 committed and rechecked); container field placement (IMG.5) open.",
   },
   {
     track: "TXT (TXT.0–TXT.8)",
@@ -99,9 +104,14 @@ const LATER_TRACKS = [
     state: "In progress with draft fixtures; no compatibility claimed until round-trip fixtures pass.",
   },
   {
-    track: "SK (SK.1–SK.2)",
-    scope: "Optional agent interoperability skill",
-    state: "Planned after I2; wraps stable CLI commands with transcript canary tests.",
+    track: "SK (SK.1–SK.5)",
+    scope: "Optional agent skill and A2A design",
+    state: "SK.1–SK.2 planned after I2 (CLI wrapping and canary tests); SK.3–SK.5 (A2A registration/verification skills and hosted-service decision) planned.",
+  },
+  {
+    track: "WEB (WEB.0–WEB.6)",
+    scope: "Browser tool and testing page",
+    state: "Planned (not started); offline WebAssembly fingerprint, compare, and verify flows after M3.4.",
   },
   {
     track: "BIN, RES, STRUCT, KEYED",

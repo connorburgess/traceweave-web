@@ -7,7 +7,7 @@ import { DOCS_URL } from "@/lib/sources";
 export const metadata: Metadata = {
   title: "What it covers",
   description:
-    "Honest status of Traceweave content profiles across Go, Rust, TypeScript/JavaScript, plain text, still images, audio, and compiled binaries.",
+    "Honest status of Traceweave content profiles across Go, Rust, TypeScript/JavaScript, Python, plain text, still images, audio, and compiled binaries.",
   alternates: {
     canonical: "/coverage",
   },
@@ -85,14 +85,18 @@ export default function CoveragePage() {
             </table>
           </div>
 
-          <div className="card-muted prose" style={{ maxWidth: "100%" }}>
+          <div className="card-muted">
             <h3 style={{ marginBottom: "0.4rem" }}>Note on Python</h3>
             <p style={{ marginBottom: 0 }}>
-              Python is used in the specification repository for schema validation and
-              vector checkers only. As stated in{" "}
-              <SourceLink path="ROADMAP.md" anchor="pilot-languages" />, Python research
-              tooling does not select Python as a code profile target, and no Python
-              extraction profile is currently specified or drafted.
+              Python is a code-profile target: <span className="mono">py-tokens</span>{" "}
+              <span className="mono">draft-1</span> is specified and frozen for stage-1
+              implementation, but not yet implemented in the Rust or Go binaries (gates{" "}
+              <span className="mono">PY.1–PY.4</span>). Using Python in the specification
+              repository for schema validation and vector checkers is separate from the
+              Python profile (
+              <SourceLink path="ROADMAP.md" anchor="pilot-languages" /> ·{" "}
+              <SourceLink path="research/drafts/extraction-profile-python.md" />
+              ).
             </p>
           </div>
         </div>

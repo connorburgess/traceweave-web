@@ -374,8 +374,11 @@ function main() {
 
   const readmeText = fs.readFileSync(path.join(specDir, "README.md"), "utf8");
   const roadmapText = fs.readFileSync(path.join(specDir, "ROADMAP.md"), "utf8");
-  if (!readmeText.includes("text, images, and audio")) {
-    errors.push('README.md in spec checkout no longer lists "text, images, and audio"');
+  if (
+    !readmeText.includes("source code, writing, images and audio") &&
+    !readmeText.includes("text, images, and audio")
+  ) {
+    errors.push('README.md in spec checkout no longer lists multi-medium scope (code, writing/text, images, audio)');
   }
   if (!roadmapText.includes("## Pilot languages") || !roadmapText.includes("## Later profiles and sequence")) {
     errors.push("ROADMAP.md in spec checkout missing expected pilot-languages or later-profiles sections");

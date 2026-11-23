@@ -97,14 +97,14 @@ export default function HomePage() {
             className="card-muted"
             role="region"
             aria-label="Current project status"
-            style={{ marginTop: "2rem", maxWidth: "72ch" }}
+            style={{ marginTop: "2rem" }}
           >
             <p style={{ marginBottom: "0.55rem" }}>
               <strong>Where it stands today:</strong> source code is working end to end,
-              with Go and Rust as the first two case studies. TypeScript, JavaScript and
-              plain text are specified. Images have been measured in two studies. More
-              languages, audio, and signed, timestamped registration records are planned.
-              It is experimental and not yet evaluated on real-world data.
+              with Go and Rust as the first two case studies. TypeScript, JavaScript,
+              Python and plain text are specified. Images have been measured in two
+              studies. More languages, audio, and signed, timestamped registration records
+              are planned. It is experimental and not yet evaluated on real-world data.
             </p>
             <p style={{ marginBottom: 0, fontSize: "0.84rem" }}>
               Sources: <SourceLink path="README.md" /> ·{" "}
@@ -209,7 +209,7 @@ export default function HomePage() {
 
           <div className="card" style={{ marginTop: "1.25rem" }}>
             <h3>Built for provenance</h3>
-            <p className="prose" style={{ marginBottom: "0.9rem" }}>
+            <p style={{ marginBottom: "0.9rem" }}>
               Traceweave helps you show where your work appears, and how copies relate to
               the original, with evidence anyone can check. It records facts. It leaves
               the judgments to people.
@@ -248,7 +248,7 @@ export default function HomePage() {
             <SourceLink path="docs/use-cases.md" />.
           </p>
 
-          <div className="grid-3" style={{ marginTop: "1.25rem" }}>
+          <div className="grid-5" style={{ marginTop: "1.25rem" }}>
             {WHO_IT_IS_FOR.map((item) => (
               <div key={item.role} className="card">
                 <h3 style={{ marginBottom: "0.5rem" }}>{item.role}</h3>

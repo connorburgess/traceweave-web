@@ -331,30 +331,7 @@ pre code {
   }
 }
 
-/* Status banner & pills */
-.status-strip {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem 0.75rem;
-  padding: 0.45rem 0.85rem;
-  border-radius: var(--radius-md);
-  background: var(--caution-bg);
-  border: 1px solid var(--caution-border);
-  color: var(--caution-ink);
-  font-size: 0.86rem;
-  font-weight: 550;
-  margin-bottom: 1.5rem;
-}
-
-.status-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 999px;
-  background: currentColor;
-  flex-shrink: 0;
-}
-
+/* Pills */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -483,23 +460,6 @@ pre code {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 1.35rem 1.45rem;
-}
-
-.card-caution {
-  background: var(--caution-bg);
-  border: 1px solid var(--caution-border);
-  border-radius: var(--radius-lg);
-  padding: 1.35rem 1.45rem;
-}
-
-.card-caution h2,
-.card-caution h3 {
-  color: var(--caution-ink);
-}
-
-.card-caution p,
-.card-caution li {
-  color: var(--ink);
 }
 
 .card-title-row {

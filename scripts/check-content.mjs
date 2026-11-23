@@ -382,12 +382,22 @@ function main() {
     errors.push("ROADMAP.md in spec checkout missing expected pilot-languages or later-profiles sections");
   }
 
-  // 6. Keep protocol names and gate IDs off the home page.
+  // 6. Keep protocol names and gate IDs off the home page, ensure no status banner,
+  //    and require the plain-text status sentence inside the "Where it stands today" block.
   const homeSource = fs.readFileSync(path.join(REPO_ROOT, "src", "app", "page.tsx"), "utf8");
-  for (const term of ["DSSE", "in-toto", "RFC 3161", "M0–M5", "M4.", "M3.", "M2.", "UC-1"]) {
+  for (const term of ["DSSE", "in-toto", "RFC 3161", "M0–M5", "M4.", "M3.", "M2.", "UC-1", "status-strip"]) {
     if (homeSource.includes(term)) {
-      errors.push(`src/app/page.tsx: keep protocol/gate jargon "${term}" on the roadmap/evidence pages, not the home page`);
+      errors.push(`src/app/page.tsx: disallowed term "${term}" on the home page`);
     }
+  }
+  const normalizedHome = homeSource.replace(/\s+/g, " ");
+  if (
+    !normalizedHome.includes("Where it stands today:") ||
+    !normalizedHome.includes("It is experimental and not yet evaluated on real-world data.")
+  ) {
+    errors.push(
+      'src/app/page.tsx: missing required plain-text status sentence in the "Where it stands today" block'
+    );
   }
 
   if (errors.length > 0) {

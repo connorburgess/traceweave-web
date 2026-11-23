@@ -1,5 +1,4 @@
 import { ImageResponse } from "next/og";
-import { SPEC_DRAFT_VERSION } from "@/data/facts";
 
 export const dynamic = "force-static";
 export const alt =
@@ -68,20 +67,6 @@ export default function OpenGraphImage() {
             <span style={{ fontSize: "34px", fontWeight: 700, letterSpacing: "-0.02em" }}>
               Traceweave
             </span>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              padding: "8px 18px",
-              borderRadius: "999px",
-              background: "#271e10",
-              border: "1px solid #6f4c1a",
-              color: "#f2c078",
-              fontSize: "20px",
-              fontWeight: 600,
-            }}
-          >
-            Experimental draft · {SPEC_DRAFT_VERSION}
           </div>
         </div>
 

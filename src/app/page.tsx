@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SourceLink } from "@/components/SourceLink";
 import { WorkflowDiagram } from "@/components/WorkflowDiagram";
-import { ROADMAP_COUNTS, SPEC_DRAFT_VERSION } from "@/data/facts";
+import { ROADMAP_COUNTS } from "@/data/facts";
 import { DOCS_URL, SPEC_TREE_URL, specUrl } from "@/lib/sources";
 
 export const metadata: Metadata = {
@@ -47,14 +47,6 @@ export default function HomePage() {
     <>
       <section className="hero">
         <div className="container">
-          <div className="status-strip" role="note" aria-label="Project maturity status">
-            <span className="status-dot" aria-hidden="true" />
-            <span>
-              Experimental draft ({SPEC_DRAFT_VERSION}) — not a standard and not yet
-              evaluated on real-world data.
-            </span>
-          </div>
-
           <div style={{ maxWidth: "74ch" }}>
             <h1>
               Recognise your own work when it turns up somewhere else.

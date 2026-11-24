@@ -3,8 +3,8 @@ import type { CitedFact } from "@/lib/sources";
 export const SPEC_DRAFT_VERSION = "0.1.0-draft.1";
 
 export const ROADMAP_COUNTS = {
-  asOf: "2026-11-24",
-  updated: "2026-11-24",
+  asOf: "2026-11-25",
+  updated: "2026-11-25",
   sourcePath: "ROADMAP.md",
   anchor: "progress-count",
   core: {
@@ -43,10 +43,11 @@ export const ROADMAP_COUNTS = {
   later: {
     label: "Later profiles, EXT and RC",
     total: 55,
-    met: 8,
+    met: 10,
     negativeResult: 0,
-    open: 47,
+    open: 45,
     metIds: [
+      "TS.3",
       "IMGF.2",
       "IMGF.3",
       "IMGF.4",
@@ -55,6 +56,7 @@ export const ROADMAP_COUNTS = {
       "IMG.2",
       "IMG.3",
       "IMG.4",
+      "TXT.3",
     ],
   },
 } as const;
@@ -342,7 +344,7 @@ export const CITED_FACTS: readonly CitedFact[] = [
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Later profiles, EXT and RC gate counts",
-    numbers: ["55", "8", "0", "47"],
+    numbers: ["55", "10", "0", "45"],
   },
   {
     id: "python-profile-draft",
@@ -620,11 +622,11 @@ export const COVERAGE_ITEMS: readonly CoverageItem[] = [
   },
   {
     kind: "TypeScript and JavaScript",
-    profiles: "ts-tokens (draft-2, frozen); tsx-tokens (deferred draft)",
-    status: "Specified",
-    statusTone: "specified" as const,
+    profiles: "ts-tokens (draft-2, implemented); tsx-tokens (deferred draft)",
+    status: "Implemented (draft)",
+    statusTone: "active" as const,
     summary:
-      "Stage-1 profile ts-tokens is frozen for implementation and covers TypeScript plus plain JavaScript (.js, .mjs, .cjs) without JSX. tsx-tokens is a deferred draft. Neither is implemented in the reference Rust or Go binaries yet.",
+      "Stage-1 profile ts-tokens is implemented in both Rust and Go (gate TS.3 met, matching all vendored vectors with zero differential divergences) and covers TypeScript plus plain JavaScript (.js, .mjs, .cjs) without JSX. tsx-tokens stays a deferred draft; own M3 split (TS.4) is open.",
     sourcePath: "profiles/typescript.md",
   },
   {
@@ -638,11 +640,11 @@ export const COVERAGE_ITEMS: readonly CoverageItem[] = [
   },
   {
     kind: "Plain text and Markdown",
-    profiles: "text-plain (draft-1, frozen); text-markdown (draft-2)",
-    status: "Specified",
-    statusTone: "specified" as const,
+    profiles: "text-plain (draft-1, implemented); text-markdown (draft-2)",
+    status: "Implemented (draft)",
+    statusTone: "active" as const,
     summary:
-      "Stage-1 profile text-plain is frozen for implementation with three channels (exact, folded, skeleton) pinned to Unicode 17.0.0. text-markdown stays a draft. Not yet implemented; proposed UC-8 wording awaits owner acceptance.",
+      "Stage-1 profile text-plain is implemented in both Rust and Go with three channels (exact, folded, skeleton) pinned to Unicode 17.0.0 (gate TXT.3 met, matching all vendored vectors with zero differential divergences). text-markdown stays a draft; proposed UC-8 wording and corpus stages remain open.",
     sourcePath: "profiles/text.md",
   },
   {

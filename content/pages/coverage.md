@@ -37,14 +37,15 @@ sections:
         sourcePath: ROADMAP.md
         anchor: later-profiles-and-sequence
       - kind: TypeScript and JavaScript
-        profiles: ts-tokens (draft-2, frozen); tsx-tokens (deferred draft)
-        status: Specified
-        statusTone: specified
+        profiles: ts-tokens (draft-2, implemented); tsx-tokens (deferred draft)
+        status: Implemented (draft)
+        statusTone: active
         summary: >-
-          Stage-1 profile ts-tokens is frozen for implementation and covers
-          TypeScript plus plain JavaScript (.js, .mjs, .cjs) without JSX.
-          tsx-tokens is a deferred draft. Neither is implemented in the
-          reference Rust or Go binaries yet.
+          Stage-1 profile ts-tokens is implemented in both Rust and Go (gate
+          TS.3 met, matching all vendored vectors with zero differential
+          divergences) and covers TypeScript plus plain JavaScript (.js, .mjs,
+          .cjs) without JSX. tsx-tokens stays a deferred draft; own M3 split
+          (TS.4) is open.
         sourcePath: profiles/typescript.md
       - kind: Python
         profiles: py-tokens (draft-1, frozen)
@@ -59,14 +60,15 @@ sections:
           binaries.
         sourcePath: research/drafts/extraction-profile-python.md
       - kind: Plain text and Markdown
-        profiles: text-plain (draft-1, frozen); text-markdown (draft-2)
-        status: Specified
-        statusTone: specified
+        profiles: text-plain (draft-1, implemented); text-markdown (draft-2)
+        status: Implemented (draft)
+        statusTone: active
         summary: >-
-          Stage-1 profile text-plain is frozen for implementation with three
-          channels (exact, folded, skeleton) pinned to Unicode
-          {{fact:spec.unicodeVersion}}. text-markdown stays a draft. Not yet
-          implemented; proposed UC-8 wording awaits owner acceptance.
+          Stage-1 profile text-plain is implemented in both Rust and Go with
+          three channels (exact, folded, skeleton) pinned to Unicode
+          {{fact:spec.unicodeVersion}} (gate TXT.3 met, matching all vendored
+          vectors with zero differential divergences). text-markdown stays a
+          draft; proposed UC-8 wording and corpus stages remain open.
         sourcePath: profiles/text.md
       - kind: Still images — fingerprints
         profiles: PDQ and ISCC Image-Code v0 (draft research)

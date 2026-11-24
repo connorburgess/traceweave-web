@@ -124,7 +124,10 @@ sections:
     rows:
       - track: TS (TS.1–TS.4)
         scope: TypeScript & JavaScript profile
-        state: ts-tokens frozen for stage 1; implementation and M3 split open.
+        state: >-
+          1 met (TS.3: ts-tokens implemented in both Rust and Go with zero
+          differential divergences); profile/vector sign-offs and M3 split
+          (TS.4) open.
       - track: PY (PY.1–PY.4)
         scope: Python profile (py-tokens)
         state: >-
@@ -144,8 +147,8 @@ sections:
       - track: TXT (TXT.0–TXT.8)
         scope: Plain text & Markdown prose
         state: >-
-          text-plain frozen for stage 1; UC-8 acceptance, two-implementation
-          check, and corpus stages open.
+          1 met (TXT.3: text-plain implemented in both Rust and Go with zero
+          differential divergences); UC-8 acceptance and corpus stages open.
       - track: C2PA (C2PA.1–C2PA.3)
         scope: C2PA soft-binding mapping
         state: >-

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SourceLink } from "@/components/SourceLink";
+import { SpecimenPicture } from "@/components/SpecimenPicture";
 import { WorkflowDiagram } from "@/components/WorkflowDiagram";
-import { HOME_HERO_IMAGE, ROADMAP_COUNTS } from "@/data/facts";
+import { HOME_HERO_SPECIMEN, PROVENANCE_SPECIMEN, ROADMAP_COUNTS } from "@/data/facts";
 import { DOCS_URL, SPEC_TREE_URL, specUrl } from "@/lib/sources";
 
 export const metadata: Metadata = {
@@ -47,7 +48,7 @@ export default function HomePage() {
     <>
       <section className="hero">
         <div className="container">
-          <div className={HOME_HERO_IMAGE ? "hero-grid has-media" : "hero-grid"}>
+          <div className="hero-grid has-media">
             <div className="hero-copy">
               <h1>
                 Recognise your own work when it turns up somewhere else.
@@ -80,17 +81,21 @@ export default function HomePage() {
               </div>
             </div>
 
-            {HOME_HERO_IMAGE ? (
-              <div className="hero-media">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={HOME_HERO_IMAGE.src}
-                  alt={HOME_HERO_IMAGE.alt}
-                  width={HOME_HERO_IMAGE.width}
-                  height={HOME_HERO_IMAGE.height}
-                />
-              </div>
-            ) : null}
+            <div className="hero-media">
+              <SpecimenPicture
+                base={HOME_HERO_SPECIMEN.light.base}
+                alt={HOME_HERO_SPECIMEN.light.alt}
+                sizes="(max-width: 860px) calc(100vw - 2rem), 380px"
+                priority
+                className="theme-img-light"
+              />
+              <SpecimenPicture
+                base={HOME_HERO_SPECIMEN.dark.base}
+                alt={HOME_HERO_SPECIMEN.dark.alt}
+                sizes="(max-width: 860px) calc(100vw - 2rem), 380px"
+                className="theme-img-dark"
+              />
+            </div>
           </div>
 
           <div
@@ -208,33 +213,44 @@ export default function HomePage() {
           </div>
 
           <div className="card" style={{ marginTop: "1.25rem" }}>
-            <h3>Built for provenance</h3>
-            <p style={{ marginBottom: "0.9rem" }}>
-              Traceweave helps you show where your work appears, and how copies relate to
-              the original, with evidence anyone can check. It records facts. It leaves
-              the judgments to people.
-            </p>
-            <ul className="clean-list">
-              <li>
-                <strong>Working today, in draft:</strong> fingerprint Go and Rust code on
-                your own machine, keep a private catalogue that holds no source text, and
-                produce comparison reports anyone can re-run.
-              </li>
-              <li>
-                <strong>Coming next:</strong> signed, timestamped registration records, so
-                you can show a version of your work existed by a given date.
-                Licence-history packets follow.
-              </li>
-              <li>
-                <strong>What you do with it is up to you.</strong> Traceweave produces
-                checkable facts about your work. It does not lock content, and it does not
-                make the call on ownership or permission.
-              </li>
-            </ul>
-            <p style={{ marginTop: "1rem", marginBottom: 0 }}>
-              <Link href="/evidence">See what the research measured</Link> ·{" "}
-              <SourceLink path="spec/core.md" /> · <SourceLink path="spec/threat-model.md" />
-            </p>
+            <div className="provenance-grid">
+              <div className="provenance-copy">
+                <h3>Built for provenance</h3>
+                <p style={{ marginBottom: "0.9rem" }}>
+                  Traceweave helps you show where your work appears, and how copies relate to
+                  the original, with evidence anyone can check. It records facts. It leaves
+                  the judgments to people.
+                </p>
+                <ul className="clean-list">
+                  <li>
+                    <strong>Working today, in draft:</strong> fingerprint Go and Rust code on
+                    your own machine, keep a private catalogue that holds no source text, and
+                    produce comparison reports anyone can re-run.
+                  </li>
+                  <li>
+                    <strong>Coming next:</strong> signed, timestamped registration records, so
+                    you can show a version of your work existed by a given date.
+                    Licence-history packets follow.
+                  </li>
+                  <li>
+                    <strong>What you do with it is up to you.</strong> Traceweave produces
+                    checkable facts about your work. It does not lock content, and it does not
+                    make the call on ownership or permission.
+                  </li>
+                </ul>
+                <p style={{ marginTop: "1rem", marginBottom: 0 }}>
+                  <Link href="/evidence">See what the research measured</Link> ·{" "}
+                  <SourceLink path="spec/core.md" /> · <SourceLink path="spec/threat-model.md" />
+                </p>
+              </div>
+              <div className="provenance-media">
+                <SpecimenPicture
+                  base={PROVENANCE_SPECIMEN.base}
+                  alt={PROVENANCE_SPECIMEN.alt}
+                  sizes="(max-width: 860px) calc(100vw - 4.7rem), 340px"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>

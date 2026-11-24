@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
@@ -9,34 +11,57 @@ export const size = {
 };
 export const contentType = "image/png";
 
+const ogBgDataUri = `data:image/jpeg;base64,${fs
+  .readFileSync(path.join(process.cwd(), "public", "imagery", "og-bg-1200x630.jpg"))
+  .toString("base64")}`;
+
 export default function OpenGraphImage() {
   return new ImageResponse(
     (
       <div
         style={{
+          position: "relative",
           width: "100%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: "64px 72px",
+          padding: "56px 64px",
           background: "#0D1014",
           color: "#F2F4F7",
           fontFamily: "sans-serif",
           borderTop: "4px solid #34E5BC",
+          overflow: "hidden",
         }}
       >
+        <img
+          src={ogBgDataUri}
+          alt=""
+          width={1200}
+          height={630}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "1200px",
+            height: "630px",
+            objectFit: "cover",
+          }}
+        />
+
         <div
           style={{
+            position: "relative",
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
+            gap: "24px",
+            maxWidth: "520px",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
             <svg
-              width="48"
-              height="48"
+              width="42"
+              height="42"
               viewBox="0 0 32 32"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +82,7 @@ export default function OpenGraphImage() {
             </svg>
             <span
               style={{
-                fontSize: "34px",
+                fontSize: "30px",
                 fontWeight: 600,
                 letterSpacing: "-0.02em",
                 color: "#F2F4F7",
@@ -66,9 +91,9 @@ export default function OpenGraphImage() {
               Traceweave
             </span>
           </div>
-          <div
+          <span
             style={{
-              fontSize: "18px",
+              fontSize: "14px",
               fontWeight: 600,
               letterSpacing: "0.08em",
               color: "#34E5BC",
@@ -76,15 +101,23 @@ export default function OpenGraphImage() {
             }}
           >
             OPEN SPECIFICATION
-          </div>
+          </span>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px", maxWidth: "1000px" }}>
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            gap: "18px",
+            maxWidth: "510px",
+          }}
+        >
           <div
             style={{
-              fontSize: "44px",
+              fontSize: "33px",
               fontWeight: 600,
-              lineHeight: 1.16,
+              lineHeight: 1.2,
               letterSpacing: "-0.025em",
               color: "#F2F4F7",
             }}
@@ -95,25 +128,27 @@ export default function OpenGraphImage() {
           </div>
           <div
             style={{
-              fontSize: "24px",
-              lineHeight: 1.42,
-              color: "#9DA5B2",
+              fontSize: "19px",
+              lineHeight: 1.45,
+              color: "#B4BCC8",
             }}
           >
-            Designed to cover source code, writing, images and audio on one shared evidence
-            format. Your content never leaves your machine; only fingerprints are compared.
+            Source code, writing, images and audio on one shared evidence format. Your content
+            never leaves your machine; only fingerprints are compared.
           </div>
         </div>
 
         <div
           style={{
+            position: "relative",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             borderTop: "1px solid #2E3540",
-            paddingTop: "24px",
-            fontSize: "20px",
-            color: "#9DA5B2",
+            paddingTop: "18px",
+            fontSize: "16px",
+            color: "#B4BCC8",
+            maxWidth: "560px",
           }}
         >
           <span style={{ color: "#34E5BC", fontWeight: 600 }}>traceweave.org</span>

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SourceLink } from "@/components/SourceLink";
-import { COVERAGE_ITEMS, PLANNED_CAPABILITIES } from "@/data/facts";
+import { SpecimenPicture } from "@/components/SpecimenPicture";
+import { COVERAGE_ITEMS, MEDIUM_PLATES, PLANNED_CAPABILITIES } from "@/data/facts";
 import { DOCS_URL } from "@/lib/sources";
 
 export const metadata: Metadata = {
@@ -39,6 +40,19 @@ export default function CoveragePage() {
       <section className="section-tight" aria-labelledby="matrix-heading">
         <div className="container">
           <h2 id="matrix-heading">Content type status</h2>
+          <div className="medium-plates">
+            {MEDIUM_PLATES.map((plate) => (
+              <figure key={plate.base} className="medium-plate">
+                <SpecimenPicture
+                  base={plate.base}
+                  alt={plate.alt}
+                  sizes="(max-width: 860px) calc(50vw - 1.5rem), 242px"
+                />
+                <figcaption className="medium-plate-label">{plate.label}</figcaption>
+              </figure>
+            ))}
+          </div>
+
           <div className="table-wrap">
             <table>
               <thead>
@@ -62,17 +76,6 @@ export default function CoveragePage() {
                       <span className={badgeClass(item.statusTone)}>{item.status}</span>
                     </td>
                     <td>
-                      {item.image ? (
-                        <div className="coverage-media">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={item.image.src}
-                            alt={item.image.alt}
-                            width={item.image.width}
-                            height={item.image.height}
-                          />
-                        </div>
-                      ) : null}
                       <p style={{ marginBottom: "0.45rem" }}>{item.summary}</p>
                       <SourceLink
                         path={item.sourcePath}

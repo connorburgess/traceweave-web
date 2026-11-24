@@ -156,6 +156,9 @@ export default function AboutPage() {
             content processed by an implementation, and no claim of patent clearance or
             standards-body endorsement is made.
           </p>
+          <p>
+            Illustrations on this site are generated images, not photographs or results.
+          </p>
 
           <div className="actions">
             <a href={DOCS_URL} className="btn btn-secondary" rel="noopener noreferrer">

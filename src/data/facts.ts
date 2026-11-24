@@ -351,18 +351,53 @@ export const CITED_FACTS: readonly CitedFact[] = [
   },
 ];
 
-export interface MediaSlot {
-  src: string;
+export interface SpecimenAsset {
+  base: string;
   alt: string;
-  width: number;
-  height: number;
 }
 
-/**
- * Populated when imagery assets are delivered under assets/imagery/.
- * Kept null so no placeholder boxes ship before real assets arrive.
- */
-export const HOME_HERO_IMAGE: MediaSlot | null = null;
+export const HOME_HERO_SPECIMEN = {
+  light: {
+    base: "hero-light",
+    alt: "Macro archival specimen of pale stone-grey woven linen on unbleached off-white cotton rag board with debossed corner crop marks and a single horizontal deep-green thread.",
+  },
+  dark: {
+    base: "hero-dark",
+    alt: "Macro archival specimen of dark charcoal woven linen on matte black board with blind-debossed corner registration marks and a single horizontal mint-green thread.",
+  },
+} as const;
+
+export const PROVENANCE_SPECIMEN: SpecimenAsset = {
+  base: "provenance",
+  alt: "Overhead archival specimen plate with parallel pinned monochrome linen threads on the left interlacing into a plain-weave cloth on the right, with a single emerald-green thread traced continuously from its origin pin through the weave.",
+};
+
+export interface MediumPlate extends SpecimenAsset {
+  label: string;
+}
+
+export const MEDIUM_PLATES: readonly MediumPlate[] = [
+  {
+    label: "Source code",
+    base: "medium-code",
+    alt: "Macro view of a dark monochrome stepped-twill woven cloth flanked by three matte-black perforated card strips, threaded with a single stepped mint-green thread.",
+  },
+  {
+    label: "Writing",
+    base: "medium-writing",
+    alt: "Stacked blank cotton rag paper folios with fibrous deckle edges on dark archival board, bound down the folded spine by a single emerald-green linen stitch.",
+  },
+  {
+    label: "Images",
+    base: "medium-images",
+    alt: "Bevelled glass specimen plate over a three-by-three grid of abstract greyscale silver-gelatin tonal squares with etched hairline crosshairs and a single horizontal mint-green silk filament.",
+  },
+  {
+    label: "Audio",
+    base: "medium-audio",
+    alt: "Parallel silver-grey filaments stretched taut across matte-black archival bridges above gently undulating dark paper ridges, with one central taut mint-green thread.",
+  },
+] as const;
 
 export interface CoverageItem {
   kind: string;
@@ -372,7 +407,6 @@ export interface CoverageItem {
   summary: string;
   sourcePath: string;
   anchor?: string;
-  image?: MediaSlot;
 }
 
 export const COVERAGE_ITEMS: readonly CoverageItem[] = [

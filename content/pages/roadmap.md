@@ -102,6 +102,8 @@ sections:
           Library-based DSSE signing and verification, independent commitment
           code, negative cryptographic vectors, in-toto adapter, trust policy,
           optional timestamp adapter decision, and non-author review.
+          Registration design draft-5 (§4.7 self-declared AI-use claim, §9.1
+          tw1- text reference) is confirmed by non-author review.
       - id: M5
         name: Candidate release
         gates: M5.1–M5.5

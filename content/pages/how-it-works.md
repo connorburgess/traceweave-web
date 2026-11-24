@@ -160,8 +160,8 @@ sections:
         statusTone: default
       - layer: Origin & licence history
         records: Separate review-packet record linked by `bodySha256`
-        status: Draft schema & fixtures (M2.7; CLI open)
-        statusTone: default
+        status: Working draft (M2.7 spec & CLI met)
+        statusTone: active
       - layer: Agent interoperability
         records: Optional CLI-wrapping skill with transcript canary checks
         status: Planned (SK.1–SK.2)

@@ -126,21 +126,22 @@ sections:
     cards:
       - title: Signed, timestamped registration records
         gates: M4.3–M4.6
-        status: Planned (design draft-2)
+        status: Planned (design draft-5 confirmed)
         summary: >-
           Library-based DSSE signing and verification, an in-toto statement
           adapter, explicit trust policies, and timestamp evidence. Design
-          draft-2 is reviewed; implementation is open pending timestamp-service
-          decisions.
+          draft-5 plus §4.7 self-declared AI-use claim and §9.1 text reference
+          (tw1-) are confirmed by non-author review and ready for offline-first
+          implementation.
         sourcePath: research/drafts/registration-record.md
       - title: Review packets for licence and origin history
         gates: M2.7
-        status: Specified (CLI open)
+        status: Met (spec and CLI)
         summary: >-
           A separate record keyed by report bodySha256 and region key so origin
           records and archived licence texts never pollute the technical
-          comparison report. Draft-2 schema and fixtures are met on the
-          specification side; CLI support is open.
+          comparison report. Draft-2 schema, fixtures, and CLI support are met
+          (M2.7).
         sourcePath: schemas/review-packet.schema.json
       - title: C2PA soft-binding mapping
         gates: C2PA.1–C2PA.3

@@ -3,16 +3,16 @@ import type { CitedFact } from "@/lib/sources";
 export const SPEC_DRAFT_VERSION = "0.1.0-draft.1";
 
 export const ROADMAP_COUNTS = {
-  asOf: "2026-11-23",
-  updated: "2026-11-23",
+  asOf: "2026-11-24",
+  updated: "2026-11-24",
   sourcePath: "ROADMAP.md",
   anchor: "progress-count",
   core: {
     label: "Core M0–M5",
     total: 47,
-    met: 19,
+    met: 24,
     negativeResult: 0,
-    open: 28,
+    open: 23,
     metIds: [
       "M0.1",
       "M0.2",
@@ -21,13 +21,18 @@ export const ROADMAP_COUNTS = {
       "M1.1",
       "M1.2",
       "M1.3",
+      "M1.4",
       "M1.5",
+      "M1.6",
       "M2.1",
+      "M2.2",
+      "M2.3",
       "M2.4",
       "M2.5",
       "M2.6",
       "M2.7",
       "M2.8",
+      "M2.9",
       "M2.10",
       "M2.11",
       "M3.0",
@@ -164,8 +169,8 @@ export const FACT_VALUES: Record<string, string> = {
 
   // Milestone gate breakdowns (ROADMAP.md)
   "milestone.m0.status": "4 of 4 met",
-  "milestone.m1.status": "4 of 6 met (M1.1, M1.2, M1.3, M1.5)",
-  "milestone.m2.status": "8 of 11 met (M2.1, M2.4, M2.5, M2.6, M2.7, M2.8, M2.10, M2.11)",
+  "milestone.m1.status": "6 of 6 met (M1.1–M1.6; M1.4 with A16 caveat)",
+  "milestone.m2.status": "11 of 11 met (M2.1–M2.11)",
   "milestone.m2e.status": "0 of 8 met",
   "milestone.m3.status": "1 of 7 met (M3.0)",
   "milestone.m4.status": "2 of 6 met (M4.1, M4.2)",
@@ -330,7 +335,7 @@ export const CITED_FACTS: readonly CitedFact[] = [
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Core M0–M5 roadmap gate counts",
-    numbers: ["47", "19", "0", "28", { value: "11", sourceMatch: "M2.1–M2.11" }],
+    numbers: ["47", "24", "0", "23", { value: "11", sourceMatch: "M2.1–M2.11" }],
   },
   {
     id: "roadmap-later-gates",
@@ -533,6 +538,15 @@ export const CITED_FACTS: readonly CitedFact[] = [
     label: "Signing policy and independent commitment outcomes",
     numbers: ["126", "50"],
   },
+  {
+    id: "registration-design",
+    sourcePath: "ROADMAP.md",
+    label: "M4 registration record design draft-5 and confirmed sections §4.7 and §9.1",
+    numbers: [
+      { value: "4.7", sourceMatch: "§4.7" },
+      { value: "9.1", sourceMatch: "§9.1" },
+    ],
+  },
 ];
 
 export interface SpecimenAsset {
@@ -674,17 +688,17 @@ export const PLANNED_CAPABILITIES = [
   {
     title: "Signed, timestamped registration records",
     gates: "M4.3–M4.6",
-    status: "Planned (design draft-2)",
+    status: "Planned (design draft-5 confirmed)",
     summary:
-      "Library-based DSSE signing and verification, an in-toto statement adapter, explicit trust policies, and timestamp evidence. Design draft-2 is reviewed; implementation is open pending timestamp-service decisions.",
+      "Library-based DSSE signing and verification, an in-toto statement adapter, explicit trust policies, and timestamp evidence. Design draft-5 plus §4.7 self-declared AI-use claim and §9.1 text reference (tw1-) are confirmed by non-author review and ready for offline-first implementation.",
     sourcePath: "research/drafts/registration-record.md",
   },
   {
     title: "Review packets for licence and origin history",
     gates: "M2.7",
-    status: "Specified (CLI open)",
+    status: "Met (spec and CLI)",
     summary:
-      "A separate record keyed by report bodySha256 and region key so origin records and archived licence texts never pollute the technical comparison report. Draft-2 schema and fixtures are met on the specification side; CLI support is open.",
+      "A separate record keyed by report bodySha256 and region key so origin records and archived licence texts never pollute the technical comparison report. Draft-2 schema, fixtures, and CLI support are met (M2.7).",
     sourcePath: "schemas/review-packet.schema.json",
   },
   {

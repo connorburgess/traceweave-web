@@ -1,0 +1,35 @@
+{
+  "$schema": "https://galley.fictiontribe.com/schema/galley.config.json",
+  "name": "Traceweave",
+  "urls": {
+    "production": "https://traceweave.org"
+  },
+  "publish": {
+    "mode": "pull-request"
+  },
+  "media": {
+    "dir": "public/imagery",
+    "publicPath": "/imagery"
+  },
+  "collections": [
+    {
+      "id": "home",
+      "label": "Home",
+      "kind": "data",
+      "path": "content/pages/home.md",
+      "format": "markdown",
+      "url": "/"
+    },
+    {
+      "id": "pages",
+      "label": "Pages",
+      "pattern": "{about,coverage,evidence,how-it-works,roadmap}.md",
+      "url": "/{slug}"
+    },
+    {
+      "id": "site",
+      "label": "Site chrome",
+      "url": null
+    }
+  ]
+}

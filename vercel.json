@@ -2,14 +2,25 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/",
       "has": [
         {
           "type": "host",
           "value": "www.traceweave.org"
         }
       ],
-      "destination": "https://traceweave.org/:path*",
+      "destination": "https://traceweave.org/",
+      "permanent": true
+    },
+    {
+      "source": "/:path+",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.traceweave.org"
+        }
+      ],
+      "destination": "https://traceweave.org/:path+",
       "permanent": true
     }
   ]

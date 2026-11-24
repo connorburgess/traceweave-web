@@ -32,12 +32,29 @@ export const metadata: Metadata = {
     title: "Traceweave — Open specification for checkable content reuse evidence",
     description:
       "Traceweave is an open specification for recognising your own work when it turns up somewhere else, and for producing evidence of the match that anyone can re-run and check.",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: "Traceweave — Open specification for checkable content reuse evidence",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Traceweave — Open specification for checkable content reuse evidence",
     description:
       "Traceweave is an open specification for recognising your own work when it turns up somewhere else, and for producing evidence of the match that anyone can re-run and check.",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Traceweave — Open specification for checkable content reuse evidence",
+      },
+    ],
   },
   robots: {
     index: true,

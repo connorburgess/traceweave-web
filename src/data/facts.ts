@@ -128,6 +128,190 @@ var names = map[string]bool{"a": true, "b": false}`,
   },
 } as const;
 
+export const IMAGE_FP_ROWS = [
+  {
+    edit: "flip, png, jpeg90, jpeg75, jpeg50, jpeg30, resize50, resize25",
+    pdq: "98 / 100 each",
+    iscc: "100 / 100 each",
+  },
+  { edit: "screenshot (padded border + rescale)", pdq: "0 / 100", iscc: "100 / 100" },
+  { edit: "crop90 (90% centre area)", pdq: "2 / 100", iscc: "69 / 100" },
+  { edit: "crop75 (75% centre area)", pdq: "0 / 100", iscc: "5 / 100" },
+  { edit: "crop50 (50% centre area)", pdq: "0 / 100", iscc: "0 / 100" },
+  { edit: "Unenrolled negatives within threshold", pdq: "0 / 100", iscc: "0 / 100" },
+  { edit: "Wrong-entry matches across all 12 edits", pdq: "0 / 1,200", iscc: "0 / 1,200" },
+] as const;
+
+/**
+ * Single-sourced registry of every specification-backed figure referenced by
+ * Markdown content files via {{fact:key}} or {{code:key}}.
+ */
+export const FACT_VALUES: Record<string, string> = {
+  // Draft version & roadmap counts
+  draftVersion: SPEC_DRAFT_VERSION,
+  "roadmap.core.label": ROADMAP_COUNTS.core.label,
+  "roadmap.core.total": String(ROADMAP_COUNTS.core.total),
+  "roadmap.core.met": String(ROADMAP_COUNTS.core.met),
+  "roadmap.core.negativeResult": String(ROADMAP_COUNTS.core.negativeResult),
+  "roadmap.core.open": String(ROADMAP_COUNTS.core.open),
+  "roadmap.core.metIds": ROADMAP_COUNTS.core.metIds.join(", "),
+  "roadmap.later.label": ROADMAP_COUNTS.later.label,
+  "roadmap.later.total": String(ROADMAP_COUNTS.later.total),
+  "roadmap.later.met": String(ROADMAP_COUNTS.later.met),
+  "roadmap.later.negativeResult": String(ROADMAP_COUNTS.later.negativeResult),
+  "roadmap.later.open": String(ROADMAP_COUNTS.later.open),
+  "roadmap.later.metIds": ROADMAP_COUNTS.later.metIds.join(", "),
+
+  // Milestone gate breakdowns (ROADMAP.md)
+  "milestone.m0.status": "4 of 4 met",
+  "milestone.m1.status": "4 of 6 met (M1.1, M1.2, M1.3, M1.5)",
+  "milestone.m2.status": "8 of 11 met (M2.1, M2.4, M2.5, M2.6, M2.7, M2.8, M2.10, M2.11)",
+  "milestone.m2e.status": "0 of 8 met",
+  "milestone.m3.status": "1 of 7 met (M3.0)",
+  "milestone.m4.status": "2 of 6 met (M4.1, M4.2)",
+  "milestone.m5.status": "0 of 5 met",
+  "track.imgf.met": "3",
+  "track.img.met": "5",
+
+  // Worked example (test-vectors/matching/)
+  "we.vectorId": WORKED_EXAMPLE.vectorId,
+  "we.profile": WORKED_EXAMPLE.profile,
+  "we.profileVersion": WORKED_EXAMPLE.profileVersion,
+  "we.k": String(WORKED_EXAMPLE.k),
+  "we.window": String(WORKED_EXAMPLE.window),
+  "we.minRegionDistinctHashes": String(WORKED_EXAMPLE.minRegionDistinctHashes),
+  "we.mergeGap": String(WORKED_EXAMPLE.mergeGap),
+  "we.bodySha256": WORKED_EXAMPLE.bodySha256,
+  "we.ref.id": WORKED_EXAMPLE.reference.id,
+  "we.ref.tokenCount": String(WORKED_EXAMPLE.reference.tokenCount),
+  "we.ref.exactFingerprints": String(WORKED_EXAMPLE.reference.exactFingerprints),
+  "we.ref.normalizedFingerprints": String(WORKED_EXAMPLE.reference.normalizedFingerprints),
+  "we.cand.id": WORKED_EXAMPLE.candidate.id,
+  "we.cand.tokenCount": String(WORKED_EXAMPLE.candidate.tokenCount),
+  "we.cand.exactFingerprints": String(WORKED_EXAMPLE.candidate.exactFingerprints),
+  "we.cand.normalizedFingerprints": String(WORKED_EXAMPLE.candidate.normalizedFingerprints),
+  "we.exact.outcome": WORKED_EXAMPLE.exact.outcome,
+  "we.exact.referenceInCandidate": WORKED_EXAMPLE.exact.referenceInCandidate,
+  "we.exact.jaccard": WORKED_EXAMPLE.exact.jaccard,
+  "we.exact.referenceSpan": WORKED_EXAMPLE.exact.referenceSpan,
+  "we.exact.candidateSpan": WORKED_EXAMPLE.exact.candidateSpan,
+  "we.norm.outcome": WORKED_EXAMPLE.normalized.outcome,
+  "we.norm.referenceInCandidate": WORKED_EXAMPLE.normalized.referenceInCandidate,
+  "we.norm.jaccard": WORKED_EXAMPLE.normalized.jaccard,
+  "we.norm.referenceSpan": WORKED_EXAMPLE.normalized.referenceSpan,
+  "we.norm.candidateSpan": WORKED_EXAMPLE.normalized.candidateSpan,
+  "we.renamed.exact": "0/4",
+  "we.renamed.norm": "4/4",
+  "we.indep.exact": "0/14",
+  "we.indep.norm": "2/17",
+
+  // Extraction & core parameters
+  "spec.unicodeVersion": "17.0.0",
+  "spec.hashBits": "64-bit",
+  "spec.nonceBytes": "32-byte",
+
+  // Python profile draft
+  "py.vectors": "98",
+  "py.refVersion": "3.14.6",
+
+  // I1 / I2 independent implementation agreement
+  "i1.cases": "9,887,008",
+  "i1.divergences": "0",
+  "i1.vectors": "163/163",
+  "i1.determinism": "60,000",
+  "i2.reports": "76 / 76",
+  "i2.cases": "10,311",
+  "i2.cleanRoom": "5,000/5,000",
+  "i2.faultChecks": "3/3",
+
+  // M3 operational false-alarm budget
+  "m3.budget": "1 in 20",
+  "m3.repos": "48",
+  "m3.negSearches": "132",
+  "m3.maxAlarms": "6",
+  "m3.confidence": "95%",
+  "m3.bound0": "0.0224",
+  "m3.bound6": "0.0877",
+  "m3.rate6": "0.0455",
+  "m3.followUp": "1 in 100",
+
+  // Winnowing prior art & bounds
+  "winnow.year": "2003",
+  "winnow.run": "8",
+  "winnow.min": "6",
+  "winnow.merged": "12",
+
+  // Synthetic code carriers & 4-repo census
+  "syn.nonzero": "55/55",
+  "syn.total": "62/62",
+  "syn.zero": "7",
+  "census.spew.files": "8",
+  "census.spew.fns": "63",
+  "census.hey.files": "6",
+  "census.hey.fns": "32",
+  "census.itoa.files": "2",
+  "census.itoa.fns": "16",
+  "census.hexyl.files": "5",
+  "census.hexyl.fns": "75",
+
+  // Prose carriers (lane 09)
+  "prose.awtBits": "4",
+  "prose.awtWords": "80",
+  "prose.awtPer1000": "50",
+  "prose.awtWords1000": "1,000",
+
+  // Image fingerprints (e-img-f-2)
+  "imgf.pdqBits": "256-bit",
+  "imgf.pdqThresh": "31",
+  "imgf.pdqAbstain": "49",
+  "imgf.isccBits": "64-bit",
+  "imgf.isccThresh": "7",
+  "imgf.total": "200",
+  "imgf.enrolled": "100",
+  "imgf.edits": "12",
+  "imgf.queries": "1,300",
+  "imgf.refFiles": "30/30",
+  "imgf.extractions": "1,400/1,400",
+  "imgf.pdqEnrol": "98/100",
+  "imgf.pdqAbstained": "2",
+  "imgf.isccEnrol": "100/100",
+  "imgf.pdqZero": "0/100",
+
+  // Image embedded marks (e-img-m-2)
+  "imgm.images": "100",
+  "imgm.tmBits": "61",
+  "imgm.tmThresh": "49",
+  "imgm.psBits": "256",
+  "imgm.psThresh": "167",
+  "imgm.psnrFloor": "38.0",
+  "imgm.belowFloor": "0/100",
+  "imgm.tmMedian": "44.96",
+  "imgm.psMedian": "51.55",
+  "imgm.queries": "7,500",
+  "imgm.unitTests": "22",
+  "imgm.clean": "100/100",
+  "imgm.unmarked": "20,000",
+  "imgm.wrongKey": "10,000",
+  "imgm.wrongEntry": "9,900",
+  "imgm.remarkTm": "1/100",
+  "imgm.remarkPs": "99/100",
+  "imgm.jpeg10Tm": "48/100",
+  "imgm.jpeg10Ps": "18/100",
+  "imgm.reembed": "100/100",
+  "imgm.transplantTm": "82/100",
+  "imgm.transplantPs": "90/100",
+  "imgm.tetherAttempts": "240",
+  "imgm.wmForger": "80.00%",
+  "imgm.wmCopier": "90.83%",
+  "imgm.x1Bch": "5.9–15.3%",
+
+  // Signing interop (M4.1-M4.2)
+  "m4.dsseOutcomes": "66",
+  "m4.stmtBytes": "762-byte",
+  "m4.commitOutcomes": "50",
+  "m4.totalOutcomes": "126",
+};
+
 /**
  * Registry of every numerical claim rendered on the website, paired with the
  * exact specification checkout file that verifies it. scripts/check-content.mjs

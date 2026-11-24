@@ -3,15 +3,18 @@
  * Content, source-traceability, and honesty verification script.
  *
  * Fails if:
- *  1. Any GitHub spec link or SourceLink path does not exist in the public
- *     specification checkout.
+ *  1. Any GitHub spec link, SourceLink path, or content markdown spec reference
+ *     does not exist in the public specification checkout.
  *  2. Any registered numerical claim in src/data/facts.ts is missing from its
  *     cited file in the public specification checkout.
- *  3. Any forbidden phrase, absolute home-directory path, personal email, or
+ *  3. Any {{fact:...}} or {{code:...}} reference in content/*.md points to an
+ *     unknown key in FACT_VALUES.
+ *  4. Any forbidden phrase, absolute home-directory path, personal email, or
  *     AI-attribution trailer appears in tracked files.
- *  4. Any numeric figure displayed in a page component is not accounted for in
- *     either CITED_FACTS or the small allowlist of non-metric UI/structural
- *     numbers (such as 404, 1.0, CSS sizes, or section/step indices).
+ *  5. Any numeric figure displayed in a page component or content markdown file
+ *     is not accounted for in either CITED_FACTS or the small allowlist of
+ *     non-metric UI/structural numbers (such as 404, 1.0, CSS sizes, or
+ *     section/step indices).
  */
 
 import fs from "node:fs";
@@ -73,8 +76,8 @@ const ALLOWED_EXTERNAL_HOSTS = new Set([
 const ALLOWED_EMAILS = new Set(["connor@seatbeltlabs.com"]);
 
 const ALLOWED_EMAIL_FILES = new Set([
-  path.join("src", "app", "about", "page.tsx"),
-  path.join("src", "components", "SiteFooter.tsx"),
+  path.join("content", "pages", "about.md"),
+  path.join("content", "site", "footer.md"),
 ]);
 
 const FORBIDDEN_PATTERNS = [
@@ -122,6 +125,23 @@ function extractCitedFacts(factsSource) {
   return facts;
 }
 
+function extractFactKeys(factsSource) {
+  const startIdx = factsSource.indexOf("export const FACT_VALUES");
+  if (startIdx === -1) {
+    throw new Error("Could not locate FACT_VALUES in src/data/facts.ts");
+  }
+  const endIdx = factsSource.indexOf("\n};", startIdx);
+  if (endIdx === -1) {
+    throw new Error("Could not parse FACT_VALUES bounds in src/data/facts.ts");
+  }
+  const block = factsSource.slice(startIdx, endIdx);
+  const keys = new Set();
+  for (const m of block.matchAll(/^\s*(?:"([^"]+)"|([A-Za-z0-9_]+))\s*:/gm)) {
+    keys.add(m[1] ?? m[2]);
+  }
+  return keys;
+}
+
 function collectNumericTokens(text) {
   // Match numbers (integers, comma-grouped thousands, decimals, percentages)
   // outside identifiers like M2.5, UC-1, draft-1, e-img-f-2, etc.
@@ -134,14 +154,21 @@ function collectNumericTokens(text) {
 }
 
 function stripNonVisibleTsx(source) {
-  // Remove import lines, style={{ ... }} objects, metadata blocks, and comments
-  // so page-number verification targets rendered copy.
   return source
     .replace(/\/\*[\s\S]*?\*\//g, " ")
     .replace(/\/\/.*$/gm, " ")
     .replace(/^\s*import\s+.*$/gm, " ")
     .replace(/style=\{\{[^}]*\}\}/g, " ")
     .replace(/className="[^"]*"/g, " ");
+}
+
+function stripMarkdownControlTokens(source) {
+  // Remove {{fact:...}}, {{code:...}}, {{source:...}}, and (spec:...) tokens
+  // so raw numeric literals inside prose are verified separately.
+  return source
+    .replace(/\{\{(?:fact|code|source):[^}]+\}\}/g, " ")
+    .replace(/\(spec:[^)]+\)/g, " ")
+    .replace(/^\s*(?:sourcePath|anchor|href|canonical|id|type|columns):\s*.*$/gm, " ");
 }
 
 function main() {
@@ -168,7 +195,7 @@ function main() {
 
   // 1. Forbidden phrases, absolute home paths, emails, AI credits, and copyright/name allow-list.
   const selfRel = path.join("scripts", "check-content.mjs");
-  const copyrightRe = /(?:©|Copyright)\s+\d{4}\s+([^·.\n<]+)/g;
+  const copyrightRe = /(?:©|Copyright)\s+\d{4}\s+([^·.\n<"]+)/g;
   const emailRe = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g;
   for (const file of allFiles) {
     const rel = path.relative(REPO_ROOT, file);
@@ -206,18 +233,18 @@ function main() {
         }
       }
       if (/seatbelt labs/i.test(line)) {
-        const isFooterFile = rel === path.join("src", "components", "SiteFooter.tsx");
-        const isAboutFile = rel === path.join("src", "app", "about", "page.tsx");
+        const isFooterContent = rel === path.join("content", "site", "footer.md");
+        const isAboutContent = rel === path.join("content", "pages", "about.md");
         const footerValid =
-          isFooterFile &&
-          /<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?className="seatbelt-wordmark"[\s\S]*?>\s*SEATBELT LABS\s*<\/a>[\s\S]*?© 2026 Seatbelt Labs/.test(
-            content
-          );
+          isFooterContent &&
+          /maintainerName:\s*SEATBELT LABS/.test(content) &&
+          /maintainerHref:\s*https:\/\/seatbeltlabs\.com/.test(content) &&
+          /copyrightLine:\s*© 2026 Seatbelt Labs/.test(content);
         const aboutValid =
-          isAboutFile &&
-          /Maintained by[\s\S]*?<a[\s\S]*?href="https:\/\/seatbeltlabs\.com"[\s\S]*?className="seatbelt-wordmark"[\s\S]*?>\s*SEATBELT LABS\s*<\/a>/.test(
-            content
-          );
+          isAboutContent &&
+          /maintainedByLabel:\s*Maintained by/.test(content) &&
+          /maintainedByName:\s*SEATBELT LABS/.test(content) &&
+          /maintainedByHref:\s*https:\/\/seatbeltlabs\.com/.test(content);
         if (!footerValid && !aboutValid) {
           errors.push(
             `${rel}:${idx + 1}: "Seatbelt Labs" / "SEATBELT LABS" is permitted only in the footer credit and the About page "Maintained by" line`
@@ -227,10 +254,13 @@ function main() {
     }
   }
 
-  // 1b. Check external URLs in src/ against ALLOWED_EXTERNAL_HOSTS and forbid tracking params.
-  const srcFilesForUrls = walkFiles(path.join(REPO_ROOT, "src"), new Set([".ts", ".tsx"]));
+  // 1b. Check external URLs in src/ and content/ against ALLOWED_EXTERNAL_HOSTS and forbid tracking params.
+  const urlFiles = [
+    ...walkFiles(path.join(REPO_ROOT, "src"), new Set([".ts", ".tsx"])),
+    ...walkFiles(path.join(REPO_ROOT, "content"), new Set([".md"])),
+  ];
   const urlRe = /https?:\/\/[^\s"'`)<>]+/g;
-  for (const file of srcFilesForUrls) {
+  for (const file of urlFiles) {
     const rel = path.relative(REPO_ROOT, file);
     const content = fs.readFileSync(file, "utf8");
     let m;
@@ -253,12 +283,13 @@ function main() {
     }
   }
 
-  // 2. Collect every cited spec path across src/ files.
+  // 2. Collect every cited spec path across src/ and content/ files.
   const srcFiles = walkFiles(path.join(REPO_ROOT, "src"), new Set([".ts", ".tsx"]));
+  const contentFiles = walkFiles(path.join(REPO_ROOT, "content"), new Set([".md"]));
   const citedPaths = new Map();
 
   const recordPath = (rawPath, fromFile) => {
-    const clean = rawPath.split("#")[0].replace(/^\/+/, "");
+    const clean = rawPath.split("|")[0].split("#")[0].replace(/^\/+/, "").trim();
     if (!clean) return;
     if (!citedPaths.has(clean)) citedPaths.set(clean, new Set());
     citedPaths.get(clean).add(fromFile);
@@ -267,13 +298,29 @@ function main() {
   const escapedPrefix = SPEC_BLOB_PREFIX.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const fullUrlRe = new RegExp(`${escapedPrefix}([^"'\\s)\\x60]+)`, "g");
   const specUrlCallRe = /specUrl\(\s*["']([^"']+)["']/g;
-  const sourcePathPropRe = /sourcePath:\s*["']([^"']+)["']/g;
+  const tsSourcePathPropRe = /sourcePath:\s*["']([^"']+)["']/g;
   const sourceLinkPathRe = /<SourceLink[^>]*\bpath=["']([^"']+)["']/g;
 
   for (const file of srcFiles) {
     const rel = path.relative(REPO_ROOT, file);
     const content = fs.readFileSync(file, "utf8");
-    for (const re of [fullUrlRe, specUrlCallRe, sourcePathPropRe, sourceLinkPathRe]) {
+    for (const re of [fullUrlRe, specUrlCallRe, tsSourcePathPropRe, sourceLinkPathRe]) {
+      re.lastIndex = 0;
+      let match;
+      while ((match = re.exec(content)) !== null) {
+        recordPath(match[1], rel);
+      }
+    }
+  }
+
+  const mdSourcePathPropRe = /^\s*sourcePath:\s*["']?([^"'\s\n]+)["']?/gm;
+  const mdSourceTokenRe = /\{\{source:([^}]+)\}\}/g;
+  const mdSpecHrefRe = /(?:href:\s*|]\()spec:([^)\s\n]+)/g;
+
+  for (const file of contentFiles) {
+    const rel = path.relative(REPO_ROOT, file);
+    const content = fs.readFileSync(file, "utf8");
+    for (const re of [fullUrlRe, mdSourcePathPropRe, mdSourceTokenRe, mdSpecHrefRe]) {
       re.lastIndex = 0;
       let match;
       while ((match = re.exec(content)) !== null) {
@@ -283,7 +330,7 @@ function main() {
   }
 
   if (citedPaths.size === 0) {
-    errors.push("No cited specification paths found under src/.");
+    errors.push("No cited specification paths found under src/ or content/.");
   }
 
   for (const [specRelPath, refs] of citedPaths.entries()) {
@@ -295,10 +342,12 @@ function main() {
     }
   }
 
-  // 3. Verify every registered numerical claim in src/data/facts.ts exists in its cited spec file.
+  // 3. Verify every registered numerical claim in src/data/facts.ts exists in its cited spec file,
+  //    and verify every {{fact:...}} / {{code:...}} token in content/ exists in FACT_VALUES.
   const factsPath = path.join(REPO_ROOT, "src", "data", "facts.ts");
   const factsSource = fs.readFileSync(factsPath, "utf8");
   const citedFacts = extractCitedFacts(factsSource);
+  const factKeys = extractFactKeys(factsSource);
   const verifiedNumberTokens = new Set();
   let checkedNumbers = 0;
 
@@ -318,16 +367,26 @@ function main() {
           `CITED_FACTS "${fact.id}": token "${needle}" not found in "${fact.sourcePath}"`
         );
       }
-      // Record every numeric sub-token verified by this entry.
       for (const num of displayVal.matchAll(/\d[\d,]*(?:\.\d+)?%?/g)) {
         verifiedNumberTokens.add(num[0]);
       }
     }
   }
 
-  // 4. Cross-check numeric literals in page components against verified numbers
-  //    plus a minimal set of structural/standard identifiers (e.g. RFC 3161,
-  //    RFC 8785, CC BY 4.0, Apache 2.0, HTTP 404, section numbers 1–6).
+  for (const file of contentFiles) {
+    const rel = path.relative(REPO_ROOT, file);
+    const raw = fs.readFileSync(file, "utf8");
+    for (const m of raw.matchAll(/\{\{(?:fact|code):([^}]+)\}\}/g)) {
+      const key = m[1].trim();
+      if (!factKeys.has(key)) {
+        errors.push(`${rel}: unknown fact key "${key}" (not defined in src/data/facts.ts FACT_VALUES)`);
+      }
+    }
+  }
+
+  // 4. Cross-check numeric literals in page components and content/pages/*.md against verified
+  //    numbers plus a minimal set of structural/standard identifiers (e.g. RFC 3161, RFC 8785,
+  //    CC BY 4.0, Apache 2.0, HTTP 404, section numbers 1–6).
   const STRUCTURAL_NUMBERS = new Set([
     "0",
     "1",
@@ -360,6 +419,19 @@ function main() {
     }
   }
 
+  const contentPageFiles = walkFiles(path.join(REPO_ROOT, "content", "pages"), new Set([".md"]));
+  for (const mdFile of contentPageFiles) {
+    const rel = path.relative(REPO_ROOT, mdFile);
+    const cleaned = stripMarkdownControlTokens(fs.readFileSync(mdFile, "utf8"));
+    for (const token of collectNumericTokens(cleaned)) {
+      if (!verifiedNumberTokens.has(token) && !STRUCTURAL_NUMBERS.has(token)) {
+        errors.push(
+          `${rel}: numeric value "${token}" is not backed by an entry in src/data/facts.ts CITED_FACTS`
+        );
+      }
+    }
+  }
+
   // 5. Ensure required licence instruments exist, and that the
   //    multi-medium scope cited on the home page is backed by README.md and ROADMAP.md.
   for (const requiredFile of [
@@ -378,7 +450,9 @@ function main() {
     !readmeText.includes("source code, writing, images and audio") &&
     !readmeText.includes("text, images, and audio")
   ) {
-    errors.push('README.md in spec checkout no longer lists multi-medium scope (code, writing/text, images, audio)');
+    errors.push(
+      "README.md in spec checkout no longer lists multi-medium scope (code, writing/text, images, audio)"
+    );
   }
   if (!roadmapText.includes("## Pilot languages") || !roadmapText.includes("## Later profiles and sequence")) {
     errors.push("ROADMAP.md in spec checkout missing expected pilot-languages or later-profiles sections");
@@ -386,19 +460,27 @@ function main() {
 
   // 6. Keep protocol names and gate IDs off the home page, ensure no status banner,
   //    and require the plain-text status sentence inside the "Where it stands today" block.
-  const homeSource = fs.readFileSync(path.join(REPO_ROOT, "src", "app", "page.tsx"), "utf8");
+  const homeMdSource = fs.readFileSync(
+    path.join(REPO_ROOT, "content", "pages", "home.md"),
+    "utf8"
+  );
+  const homeTsxSource = fs.readFileSync(
+    path.join(REPO_ROOT, "src", "app", "page.tsx"),
+    "utf8"
+  );
+  const combinedHome = `${homeMdSource}\n${homeTsxSource}`;
   for (const term of ["DSSE", "in-toto", "RFC 3161", "M0–M5", "M4.", "M3.", "M2.", "UC-1", "status-strip"]) {
-    if (homeSource.includes(term)) {
-      errors.push(`src/app/page.tsx: disallowed term "${term}" on the home page`);
+    if (combinedHome.includes(term)) {
+      errors.push(`home page content: disallowed term "${term}" on the home page`);
     }
   }
-  const normalizedHome = homeSource.replace(/\s+/g, " ");
+  const normalizedHome = homeMdSource.replace(/\s+/g, " ");
   if (
     !normalizedHome.includes("Where it stands today:") ||
     !normalizedHome.includes("It is experimental and not yet evaluated on real-world data.")
   ) {
     errors.push(
-      'src/app/page.tsx: missing required plain-text status sentence in the "Where it stands today" block'
+      'content/pages/home.md: missing required plain-text status sentence in the "Where it stands today" block'
     );
   }
 
@@ -411,7 +493,7 @@ function main() {
   }
 
   console.log(
-    `PASS: checked ${allFiles.length} files, ${citedPaths.size} cited spec paths, ${checkedNumbers} source-backed figures, and ${pageFiles.length} page files against the specification checkout.`
+    `PASS: checked ${allFiles.length} files, ${citedPaths.size} cited spec paths, ${checkedNumbers} source-backed figures, ${contentFiles.length} markdown content files, and ${pageFiles.length} page files against the specification checkout.`
   );
 }
 

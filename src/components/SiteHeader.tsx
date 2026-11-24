@@ -4,15 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { TraceweaveMark } from "@/components/TraceweaveMark";
-import { DOCS_URL } from "@/lib/sources";
 
-const NAV_ITEMS = [
-  { href: "/how-it-works", label: "How it works" },
-  { href: "/coverage", label: "What it covers" },
-  { href: "/evidence", label: "Evidence & limits" },
-  { href: "/roadmap", label: "Roadmap" },
-  { href: "/about", label: "About" },
-] as const;
+export interface SiteHeaderProps {
+  brandName: string;
+  navItems: ReadonlyArray<{ href: string; label: string }>;
+  docsLabel: string;
+  docsUrl: string;
+}
 
 type ThemeMode = "light" | "dark";
 
@@ -43,7 +41,12 @@ function getServerThemeSnapshot(): ThemeMode {
   return "light";
 }
 
-export function SiteHeader() {
+export function SiteHeader({
+  brandName,
+  navItems,
+  docsLabel,
+  docsUrl,
+}: SiteHeaderProps) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const theme = useSyncExternalStore(
@@ -89,15 +92,15 @@ export function SiteHeader() {
         <Link
           href="/"
           className="brand"
-          aria-label="Traceweave"
+          aria-label={brandName}
           onClick={() => setMenuOpen(false)}
         >
           <TraceweaveMark size={28} />
-          <span>Traceweave</span>
+          <span>{brandName}</span>
         </Link>
 
         <nav aria-label="Primary" className="nav-desktop">
-          {NAV_ITEMS.map((item) => {
+          {navItems.map((item) => {
             const active = pathname === item.href || pathname === `${item.href}/`;
             return (
               <Link
@@ -110,8 +113,8 @@ export function SiteHeader() {
               </Link>
             );
           })}
-          <a href={DOCS_URL} className="nav-link" rel="noopener noreferrer">
-            Docs ↗
+          <a href={docsUrl} className="nav-link" rel="noopener noreferrer">
+            {docsLabel}
           </a>
         </nav>
 
@@ -147,7 +150,7 @@ export function SiteHeader() {
         data-open={menuOpen ? "true" : "false"}
       >
         <ul className="nav-mobile-list">
-          {NAV_ITEMS.map((item) => {
+          {navItems.map((item) => {
             const active = pathname === item.href || pathname === `${item.href}/`;
             return (
               <li key={item.href}>
@@ -164,12 +167,12 @@ export function SiteHeader() {
           })}
           <li>
             <a
-              href={DOCS_URL}
+              href={docsUrl}
               className="nav-link"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
             >
-              Docs ↗
+              {docsLabel}
             </a>
           </li>
         </ul>

@@ -1,148 +1,17 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { SourceLink } from "@/components/SourceLink";
-import { SpecimenPicture } from "@/components/SpecimenPicture";
-import { COVERAGE_ITEMS, MEDIUM_PLATES, PLANNED_CAPABILITIES } from "@/data/facts";
-import { DOCS_URL } from "@/lib/sources";
+import { PageSections } from "@/components/PageSections";
+import { getPageContent } from "@/lib/content";
+
+const page = getPageContent("coverage");
 
 export const metadata: Metadata = {
-  title: "What it covers",
-  description:
-    "Honest status of Traceweave content profiles across Go, Rust, TypeScript/JavaScript, Python, plain text, still images, audio, and compiled binaries.",
+  title: page.title,
+  description: page.description,
   alternates: {
-    canonical: "/coverage",
+    canonical: page.canonical,
   },
 };
 
-function badgeClass(tone: "active" | "specified" | "researched" | "unstarted") {
-  if (tone === "active") return "badge badge-active";
-  if (tone === "researched") return "badge badge-caution";
-  return "badge";
-}
-
 export default function CoveragePage() {
-  return (
-    <>
-      <section className="page-header">
-        <div className="container">
-          <div className="hero-copy">
-            <div className="eyebrow">Content profiles</div>
-            <h1>What Traceweave covers</h1>
-            <p className="lead" style={{ marginBottom: 0 }}>
-              One shared evidence format sits underneath profile-specific extractors. Each
-              medium defines its own extraction rules, transformations, and measured
-              boundaries independently.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-tight" aria-labelledby="matrix-heading">
-        <div className="container">
-          <h2 id="matrix-heading">Content type status</h2>
-          <div className="medium-plates">
-            {MEDIUM_PLATES.map((plate) => (
-              <figure key={plate.base} className="medium-plate">
-                <SpecimenPicture
-                  base={plate.base}
-                  alt={plate.alt}
-                  sizes="(max-width: 860px) calc(50vw - 1.5rem), 242px"
-                />
-                <figcaption className="medium-plate-label">{plate.label}</figcaption>
-              </figure>
-            ))}
-          </div>
-
-          <div className="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">Content type</th>
-                  <th scope="col">Profile / draft</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Current scope and limit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {COVERAGE_ITEMS.map((item) => (
-                  <tr key={item.kind}>
-                    <td>
-                      <strong>{item.kind}</strong>
-                    </td>
-                    <td className="mono" style={{ fontSize: "0.84rem" }}>
-                      {item.profiles}
-                    </td>
-                    <td>
-                      <span className={badgeClass(item.statusTone)}>{item.status}</span>
-                    </td>
-                    <td>
-                      <p style={{ marginBottom: "0.45rem" }}>{item.summary}</p>
-                      <SourceLink
-                        path={item.sourcePath}
-                        anchor={item.anchor}
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="card-muted">
-            <h3 style={{ marginBottom: "0.4rem" }}>Note on Python</h3>
-            <p style={{ marginBottom: 0 }}>
-              Python is a code-profile target: <span className="mono">py-tokens</span>{" "}
-              <span className="mono">draft-1</span> is specified and frozen for stage-1
-              implementation, but not yet implemented in the Rust or Go binaries (gates{" "}
-              <span className="mono">PY.1–PY.4</span>). Using Python in the specification
-              repository for schema validation and vector checkers is separate from the
-              Python profile (
-              <SourceLink path="ROADMAP.md" anchor="pilot-languages" /> ·{" "}
-              <SourceLink path="research/drafts/extraction-profile-python.md" />
-              ).
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section" aria-labelledby="planned-heading">
-        <div className="container">
-          <div className="eyebrow">Planned extensions</div>
-          <h2 id="planned-heading">Provenance, review packets, and interoperability</h2>
-          <p className="prose">
-            None of the items below is shipped yet. Each is gated behind explicit fixtures
-            and non-author review in <SourceLink path="ROADMAP.md" />.
-          </p>
-
-          <div className="grid-2" style={{ marginTop: "1.25rem" }}>
-            {PLANNED_CAPABILITIES.map((cap) => (
-              <div key={cap.title} className="card">
-                <div className="card-title-row">
-                  <h3 style={{ marginBottom: 0 }}>{cap.title}</h3>
-                  <span className="badge mono">{cap.status} · {cap.gates}</span>
-                </div>
-                <p style={{ marginBottom: "0.65rem" }}>{cap.summary}</p>
-                <SourceLink
-                  path={cap.sourcePath}
-                  anchor={"anchor" in cap ? cap.anchor : undefined}
-                />
-              </div>
-            ))}
-          </div>
-
-          <div className="actions">
-            <Link href="/evidence" className="btn btn-primary">
-              Read the research evidence &amp; limits
-            </Link>
-            <Link href="/roadmap" className="btn btn-secondary">
-              View roadmap gates
-            </Link>
-            <a href={DOCS_URL} className="btn btn-secondary" rel="noopener noreferrer">
-              Profile documents on docs.traceweave.org ↗
-            </a>
-          </div>
-        </div>
-      </section>
-    </>
-  );
+  return <PageSections sections={page.sections} />;
 }

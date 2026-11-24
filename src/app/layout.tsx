@@ -7,9 +7,11 @@ import "@fontsource/ibm-plex-sans/500.css";
 import "@fontsource/ibm-plex-sans/600.css";
 import "@fontsource/ibm-plex-sans/700.css";
 import type { Metadata, Viewport } from "next";
+import { resolveHref } from "@/components/RichText";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SPEC_DRAFT_VERSION } from "@/data/facts";
+import { getSiteFooterContent, getSiteHeaderContent } from "@/lib/content";
 import { DOCS_URL, SITE_URL, SPEC_REPO_URL } from "@/lib/sources";
 import "./globals.css";
 
@@ -98,6 +100,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headerContent = getSiteHeaderContent();
+  const footerContent = getSiteFooterContent();
+  const docsUrl = resolveHref(headerContent.docsHref).url;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -111,9 +117,14 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <SiteHeader />
+        <SiteHeader
+          brandName={headerContent.brandName}
+          navItems={headerContent.navItems}
+          docsLabel={headerContent.docsLabel}
+          docsUrl={docsUrl}
+        />
         <main id="main-content">{children}</main>
-        <SiteFooter />
+        <SiteFooter content={footerContent} />
       </body>
     </html>
   );

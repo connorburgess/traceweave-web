@@ -28,6 +28,16 @@ npm run build
 
 `npm run check:content` checks every cited `traceweave-spec` path and registered numerical claim against a local checkout of the `roadmap-v2` branch (passed via `--spec-dir`, `TRACEWEAVE_SPEC_DIR`, or a sibling `../traceweave-spec-public-wt` directory), and rejects forbidden claims, home-directory paths, and stray attribution markers.
 
+## Editing with Galley
+
+Page copy lives in `content/pages/*.md` and site navigation/footer copy in `content/site/*.md`, configured in `galley.config.json`. To edit content locally with [Galley](https://galley.fictiontribe.com/), run the following in this folder:
+
+```sh
+npx galley-cms
+```
+
+Galley is not a site dependency and adds no routes or build plugins. Edits stay in your working tree until reviewed in Proof, and **Publish** opens a pull request.
+
 ## Static export
 
 `npm run build` outputs a fully static site to `out/` with zero database, cookies, analytics, third-party scripts, external fonts, or API routes. Open Graph and Twitter card images, `sitemap.xml`, and `robots.txt` are generated at build time.

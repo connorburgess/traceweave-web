@@ -48,17 +48,16 @@ sections:
           (TS.4) is open.
         sourcePath: profiles/typescript.md
       - kind: Python
-        profiles: py-tokens (draft-1, implemented; pending promotion)
+        profiles: py-tokens (draft-1, promoted & implemented)
         status: Implemented (draft)
         statusTone: active
         summary: >-
-          Stage-1 profile py-tokens is implemented in both Rust and Go (gate
-          PY.3 met with zero differential divergences), covering Python
-          {{fact:py.refVersion}} lexical rules including zero-width NEWLINE,
-          INDENT, and DEDENT tokens, after a clean-room review reproduced all
-          {{fact:py.vectors}} vectors from the text alone. Promotion to
-          profiles/ (PY.1–PY.2) and own M3 split (PY.4) remain open.
-        sourcePath: research/drafts/extraction-profile-python.md
+          Stage-1 profile py-tokens is promoted to profiles/python.md and
+          test-vectors/extraction-python/ and implemented in both Rust and Go
+          (gates PY.1–PY.3 met with zero differential divergences), covering
+          Python {{fact:py.refVersion}} lexical rules including zero-width
+          NEWLINE, INDENT, and DEDENT tokens. Own M3 split (PY.4) remains open.
+        sourcePath: profiles/python.md
       - kind: Plain text and Markdown
         profiles: text-plain (draft-1, implemented); text-markdown (draft-2)
         status: Implemented (draft)
@@ -114,12 +113,12 @@ sections:
         anchor: later-profiles-and-sequence
     noteHeading: Note on Python
     noteBody: >-
-      Python is a code-profile target: `py-tokens` `draft-1` is implemented in
-      both Rust and Go (gate `PY.3` met), while promotion to `profiles/`
-      (`PY.1–PY.2`) and the M3 evaluation split (`PY.4`) stay open. Using Python
-      in the specification repository for schema validation and vector checkers
-      is separate from the Python profile ({{source:ROADMAP.md#pilot-languages}}
-      · {{source:research/drafts/extraction-profile-python.md}}).
+      Python is a code-profile target: `py-tokens` `draft-1` is promoted to
+      `profiles/python.md` and `test-vectors/extraction-python/` and implemented
+      in both Rust and Go (gates `PY.1–PY.3` met), while the M3 evaluation split
+      (`PY.4`) stays open. Using Python in the specification repository for
+      schema validation and vector checkers is separate from the Python profile
+      ({{source:ROADMAP.md#pilot-languages}} · {{source:profiles/python.md}}).
 
   - type: planned-extensions
     id: planned-heading
@@ -130,15 +129,16 @@ sections:
       fixtures and non-author review in {{source:ROADMAP.md}}.
     cards:
       - title: Signed, timestamped registration records
-        gates: M4.3–M4.6
-        status: M4.5 met; offline-first in Rust & Go
+        gates: M4.1–M4.6
+        status: 5 of 6 M4 gates met (M4.4 open)
         summary: >-
-          M4.5 is met (trust-policy.md, in-toto adapter 4 accept / 26 reject
-          fixtures in validate.py, and timestamp-adapter-decision.md).
-          Offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1
-          tw1- text reference, REG.1/REG.2) is implemented and cross-checked in
-          both Rust and Go with zero divergences; M4.3–M4.4 and M4.6 stay open.
-        sourcePath: research/drafts/registration-record.md
+          Promoted to spec/registration-record.md, spec/trust-policy.md,
+          test-vectors/registration/, and test-vectors/intoto-adapter/
+          (M4.1–M4.3, M4.5–M4.6 met, including 4 accept / 26 reject in-toto
+          fixtures and disclosure review). Offline-first registration (draft-5
+          plus §4.7 claims.aiUse and §9.1 tw1-) is implemented in Rust and Go;
+          M4.4 awaits re-vendoring against the promoted spec commit.
+        sourcePath: spec/registration-record.md
       - title: Review packets for licence and origin history
         gates: M2.7
         status: Met (spec and CLI)

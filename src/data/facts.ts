@@ -10,9 +10,9 @@ export const ROADMAP_COUNTS = {
   core: {
     label: "Core M0–M5",
     total: 47,
-    met: 25,
+    met: 27,
     negativeResult: 0,
-    open: 22,
+    open: 20,
     metIds: [
       "M0.1",
       "M0.2",
@@ -38,17 +38,21 @@ export const ROADMAP_COUNTS = {
       "M3.0",
       "M4.1",
       "M4.2",
+      "M4.3",
       "M4.5",
+      "M4.6",
     ],
   },
   later: {
     label: "Later profiles, EXT and RC",
     total: 55,
-    met: 16,
+    met: 21,
     negativeResult: 2,
-    open: 37,
+    open: 32,
     metIds: [
       "TS.3",
+      "PY.1",
+      "PY.2",
       "PY.3",
       "IMGF.2",
       "IMGF.3",
@@ -64,6 +68,9 @@ export const ROADMAP_COUNTS = {
       "C2PA.3",
       "SK.1",
       "SK.2",
+      "WEB.0",
+      "WEB.1",
+      "WEB.2",
     ],
   },
 } as const;
@@ -182,7 +189,7 @@ export const FACT_VALUES: Record<string, string> = {
   "milestone.m2.status": "11 of 11 met (M2.1–M2.11)",
   "milestone.m2e.status": "0 of 8 met",
   "milestone.m3.status": "1 of 7 met (M3.0)",
-  "milestone.m4.status": "3 of 6 met (M4.1, M4.2, M4.5)",
+  "milestone.m4.status": "5 of 6 met (M4.1, M4.2, M4.3, M4.5, M4.6)",
   "milestone.m5.status": "0 of 5 met",
   "track.imgf.met": "3",
   "track.img.met": "5",
@@ -344,19 +351,19 @@ export const CITED_FACTS: readonly CitedFact[] = [
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Core M0–M5 roadmap gate counts",
-    numbers: ["47", "25", "0", "22", { value: "11", sourceMatch: "M2.1–M2.11" }],
+    numbers: ["47", "27", "0", "20", { value: "11", sourceMatch: "M2.1–M2.11" }],
   },
   {
     id: "roadmap-later-gates",
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Later profiles, EXT and RC gate counts",
-    numbers: ["55", "16", "2", "37"],
+    numbers: ["55", "21", "2", "32"],
   },
   {
     id: "python-profile-draft",
-    sourcePath: "research/drafts/extraction-profile-python.md",
-    label: "Frozen Python draft-1 profile vector count and reference version",
+    sourcePath: "profiles/python.md",
+    label: "Promoted Python draft-1 profile vector count and reference version",
     numbers: ["98", "3.14.6"],
   },
   {
@@ -568,6 +575,12 @@ export const CITED_FACTS: readonly CitedFact[] = [
     label: "M4.5 in-toto adapter accept/reject fixture counts",
     numbers: ["4", "26"],
   },
+  {
+    id: "web-wasm-engine",
+    sourcePath: "ROADMAP.md",
+    label: "WEB.1 pure-Rust WebAssembly engine binary size",
+    numbers: [{ value: "1.13", sourceMatch: "1,128,365" }],
+  },
 ];
 
 export interface SpecimenAsset {
@@ -650,12 +663,12 @@ export const COVERAGE_ITEMS: readonly CoverageItem[] = [
   },
   {
     kind: "Python",
-    profiles: "py-tokens (draft-1, implemented; pending promotion)",
+    profiles: "py-tokens (draft-1, promoted & implemented)",
     status: "Implemented (draft)",
     statusTone: "active" as const,
     summary:
-      "Stage-1 profile py-tokens is implemented in both Rust and Go (gate PY.3 met with zero differential divergences), covering Python 3.14.6 lexical rules including zero-width NEWLINE, INDENT, and DEDENT tokens, after a clean-room review reproduced all 98 vectors from the text alone. Promotion to profiles/ (PY.1–PY.2) and own M3 split (PY.4) remain open.",
-    sourcePath: "research/drafts/extraction-profile-python.md",
+      "Stage-1 profile py-tokens is promoted to profiles/python.md and test-vectors/extraction-python/ and implemented in both Rust and Go (gates PY.1–PY.3 met with zero differential divergences), covering Python 3.14.6 lexical rules including zero-width NEWLINE, INDENT, and DEDENT tokens. Own M3 split (PY.4) remains open.",
+    sourcePath: "profiles/python.md",
   },
   {
     kind: "Plain text and Markdown",
@@ -708,11 +721,11 @@ export const COVERAGE_ITEMS: readonly CoverageItem[] = [
 export const PLANNED_CAPABILITIES = [
   {
     title: "Signed, timestamped registration records",
-    gates: "M4.3–M4.6",
-    status: "M4.5 met; offline-first in Rust & Go",
+    gates: "M4.1–M4.6",
+    status: "5 of 6 M4 gates met (M4.4 open)",
     summary:
-      "M4.5 is met (trust-policy.md, in-toto adapter 4 accept / 26 reject fixtures in validate.py, and timestamp-adapter-decision.md). Offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1 tw1- text reference, REG.1/REG.2) is implemented and cross-checked in both Rust and Go with zero divergences; M4.3–M4.4 and M4.6 stay open.",
-    sourcePath: "research/drafts/registration-record.md",
+      "Promoted to spec/registration-record.md, spec/trust-policy.md, test-vectors/registration/, and test-vectors/intoto-adapter/ (M4.1–M4.3, M4.5–M4.6 met, including 4 accept / 26 reject in-toto fixtures and disclosure review). Offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1 tw1-) is implemented in Rust and Go; M4.4 awaits re-vendoring against the promoted spec commit.",
+    sourcePath: "spec/registration-record.md",
   },
   {
     title: "Review packets for licence and origin history",

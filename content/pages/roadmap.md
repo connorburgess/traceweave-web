@@ -100,12 +100,11 @@ sections:
         status: "{{fact:milestone.m4.status}}"
         summary: >-
           Library-based DSSE signing and verification, independent commitment
-          code, negative cryptographic vectors, in-toto adapter (4 accept / 26
-          reject fixtures), trust policy, optional timestamp adapter decision
-          (M4.5 met), and non-author review. Offline-first registration
-          (draft-5 + §4.7 claims.aiUse + §9.1 tw1-, REG.1/REG.2) is implemented
-          and cross-checked in both Rust and Go with zero divergences; M4.3–M4.4
-          and M4.6 stay open.
+          code, promoted registration and in-toto vectors (4 accept / 26 reject
+          fixtures), trust policy, timestamp adapter decision, and non-author
+          commitment/disclosure review (M4.1–M4.3, M4.5–M4.6 met). Offline-first
+          registration (draft-5 + §4.7 claims.aiUse + §9.1 tw1-) is implemented
+          in Rust and Go; M4.4 awaits re-vendoring against the promoted spec.
       - id: M5
         name: Candidate release
         gates: M5.1–M5.5
@@ -133,9 +132,9 @@ sections:
       - track: PY (PY.1–PY.4)
         scope: Python profile (py-tokens)
         state: >-
-          1 met (PY.3: py-tokens implemented in both Rust and Go with zero
-          differential divergences); promotion to profiles/ (PY.1–PY.2) and M3
-          split (PY.4) open.
+          3 met (PY.1–PY.3: promoted to profiles/python.md and
+          test-vectors/extraction-python/, implemented in both Rust and Go with
+          zero divergences); M3 split (PY.4) open.
       - track: IMGF (IMGF.1–IMGF.6)
         scope: Still-image fingerprints (PDQ & ISCC)
         state: >-
@@ -169,8 +168,9 @@ sections:
       - track: WEB (WEB.0–WEB.6)
         scope: Browser tool and testing page
         state: >-
-          Planned (not started); offline WebAssembly fingerprint, compare, and
-          verify flows after M3.4.
+          3 met (WEB.0 approved; WEB.1–WEB.2 met: 1.13 MB pure-Rust WebAssembly
+          engine, 0 imports, 0 network/storage calls, byte-identical to CLI);
+          WEB.3–WEB.6 browser UI flows planned.
       - track: BIN, RES, STRUCT, KEYED
         scope: Binaries, resolver threat model, structural & keyed matching
         state: >-

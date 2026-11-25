@@ -156,7 +156,7 @@ sections:
         records: >-
           DSSE / in-toto attestation, explicit trust policy, and optional RFC
           3161 timestamp
-        status: M4.5 met; offline-first in Rust & Go (M4.3–M4.4, M4.6 open)
+        status: 5 of 6 M4 gates met (M4.4 re-vendor open)
         statusTone: default
       - layer: Origin & licence history
         records: Separate review-packet record linked by `bodySha256`

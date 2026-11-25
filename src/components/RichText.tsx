@@ -138,7 +138,6 @@ export function ActionLinks({
             variant={action.variant}
             href={url}
             external={external}
-            icon="arrow"
           >
             {action.label}
           </Button>

@@ -3,10 +3,9 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 export type ButtonVariant = "primary" | "secondary" | "link";
 export type ButtonSize = "default" | "compact";
-export type ButtonIcon = "arrow" | "none";
 
-export function ArrowUpRightIcon({
-  size = 24,
+export function ExternalArrowIcon({
+  size = 15,
   className,
 }: {
   size?: number;
@@ -15,7 +14,7 @@ export function ArrowUpRightIcon({
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 28 28"
+      viewBox="0 0 16 16"
       width={size}
       height={size}
       fill="none"
@@ -24,11 +23,11 @@ export function ArrowUpRightIcon({
       className={className}
     >
       <path
-        d="M9.05025 19.4497L18.9497 9.55025M10.8377 8.86279L18.9497 9.55025L19.6372 17.6623"
+        d="M4.5 11.5L11.5 4.5M6.5 4.5H11.5V9.5"
         stroke="currentColor"
         strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
       />
     </svg>
   );
@@ -37,7 +36,6 @@ export function ArrowUpRightIcon({
 interface ButtonOwnProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
-  icon?: ButtonIcon;
   external?: boolean;
   className?: string;
   children: ReactNode;
@@ -64,38 +62,33 @@ const isExternalHref = (href: string) =>
 export function Button({
   variant = "primary",
   size = "default",
-  icon = "arrow",
   external,
   className,
   children,
   ...rest
 }: ButtonProps) {
+  const isExt = isAnchor(rest) ? (external ?? isExternalHref(rest.href)) : Boolean(external);
+
   const classes = [
     "btn",
     `btn-${variant}`,
     size === "compact" ? "btn-compact" : "",
-    icon === "none" ? "btn-no-icon" : "",
     className ?? "",
   ]
     .filter(Boolean)
     .join(" ");
 
-  const arrowSize = size === "compact" ? 22 : 24;
+  const iconSize = size === "compact" ? 14 : 15;
 
   const content = (
     <>
       <span className="btn-label">{children}</span>
-      {icon === "arrow" ? (
-        <span className="btn-arrow" aria-hidden="true">
-          <ArrowUpRightIcon size={arrowSize} />
-        </span>
-      ) : null}
+      {isExt ? <ExternalArrowIcon size={iconSize} className="btn-external-icon" /> : null}
     </>
   );
 
   if (isAnchor(rest)) {
     const { href, ...anchorRest } = rest;
-    const isExt = external ?? isExternalHref(href);
 
     if (isExt) {
       return (

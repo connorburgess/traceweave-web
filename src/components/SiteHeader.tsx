@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { ArrowUpRightIcon } from "@/components/Button";
+import { ExternalArrowIcon } from "@/components/Button";
 import { TraceweaveMark } from "@/components/TraceweaveMark";
 
 export interface SiteHeaderProps {
@@ -116,7 +116,7 @@ export function SiteHeader({
           })}
           <a href={docsUrl} className="nav-link" rel="noopener noreferrer">
             <span>{docsLabel}</span>
-            <ArrowUpRightIcon size={16} className="inline-arrow" />
+            <ExternalArrowIcon size={14} className="inline-arrow" />
           </a>
         </nav>
 
@@ -175,7 +175,7 @@ export function SiteHeader({
               onClick={() => setMenuOpen(false)}
             >
               <span>{docsLabel}</span>
-              <ArrowUpRightIcon size={16} className="inline-arrow" />
+              <ExternalArrowIcon size={14} className="inline-arrow" />
             </a>
           </li>
         </ul>

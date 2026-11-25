@@ -43,11 +43,12 @@ export const ROADMAP_COUNTS = {
   later: {
     label: "Later profiles, EXT and RC",
     total: 55,
-    met: 10,
-    negativeResult: 0,
-    open: 45,
+    met: 11,
+    negativeResult: 1,
+    open: 43,
     metIds: [
       "TS.3",
+      "PY.3",
       "IMGF.2",
       "IMGF.3",
       "IMGF.4",
@@ -344,7 +345,7 @@ export const CITED_FACTS: readonly CitedFact[] = [
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Later profiles, EXT and RC gate counts",
-    numbers: ["55", "10", "0", "45"],
+    numbers: ["55", "11", "1", "43"],
   },
   {
     id: "python-profile-draft",
@@ -631,11 +632,11 @@ export const COVERAGE_ITEMS: readonly CoverageItem[] = [
   },
   {
     kind: "Python",
-    profiles: "py-tokens (draft-1, frozen)",
-    status: "Specified",
-    statusTone: "specified" as const,
+    profiles: "py-tokens (draft-1, implemented; pending promotion)",
+    status: "Implemented (draft)",
+    statusTone: "active" as const,
     summary:
-      "Stage-1 profile py-tokens is frozen for implementation after a clean-room review reproduced all 98 vectors from the text alone, covering Python 3.14.6 lexical rules including zero-width NEWLINE, INDENT, and DEDENT tokens. Not yet promoted to profiles/ or implemented in the reference Rust or Go binaries.",
+      "Stage-1 profile py-tokens is implemented in both Rust and Go (gate PY.3 met with zero differential divergences), covering Python 3.14.6 lexical rules including zero-width NEWLINE, INDENT, and DEDENT tokens, after a clean-room review reproduced all 98 vectors from the text alone. Promotion to profiles/ (PY.1–PY.2) and own M3 split (PY.4) remain open.",
     sourcePath: "research/drafts/extraction-profile-python.md",
   },
   {
@@ -644,7 +645,7 @@ export const COVERAGE_ITEMS: readonly CoverageItem[] = [
     status: "Implemented (draft)",
     statusTone: "active" as const,
     summary:
-      "Stage-1 profile text-plain is implemented in both Rust and Go with three channels (exact, folded, skeleton) pinned to Unicode 17.0.0 (gate TXT.3 met, matching all vendored vectors with zero differential divergences). text-markdown stays a draft; proposed UC-8 wording and corpus stages remain open.",
+      "Stage-1 profile text-plain is implemented in both Rust and Go with three channels (exact, folded, skeleton) pinned to Unicode 17.0.0 (gate TXT.3 met with zero differential divergences). Stage-1 prose evaluation (TXT.4, e-txt-1) closed as negative-result on repeated-structure prose; text-markdown, UC-8 wording, and Stage-2 corpus work remain open.",
     sourcePath: "profiles/text.md",
   },
   {
@@ -690,9 +691,9 @@ export const PLANNED_CAPABILITIES = [
   {
     title: "Signed, timestamped registration records",
     gates: "M4.3–M4.6",
-    status: "Planned (design draft-5 confirmed)",
+    status: "Implemented offline-first (M4.3–M4.6 open)",
     summary:
-      "Library-based DSSE signing and verification, an in-toto statement adapter, explicit trust policies, and timestamp evidence. Design draft-5 plus §4.7 self-declared AI-use claim and §9.1 text reference (tw1-) are confirmed by non-author review and ready for offline-first implementation.",
+      "Library-based DSSE signing and verification, an in-toto statement adapter, explicit trust policies, and timestamp evidence. Offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1 tw1- text reference, REG.1/REG.2) is implemented and cross-checked in both Rust and Go with zero divergences; M4.3–M4.6 stay open pending vector promotion and timestamp-service decisions.",
     sourcePath: "research/drafts/registration-record.md",
   },
   {

@@ -212,10 +212,13 @@ sections:
         independent Go and Rust implementations ({{fact:m4.totalOutcomes}} total
         signing-policy outcomes; gate `M4.2`).
       - >-
-        Production signing, negative cryptographic vectors, trust policies, and
-        optional RFC 3161 timestamp adapters are planned under gates
-        `M4.3–M4.6`. A signature authenticates the record bytes separately from
-        any similarity comparison. {{source:research/experiment-checkpoint.md}} ·
+        Offline-first registration records (draft-5 plus §4.7 `claims.aiUse` and
+        §9.1 `tw1-` text references, `REG.1`/`REG.2`) are implemented and
+        cross-checked in both Rust and Go with zero divergences, while vector
+        promotion, trust policies, and optional RFC 3161 timestamp adapters
+        remain open under gates `M4.3–M4.6`. A signature authenticates the
+        record bytes separately from any similarity comparison.
+        {{source:research/experiment-checkpoint.md}} ·
         {{source:research/fragment-policy-checkpoint.md}} ·
         {{source:spec/attestations.md}}
     actions:

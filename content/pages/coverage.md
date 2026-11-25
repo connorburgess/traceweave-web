@@ -48,16 +48,16 @@ sections:
           (TS.4) is open.
         sourcePath: profiles/typescript.md
       - kind: Python
-        profiles: py-tokens (draft-1, frozen)
-        status: Specified
-        statusTone: specified
+        profiles: py-tokens (draft-1, implemented; pending promotion)
+        status: Implemented (draft)
+        statusTone: active
         summary: >-
-          Stage-1 profile py-tokens is frozen for implementation after a
-          clean-room review reproduced all {{fact:py.vectors}} vectors from the
-          text alone, covering Python {{fact:py.refVersion}} lexical rules
-          including zero-width NEWLINE, INDENT, and DEDENT tokens. Not yet
-          promoted to profiles/ or implemented in the reference Rust or Go
-          binaries.
+          Stage-1 profile py-tokens is implemented in both Rust and Go (gate
+          PY.3 met with zero differential divergences), covering Python
+          {{fact:py.refVersion}} lexical rules including zero-width NEWLINE,
+          INDENT, and DEDENT tokens, after a clean-room review reproduced all
+          {{fact:py.vectors}} vectors from the text alone. Promotion to
+          profiles/ (PY.1–PY.2) and own M3 split (PY.4) remain open.
         sourcePath: research/drafts/extraction-profile-python.md
       - kind: Plain text and Markdown
         profiles: text-plain (draft-1, implemented); text-markdown (draft-2)
@@ -66,9 +66,10 @@ sections:
         summary: >-
           Stage-1 profile text-plain is implemented in both Rust and Go with
           three channels (exact, folded, skeleton) pinned to Unicode
-          {{fact:spec.unicodeVersion}} (gate TXT.3 met, matching all vendored
-          vectors with zero differential divergences). text-markdown stays a
-          draft; proposed UC-8 wording and corpus stages remain open.
+          {{fact:spec.unicodeVersion}} (gate TXT.3 met with zero differential
+          divergences). Stage-1 prose evaluation (TXT.4, e-txt-1) closed as
+          negative-result on repeated-structure prose; text-markdown, UC-8
+          wording, and Stage-2 corpus work remain open.
         sourcePath: profiles/text.md
       - kind: Still images — fingerprints
         profiles: PDQ and ISCC Image-Code v0 (draft research)
@@ -111,12 +112,12 @@ sections:
         anchor: later-profiles-and-sequence
     noteHeading: Note on Python
     noteBody: >-
-      Python is a code-profile target: `py-tokens` `draft-1` is specified and
-      frozen for stage-1 implementation, but not yet implemented in the Rust or
-      Go binaries (gates `PY.1–PY.4`). Using Python in the specification
-      repository for schema validation and vector checkers is separate from the
-      Python profile ({{source:ROADMAP.md#pilot-languages}} ·
-      {{source:research/drafts/extraction-profile-python.md}}).
+      Python is a code-profile target: `py-tokens` `draft-1` is implemented in
+      both Rust and Go (gate `PY.3` met), while promotion to `profiles/`
+      (`PY.1–PY.2`) and the M3 evaluation split (`PY.4`) stay open. Using Python
+      in the specification repository for schema validation and vector checkers
+      is separate from the Python profile ({{source:ROADMAP.md#pilot-languages}}
+      · {{source:research/drafts/extraction-profile-python.md}}).
 
   - type: planned-extensions
     id: planned-heading
@@ -128,13 +129,14 @@ sections:
     cards:
       - title: Signed, timestamped registration records
         gates: M4.3–M4.6
-        status: Planned (design draft-5 confirmed)
+        status: Implemented offline-first (M4.3–M4.6 open)
         summary: >-
           Library-based DSSE signing and verification, an in-toto statement
-          adapter, explicit trust policies, and timestamp evidence. Design
-          draft-5 plus §4.7 self-declared AI-use claim and §9.1 text reference
-          (tw1-) are confirmed by non-author review and ready for offline-first
-          implementation.
+          adapter, explicit trust policies, and timestamp evidence.
+          Offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1
+          tw1- text reference, REG.1/REG.2) is implemented and cross-checked in
+          both Rust and Go with zero divergences; M4.3–M4.6 stay open pending
+          vector promotion and timestamp-service decisions.
         sourcePath: research/drafts/registration-record.md
       - title: Review packets for licence and origin history
         gates: M2.7

@@ -156,7 +156,7 @@ sections:
         records: >-
           DSSE / in-toto attestation, explicit trust policy, and optional RFC
           3161 timestamp
-        status: Planned (M4.3–M4.6)
+        status: Offline-first draft in Rust & Go (M4.3–M4.6 open)
         statusTone: default
       - layer: Origin & licence history
         records: Separate review-packet record linked by `bodySha256`

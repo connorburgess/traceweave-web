@@ -102,8 +102,9 @@ sections:
           Library-based DSSE signing and verification, independent commitment
           code, negative cryptographic vectors, in-toto adapter, trust policy,
           optional timestamp adapter decision, and non-author review.
-          Registration design draft-5 (§4.7 self-declared AI-use claim, §9.1
-          tw1- text reference) is confirmed by non-author review.
+          Offline-first registration (draft-5 + §4.7 claims.aiUse + §9.1 tw1-,
+          REG.1/REG.2) is implemented and cross-checked in both Rust and Go with
+          zero divergences; M4.3–M4.6 stay open pending vector promotion.
       - id: M5
         name: Candidate release
         gates: M5.1–M5.5
@@ -131,8 +132,9 @@ sections:
       - track: PY (PY.1–PY.4)
         scope: Python profile (py-tokens)
         state: >-
-          py-tokens draft-1 frozen for stage-1 implementation after clean-room
-          review; specified, not implemented.
+          1 met (PY.3: py-tokens implemented in both Rust and Go with zero
+          differential divergences); promotion to profiles/ (PY.1–PY.2) and M3
+          split (PY.4) open.
       - track: IMGF (IMGF.1–IMGF.6)
         scope: Still-image fingerprints (PDQ & ISCC)
         state: >-
@@ -148,7 +150,8 @@ sections:
         scope: Plain text & Markdown prose
         state: >-
           1 met (TXT.3: text-plain implemented in both Rust and Go with zero
-          differential divergences); UC-8 acceptance and corpus stages open.
+          differential divergences), 1 negative-result (TXT.4 Stage-1 prose
+          evaluation e-txt-1); UC-8 acceptance and Stage-2 corpus open.
       - track: C2PA (C2PA.1–C2PA.3)
         scope: C2PA soft-binding mapping
         state: >-

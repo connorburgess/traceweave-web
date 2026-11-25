@@ -33,11 +33,13 @@ sections:
         variant: secondary
     statusLabel: "Where it stands today:"
     statusBody: >-
-      source code is working end to end across Go, Rust, TypeScript, and
-      JavaScript, alongside plain text (draft profiles implemented in both Rust
-      and Go). Python is specified. Images have been measured in two studies.
-      More languages, audio, and signed, timestamped registration records are
-      planned. It is experimental and not yet evaluated on real-world data.
+      source code is working end to end across Go, Rust, TypeScript, JavaScript,
+      and Python, alongside plain text (draft profiles implemented in both Rust
+      and Go, with Stage-1 prose evaluation TXT.4 recorded as negative-result).
+      Offline-first registration records are implemented in both Rust and Go (M4
+      gates still open). Images have been measured in two studies; audio and
+      hosted timestamping remain planned. It is experimental and not yet
+      evaluated on real-world data.
     statusSources: >-
       Sources: {{source:README.md}} ·
       {{source:ROADMAP.md#pilot-languages|ROADMAP.md#pilot-languages}} ·

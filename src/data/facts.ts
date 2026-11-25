@@ -44,9 +44,9 @@ export const ROADMAP_COUNTS = {
   later: {
     label: "Later profiles, EXT and RC",
     total: 55,
-    met: 13,
+    met: 16,
     negativeResult: 2,
-    open: 40,
+    open: 37,
     metIds: [
       "TS.3",
       "PY.3",
@@ -60,7 +60,10 @@ export const ROADMAP_COUNTS = {
       "IMG.4",
       "TXT.3",
       "TXT.7",
+      "RES.1",
       "C2PA.3",
+      "SK.1",
+      "SK.2",
     ],
   },
 } as const;
@@ -348,7 +351,7 @@ export const CITED_FACTS: readonly CitedFact[] = [
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Later profiles, EXT and RC gate counts",
-    numbers: ["55", "13", "2", "40"],
+    numbers: ["55", "16", "2", "37"],
   },
   {
     id: "python-profile-draft",
@@ -730,9 +733,9 @@ export const PLANNED_CAPABILITIES = [
   {
     title: "Agent interoperability skill and A2A",
     gates: "SK.1–SK.5",
-    status: "Planned",
+    status: "SK.1–SK.2 met; A2A planned",
     summary:
-      "An optional CLI-wrapping skill keeping private catalogues, paths, and keys out of model-visible transcripts (SK.1–SK.2), plus local-first A2A registration and verification skills (SK.3–SK.5).",
+      "An optional CLI-wrapping skill keeping private catalogues, paths, and keys out of model-visible transcripts (SK.1–SK.2 met with zero canary leaks across both Rust and Go CLIs), plus planned local-first A2A registration and verification skills (SK.3–SK.5).",
     sourcePath: "ROADMAP.md",
     anchor: "later-profiles-and-sequence",
   },

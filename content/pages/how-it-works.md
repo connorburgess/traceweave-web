@@ -164,8 +164,8 @@ sections:
         statusTone: active
       - layer: Agent interoperability
         records: Optional CLI-wrapping skill with transcript canary checks
-        status: Planned (SK.1–SK.2)
-        statusTone: default
+        status: Working draft (SK.1–SK.2 met; A2A planned)
+        statusTone: active
     actions:
       - label: See what content types are covered
         href: /coverage

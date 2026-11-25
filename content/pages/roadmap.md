@@ -163,9 +163,9 @@ sections:
       - track: SK (SK.1–SK.5)
         scope: Optional agent skill and A2A design
         state: >-
-          SK.1–SK.2 planned after I2 (CLI wrapping and canary tests); SK.3–SK.5
-          (A2A registration/verification skills and hosted-service decision)
-          planned.
+          2 met (SK.1–SK.2: CLI-wrapping skill and canary leak suite met across
+          Rust and Go CLIs); SK.3–SK.5 (A2A registration/verification skills and
+          hosted-service decision) planned.
       - track: WEB (WEB.0–WEB.6)
         scope: Browser tool and testing page
         state: >-
@@ -173,7 +173,9 @@ sections:
           verify flows after M3.4.
       - track: BIN, RES, STRUCT, KEYED
         scope: Binaries, resolver threat model, structural & keyed matching
-        state: Gated after M3.4; not started.
+        state: >-
+          1 met (RES.1: optional-only resolver threat model confirmed); BIN,
+          RES.2–RES.3, STRUCT, and KEYED gated after M3.4.
       - track: EXT & RC (EXT.1, RC.1–RC.3)
         scope: External review and 1.0 candidate criteria
         state: >-

@@ -159,11 +159,12 @@ sections:
         sourcePath: research/drafts/c2pa-mapping.md
       - title: Agent interoperability skill and A2A
         gates: SK.1–SK.5
-        status: Planned
+        status: SK.1–SK.2 met; A2A planned
         summary: >-
           An optional CLI-wrapping skill keeping private catalogues, paths, and
-          keys out of model-visible transcripts (SK.1–SK.2), plus local-first
-          A2A registration and verification skills (SK.3–SK.5).
+          keys out of model-visible transcripts (SK.1–SK.2 met with zero canary
+          leaks across both Rust and Go CLIs), plus planned local-first A2A
+          registration and verification skills (SK.3–SK.5).
         sourcePath: ROADMAP.md
         anchor: later-profiles-and-sequence
     actions:

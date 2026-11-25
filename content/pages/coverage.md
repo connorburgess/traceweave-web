@@ -94,13 +94,15 @@ sections:
           an embedded mark is only a finding aid, not evidence of origin.
         sourcePath: research/experiments/image-mark/results/e-img-m-2/RESULTS.md
       - kind: Audio
-        profiles: None
-        status: Not started
+        profiles: None (scoping note only)
+        status: Scoped (no profile yet)
         statusTone: unstarted
         summary: >-
-          Listed as future research scope only. No profile, extraction contract,
-          or experiments exist yet.
-        sourcePath: profiles/README.md
+          Lane 15 scopes exact-byte M4 registration for audio/video today and
+          evaluates open offline deterministic fingerprint candidates while
+          keeping watermarks finding-aid-only. No extraction profile or
+          experiment exists yet.
+        sourcePath: research/lanes/15-audio-video-scoping.md
       - kind: Compiled binaries
         profiles: None
         status: Not started
@@ -149,11 +151,12 @@ sections:
         sourcePath: schemas/review-packet.schema.json
       - title: C2PA soft-binding mapping
         gates: C2PA.1–C2PA.3
-        status: In progress (draft)
+        status: In progress (C2PA.3 met)
         summary: >-
-          Mapping Traceweave fingerprints and marks onto C2PA soft-binding
-          assertions with round-trip fixtures. No C2PA compatibility is claimed
-          until the fixtures pass.
+          Mapping Traceweave catalogues, reports, mark detection, and M4 tw1-
+          registration links onto C2PA 2.5 assertions under org.traceweave.*
+          (C2PA.1 audited with fixtures; C2PA.3 met). No C2PA compatibility is
+          claimed until C2PA.2 round-trip tool fixtures pass.
         sourcePath: research/drafts/c2pa-mapping.md
       - title: Agent interoperability skill and A2A
         gates: SK.1–SK.5

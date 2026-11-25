@@ -144,8 +144,8 @@ sections:
         scope: Still-image embedded marks (TrustMark-Q & PixelSeal)
         state: >-
           {{fact:track.img.met}} met (IMG.0–IMG.4, synthetic measured run
-          e-img-m-2 committed and rechecked); container field placement (IMG.5)
-          open.
+          e-img-m-2 committed and rechecked); finding-aid record schema and
+          fixtures (IMG.5) drafted and reviewed, awaiting closure.
       - track: TXT (TXT.0–TXT.8)
         scope: Plain text & Markdown prose
         state: >-
@@ -155,8 +155,9 @@ sections:
       - track: C2PA (C2PA.1–C2PA.3)
         scope: C2PA soft-binding mapping
         state: >-
-          In progress with draft fixtures; no compatibility claimed until
-          round-trip fixtures pass.
+          1 met (C2PA.3: no compatibility claim until C2PA.2 passes); C2PA.1
+          (C2PA 2.5 mapping + M4 registration link) audited with fixtures,
+          C2PA.2 round-trip fixtures open.
       - track: SK (SK.1–SK.5)
         scope: Optional agent skill and A2A design
         state: >-

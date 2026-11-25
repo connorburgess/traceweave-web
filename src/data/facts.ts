@@ -43,9 +43,9 @@ export const ROADMAP_COUNTS = {
   later: {
     label: "Later profiles, EXT and RC",
     total: 55,
-    met: 11,
+    met: 12,
     negativeResult: 1,
-    open: 43,
+    open: 42,
     metIds: [
       "TS.3",
       "PY.3",
@@ -58,6 +58,7 @@ export const ROADMAP_COUNTS = {
       "IMG.3",
       "IMG.4",
       "TXT.3",
+      "C2PA.3",
     ],
   },
 } as const;
@@ -345,7 +346,7 @@ export const CITED_FACTS: readonly CitedFact[] = [
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Later profiles, EXT and RC gate counts",
-    numbers: ["55", "11", "1", "43"],
+    numbers: ["55", "12", "1", "42"],
   },
   {
     id: "python-profile-draft",
@@ -550,6 +551,12 @@ export const CITED_FACTS: readonly CitedFact[] = [
       { value: "9.1", sourceMatch: "§9.1" },
     ],
   },
+  {
+    id: "c2pa-av-scoping",
+    sourcePath: "ROADMAP.md",
+    label: "C2PA 2.5 mapping pin and Lane 15 audio/video scoping",
+    numbers: ["2.5", "15"],
+  },
 ];
 
 export interface SpecimenAsset {
@@ -668,12 +675,12 @@ export const COVERAGE_ITEMS: readonly CoverageItem[] = [
   },
   {
     kind: "Audio",
-    profiles: "None",
-    status: "Not started",
+    profiles: "None (scoping note only)",
+    status: "Scoped (no profile yet)",
     statusTone: "unstarted" as const,
     summary:
-      "Listed as future research scope only. No profile, extraction contract, or experiments exist yet.",
-    sourcePath: "profiles/README.md",
+      "Lane 15 scopes exact-byte M4 registration for audio/video today and evaluates open offline deterministic fingerprint candidates while keeping watermarks finding-aid-only. No extraction profile or experiment exists yet.",
+    sourcePath: "research/lanes/15-audio-video-scoping.md",
   },
   {
     kind: "Compiled binaries",
@@ -707,9 +714,9 @@ export const PLANNED_CAPABILITIES = [
   {
     title: "C2PA soft-binding mapping",
     gates: "C2PA.1–C2PA.3",
-    status: "In progress (draft)",
+    status: "In progress (C2PA.3 met)",
     summary:
-      "Mapping Traceweave fingerprints and marks onto C2PA soft-binding assertions with round-trip fixtures. No C2PA compatibility is claimed until the fixtures pass.",
+      "Mapping Traceweave catalogues, reports, mark detection, and M4 tw1- registration links onto C2PA 2.5 assertions under org.traceweave.* (C2PA.1 audited with fixtures; C2PA.3 met). No C2PA compatibility is claimed until C2PA.2 round-trip tool fixtures pass.",
     sourcePath: "research/drafts/c2pa-mapping.md",
   },
   {

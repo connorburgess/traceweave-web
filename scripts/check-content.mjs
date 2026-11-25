@@ -448,7 +448,8 @@ function main() {
   const roadmapText = fs.readFileSync(path.join(specDir, "ROADMAP.md"), "utf8");
   if (
     !readmeText.includes("source code, writing, images and audio") &&
-    !readmeText.includes("text, images, and audio")
+    !readmeText.includes("text, images, and audio") &&
+    !readmeText.includes("source code, writing, and planned image/audio profiles")
   ) {
     errors.push(
       "README.md in spec checkout no longer lists multi-medium scope (code, writing/text, images, audio)"

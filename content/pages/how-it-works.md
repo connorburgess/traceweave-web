@@ -156,8 +156,8 @@ sections:
         records: >-
           DSSE / in-toto attestation, explicit trust policy, and optional RFC
           3161 timestamp
-        status: 5 of 6 M4 gates met (M4.4 re-vendor open)
-        statusTone: default
+        status: Working draft (all 6 of 6 M4 gates met)
+        statusTone: active
       - layer: Origin & licence history
         records: Separate review-packet record linked by `bodySha256`
         status: Working draft (M2.7 spec & CLI met)

@@ -36,9 +36,9 @@ sections:
       source code is working end to end across Go, Rust, TypeScript, JavaScript,
       and Python, alongside plain text (draft profiles implemented in both Rust
       and Go, with Stage-1 prose evaluation TXT.4 recorded as negative-result).
-      Offline-first registration records are implemented in both Rust and Go (M4
-      gates still open). Images have been measured in two studies; audio and
-      hosted timestamping remain planned. It is experimental and not yet
+      Offline-first registration records are implemented in both Rust and Go
+      (all 6 of 6 M4 gates met). Images have been measured in two studies; audio
+      and hosted timestamping remain planned. It is experimental and not yet
       evaluated on real-world data.
     statusSources: >-
       Sources: {{source:README.md}} ·

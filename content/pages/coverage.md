@@ -130,14 +130,14 @@ sections:
     cards:
       - title: Signed, timestamped registration records
         gates: M4.1–M4.6
-        status: 5 of 6 M4 gates met (M4.4 open)
+        status: Met (6 of 6 M4 gates)
         summary: >-
-          Promoted to spec/registration-record.md, spec/trust-policy.md,
-          test-vectors/registration/, and test-vectors/intoto-adapter/
-          (M4.1–M4.3, M4.5–M4.6 met, including 4 accept / 26 reject in-toto
-          fixtures and disclosure review). Offline-first registration (draft-5
-          plus §4.7 claims.aiUse and §9.1 tw1-) is implemented in Rust and Go;
-          M4.4 awaits re-vendoring against the promoted spec commit.
+          All 6 M4 gates are met: spec/registration-record.md,
+          spec/trust-policy.md, test-vectors/registration/, and
+          test-vectors/intoto-adapter/ (4 accept / 26 reject fixtures) are
+          promoted, disclosure review is closed, and independent Rust and Go
+          offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1
+          tw1-) passes every promoted vector with zero divergences.
         sourcePath: spec/registration-record.md
       - title: Review packets for licence and origin history
         gates: M2.7

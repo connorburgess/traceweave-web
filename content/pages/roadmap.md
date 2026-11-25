@@ -101,10 +101,11 @@ sections:
         summary: >-
           Library-based DSSE signing and verification, independent commitment
           code, promoted registration and in-toto vectors (4 accept / 26 reject
-          fixtures), trust policy, timestamp adapter decision, and non-author
-          commitment/disclosure review (M4.1–M4.3, M4.5–M4.6 met). Offline-first
-          registration (draft-5 + §4.7 claims.aiUse + §9.1 tw1-) is implemented
-          in Rust and Go; M4.4 awaits re-vendoring against the promoted spec.
+          fixtures), trust policy, timestamp adapter decision, non-author
+          commitment/disclosure review, and independent Rust and Go
+          offline-first registration (draft-5 + §4.7 claims.aiUse + §9.1 tw1-)
+          passing every promoted vector with zero divergences (all M4.1–M4.6
+          met).
       - id: M5
         name: Candidate release
         gates: M5.1–M5.5

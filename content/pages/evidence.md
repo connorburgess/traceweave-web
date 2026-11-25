@@ -213,15 +213,14 @@ sections:
         independent Go and Rust implementations ({{fact:m4.totalOutcomes}} total
         signing-policy outcomes; gate `M4.2`).
       - >-
-        Gates `M4.3`, `M4.5`, and `M4.6` are met with promoted normative files
+        All 6 `M4` gates (`M4.1–M4.6`) are met with promoted normative files
         (`spec/registration-record.md`, `spec/trust-policy.md`,
         `test-vectors/registration/`, and `test-vectors/intoto-adapter/` with 4
         accept / 26 reject fixtures, plus non-author commitment/disclosure
-        review). Offline-first registration records (draft-5 plus §4.7
-        `claims.aiUse` and §9.1 `tw1-` text references) are implemented in both
-        Rust and Go; only `M4.4` remains open pending re-vendoring against the
-        promoted spec commit. A signature authenticates the record bytes
-        separately from any similarity comparison.
+        review). Independent Rust and Go offline-first registration (draft-5
+        plus §4.7 `claims.aiUse` and §9.1 `tw1-` text references) passes every
+        promoted vector with zero divergences. A signature authenticates the
+        record bytes separately from any similarity comparison.
         {{source:research/experiment-checkpoint.md}} ·
         {{source:research/fragment-policy-checkpoint.md}} ·
         {{source:spec/registration-record.md}} ·

@@ -10,9 +10,9 @@ export const ROADMAP_COUNTS = {
   core: {
     label: "Core M0–M5",
     total: 47,
-    met: 27,
+    met: 28,
     negativeResult: 0,
-    open: 20,
+    open: 19,
     metIds: [
       "M0.1",
       "M0.2",
@@ -39,6 +39,7 @@ export const ROADMAP_COUNTS = {
       "M4.1",
       "M4.2",
       "M4.3",
+      "M4.4",
       "M4.5",
       "M4.6",
     ],
@@ -189,7 +190,7 @@ export const FACT_VALUES: Record<string, string> = {
   "milestone.m2.status": "11 of 11 met (M2.1–M2.11)",
   "milestone.m2e.status": "0 of 8 met",
   "milestone.m3.status": "1 of 7 met (M3.0)",
-  "milestone.m4.status": "5 of 6 met (M4.1, M4.2, M4.3, M4.5, M4.6)",
+  "milestone.m4.status": "6 of 6 met (M4.1–M4.6)",
   "milestone.m5.status": "0 of 5 met",
   "track.imgf.met": "3",
   "track.img.met": "5",
@@ -351,7 +352,7 @@ export const CITED_FACTS: readonly CitedFact[] = [
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Core M0–M5 roadmap gate counts",
-    numbers: ["47", "27", "0", "20", { value: "11", sourceMatch: "M2.1–M2.11" }],
+    numbers: ["47", "28", "0", "19", { value: "11", sourceMatch: "M2.1–M2.11" }],
   },
   {
     id: "roadmap-later-gates",
@@ -722,9 +723,9 @@ export const PLANNED_CAPABILITIES = [
   {
     title: "Signed, timestamped registration records",
     gates: "M4.1–M4.6",
-    status: "5 of 6 M4 gates met (M4.4 open)",
+    status: "Met (6 of 6 M4 gates)",
     summary:
-      "Promoted to spec/registration-record.md, spec/trust-policy.md, test-vectors/registration/, and test-vectors/intoto-adapter/ (M4.1–M4.3, M4.5–M4.6 met, including 4 accept / 26 reject in-toto fixtures and disclosure review). Offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1 tw1-) is implemented in Rust and Go; M4.4 awaits re-vendoring against the promoted spec commit.",
+      "All 6 M4 gates are met: spec/registration-record.md, spec/trust-policy.md, test-vectors/registration/, and test-vectors/intoto-adapter/ (4 accept / 26 reject fixtures) are promoted, disclosure review is closed, and independent Rust and Go offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1 tw1-) passes every promoted vector with zero divergences.",
     sourcePath: "spec/registration-record.md",
   },
   {

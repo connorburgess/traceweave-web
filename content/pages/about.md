@@ -67,10 +67,10 @@ sections:
             private channel without posting the exploit or sensitive material.
           - "**Contact:** [connor@seatbeltlabs.com](mailto:connor@seatbeltlabs.com)."
         actions:
-          - label: Open an issue ↗
+          - label: Open an issue
             href: "spec-issues:"
             variant: primary
-          - label: Specification repo ↗
+          - label: Specification repo
             href: "spec-repo:"
             variant: secondary
 
@@ -98,13 +98,13 @@ sections:
         Illustrations on this site are generated images, not photographs or
         results.
     actions:
-      - label: Documentation site (docs.traceweave.org) ↗
+      - label: Documentation site (docs.traceweave.org)
         href: "docs:"
         variant: secondary
-      - label: Read CONTRIBUTING.md ↗
+      - label: Read CONTRIBUTING.md
         href: spec:CONTRIBUTING.md
         variant: secondary
-      - label: Read SECURITY.md ↗
+      - label: Read SECURITY.md
         href: spec:SECURITY.md
         variant: secondary
 ---

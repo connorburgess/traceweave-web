@@ -11,6 +11,6 @@ navItems:
     label: Roadmap
   - href: /about
     label: About
-docsLabel: Docs ↗
+docsLabel: Docs
 docsHref: "docs:"
 ---

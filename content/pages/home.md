@@ -22,10 +22,10 @@ sections:
       - label: How it works
         href: /how-it-works
         variant: primary
-      - label: Read the docs ↗
+      - label: Read the docs
         href: "docs:"
         variant: secondary
-      - label: Specification repository ↗
+      - label: Specification repository
         href: "spec-repo:"
         variant: secondary
       - label: Roadmap
@@ -54,7 +54,7 @@ sections:
       as the first two case studies, validated across two independent
       implementations to show the specification can be built independently —
       exercises this pipeline end to end today.
-    linkText: Walk through a real published example →
+    linkText: Walk through a real published example
     linkHref: /how-it-works
 
   - type: evidence-scope
@@ -181,10 +181,10 @@ sections:
       - label: Content coverage
         href: /coverage
         variant: secondary
-      - label: Full documentation ↗
+      - label: Full documentation
         href: "docs:"
         variant: secondary
-      - label: Read ROADMAP.md ↗
+      - label: Read ROADMAP.md
         href: spec:ROADMAP.md
         variant: secondary
 ---

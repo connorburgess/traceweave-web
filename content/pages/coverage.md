@@ -169,7 +169,7 @@ sections:
       - label: View roadmap gates
         href: /roadmap
         variant: secondary
-      - label: Profile documents on docs.traceweave.org ↗
+      - label: Profile documents on docs.traceweave.org
         href: "docs:"
         variant: secondary
 ---

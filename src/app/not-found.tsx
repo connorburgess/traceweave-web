@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Button } from "@/components/Button";
 import { DOCS_URL } from "@/lib/sources";
 
 export const metadata: Metadata = {
@@ -24,15 +24,15 @@ export default function NotFound() {
             documentation site.
           </p>
           <div className="actions">
-            <Link href="/" className="btn btn-primary">
+            <Button href="/" variant="primary">
               Back to home
-            </Link>
-            <Link href="/how-it-works" className="btn btn-secondary">
+            </Button>
+            <Button href="/how-it-works" variant="secondary">
               How it works
-            </Link>
-            <a href={DOCS_URL} className="btn btn-secondary" rel="noopener noreferrer">
-              Documentation site ↗
-            </a>
+            </Button>
+            <Button href={DOCS_URL} variant="secondary" external>
+              Documentation site
+            </Button>
           </div>
         </div>
       </div>

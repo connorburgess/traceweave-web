@@ -222,7 +222,7 @@ sections:
       - label: See all roadmap gates
         href: /roadmap
         variant: primary
-      - label: Read full evaluation notes on docs.traceweave.org ↗
+      - label: Read full evaluation notes on docs.traceweave.org
         href: "docs:"
         variant: secondary
 ---

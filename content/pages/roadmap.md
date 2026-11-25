@@ -174,18 +174,18 @@ sections:
           Open; requires named non-contributor review and two conforming
           implementations per stable profile.
     actions:
-      - label: Read full ROADMAP.md ↗
+      - label: Read full ROADMAP.md
         href: spec:ROADMAP.md
         variant: primary
-      - label: Active work queue ↗
+      - label: Active work queue
         href: spec:research/work-queue.md
         variant: secondary
-      - label: Implementation plan ↗
+      - label: Implementation plan
         href: spec:docs/implementation-repo-plan.md
         variant: secondary
-      - label: Docs site ↗
+      - label: Docs site
         href: "docs:"
         variant: secondary
-    footerLinkText: Learn how decisions, reviews, and contributions work →
+    footerLinkText: Learn how decisions, reviews, and contributions work
     footerLinkHref: /about
 ---

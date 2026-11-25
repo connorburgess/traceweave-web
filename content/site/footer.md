@@ -22,17 +22,17 @@ pageLinks:
 sourcesHeading: Project & Sources
 sourceLinks:
   - href: "docs:"
-    label: Documentation site ↗
+    label: Documentation site
   - href: "spec-repo:"
-    label: Specification repository ↗
+    label: Specification repository
   - href: spec:ROADMAP.md
-    label: Published roadmap ↗
+    label: Published roadmap
   - href: "spec-issues:"
-    label: Report an issue ↗
+    label: Report an issue
   - href: spec:SECURITY.md
-    label: Security & private evidence ↗
+    label: Security & private evidence
   - href: spec:LICENSE.md
-    label: Licences ↗
+    label: Licences
   - href: mailto:connor@seatbeltlabs.com
     label: Contact
 maintainerName: SEATBELT LABS

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Button } from "@/components/Button";
 import { ActionLinks, RichText } from "@/components/RichText";
 import { SourceLink } from "@/components/SourceLink";
 import { SpecimenPicture } from "@/components/SpecimenPicture";
@@ -140,7 +140,9 @@ export function PageSections({ sections }: { sections: readonly PageSection[] })
                   </p>
                   <WorkflowDiagram />
                   <p style={{ marginBottom: 0 }}>
-                    <Link href={section.linkHref}>{section.linkText}</Link>
+                    <Button variant="link" size="compact" href={section.linkHref}>
+                      {section.linkText}
+                    </Button>
                   </p>
                 </div>
               </section>
@@ -848,7 +850,9 @@ export function PageSections({ sections }: { sections: readonly PageSection[] })
 
                   <ActionLinks actions={section.actions} />
                   <p style={{ marginTop: "1rem", marginBottom: 0 }}>
-                    <Link href={section.footerLinkHref}>{section.footerLinkText}</Link>
+                    <Button variant="link" size="compact" href={section.footerLinkHref}>
+                      {section.footerLinkText}
+                    </Button>
                   </p>
                 </div>
               </section>

@@ -173,7 +173,7 @@ sections:
       - label: Evidence & limits
         href: /evidence
         variant: secondary
-      - label: Technical specs on docs.traceweave.org ↗
+      - label: Technical specs on docs.traceweave.org
         href: "docs:"
         variant: secondary
 ---

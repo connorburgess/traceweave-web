@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { Button } from "@/components/Button";
 import { SourceLink } from "@/components/SourceLink";
 import { FACT_VALUES } from "@/data/facts";
 import { DOCS_URL, SPEC_ISSUES_URL, SPEC_TREE_URL, specUrl } from "@/lib/sources";
@@ -130,19 +131,17 @@ export function ActionLinks({
   return (
     <div className="actions" style={style}>
       {actions.map((action) => {
-        const cls = action.variant === "primary" ? "btn btn-primary" : "btn btn-secondary";
         const { url, external } = resolveHref(action.href);
-        if (external) {
-          return (
-            <a key={`${action.href}-${action.label}`} href={url} className={cls} rel="noopener noreferrer">
-              {action.label}
-            </a>
-          );
-        }
         return (
-          <Link key={`${action.href}-${action.label}`} href={url} className={cls}>
+          <Button
+            key={`${action.href}-${action.label}`}
+            variant={action.variant}
+            href={url}
+            external={external}
+            icon="arrow"
+          >
             {action.label}
-          </Link>
+          </Button>
         );
       })}
     </div>

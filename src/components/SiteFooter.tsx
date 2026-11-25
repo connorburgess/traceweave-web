@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRightIcon } from "@/components/Button";
 import { RichText, resolveHref } from "@/components/RichText";
 import { TraceweaveMark } from "@/components/TraceweaveMark";
 import type { SiteFooterContent } from "@/lib/content";
@@ -47,8 +48,9 @@ export function SiteFooter({ content }: { content: SiteFooterContent }) {
                 if (external) {
                   return (
                     <li key={item.href}>
-                      <a href={url} rel="noopener noreferrer">
-                        {item.label}
+                      <a href={url} className="footer-external-link" rel="noopener noreferrer">
+                        <span>{item.label}</span>
+                        <ArrowUpRightIcon size={15} className="inline-arrow" />
                       </a>
                     </li>
                   );

@@ -100,11 +100,12 @@ sections:
         status: "{{fact:milestone.m4.status}}"
         summary: >-
           Library-based DSSE signing and verification, independent commitment
-          code, negative cryptographic vectors, in-toto adapter, trust policy,
-          optional timestamp adapter decision, and non-author review.
-          Offline-first registration (draft-5 + §4.7 claims.aiUse + §9.1 tw1-,
-          REG.1/REG.2) is implemented and cross-checked in both Rust and Go with
-          zero divergences; M4.3–M4.6 stay open pending vector promotion.
+          code, negative cryptographic vectors, in-toto adapter (4 accept / 26
+          reject fixtures), trust policy, optional timestamp adapter decision
+          (M4.5 met), and non-author review. Offline-first registration
+          (draft-5 + §4.7 claims.aiUse + §9.1 tw1-, REG.1/REG.2) is implemented
+          and cross-checked in both Rust and Go with zero divergences; M4.3–M4.4
+          and M4.6 stay open.
       - id: M5
         name: Candidate release
         gates: M5.1–M5.5
@@ -149,9 +150,10 @@ sections:
       - track: TXT (TXT.0–TXT.8)
         scope: Plain text & Markdown prose
         state: >-
-          1 met (TXT.3: text-plain implemented in both Rust and Go with zero
-          differential divergences), 1 negative-result (TXT.4 Stage-1 prose
-          evaluation e-txt-1); UC-8 acceptance and Stage-2 corpus open.
+          2 met (TXT.3: text-plain implemented in both Rust and Go with zero
+          divergences; TXT.7: limits citations recounted), 2 negative-result
+          (TXT.4 Stage-1 prose evaluation e-txt-1; TXT.8 Unicode text marks);
+          UC-8 acceptance and Stage-2 corpus open.
       - track: C2PA (C2PA.1–C2PA.3)
         scope: C2PA soft-binding mapping
         state: >-

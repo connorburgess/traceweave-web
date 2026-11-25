@@ -66,10 +66,10 @@ sections:
         summary: >-
           Stage-1 profile text-plain is implemented in both Rust and Go with
           three channels (exact, folded, skeleton) pinned to Unicode
-          {{fact:spec.unicodeVersion}} (gate TXT.3 met with zero differential
-          divergences). Stage-1 prose evaluation (TXT.4, e-txt-1) closed as
-          negative-result on repeated-structure prose; text-markdown, UC-8
-          wording, and Stage-2 corpus work remain open.
+          {{fact:spec.unicodeVersion}} (gate TXT.3 met; TXT.7 limits citations
+          met). Stage-1 prose evaluation (TXT.4, e-txt-1) and Unicode text marks
+          (TXT.8) closed as negative-result; text-markdown, UC-8 wording, and
+          Stage-2 corpus work remain open.
         sourcePath: profiles/text.md
       - kind: Still images — fingerprints
         profiles: PDQ and ISCC Image-Code v0 (draft research)
@@ -131,14 +131,13 @@ sections:
     cards:
       - title: Signed, timestamped registration records
         gates: M4.3–M4.6
-        status: Implemented offline-first (M4.3–M4.6 open)
+        status: M4.5 met; offline-first in Rust & Go
         summary: >-
-          Library-based DSSE signing and verification, an in-toto statement
-          adapter, explicit trust policies, and timestamp evidence.
+          M4.5 is met (trust-policy.md, in-toto adapter 4 accept / 26 reject
+          fixtures in validate.py, and timestamp-adapter-decision.md).
           Offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1
           tw1- text reference, REG.1/REG.2) is implemented and cross-checked in
-          both Rust and Go with zero divergences; M4.3–M4.6 stay open pending
-          vector promotion and timestamp-service decisions.
+          both Rust and Go with zero divergences; M4.3–M4.4 and M4.6 stay open.
         sourcePath: research/drafts/registration-record.md
       - title: Review packets for licence and origin history
         gates: M2.7

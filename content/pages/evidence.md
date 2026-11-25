@@ -123,7 +123,8 @@ sections:
             {{fact:prose.awtWords}} words (about {{fact:prose.awtPer1000}} raw
             bits per {{fact:prose.awtWords1000}} words before framing), and had
             no licence file at its pinned commit. No embedded text mark was
-            selected to test.
+            selected to test; gate `TXT.8` closed as `negative-result` for
+            Unicode carriers after non-author verification.
         footer: >-
           {{source:research/lanes/09-evidence-review.md}} ·
           {{source:ROADMAP.md#later-profiles-and-sequence}}
@@ -212,12 +213,14 @@ sections:
         independent Go and Rust implementations ({{fact:m4.totalOutcomes}} total
         signing-policy outcomes; gate `M4.2`).
       - >-
-        Offline-first registration records (draft-5 plus §4.7 `claims.aiUse` and
+        Gate `M4.5` is met (trust policy, in-toto adapter 4 accept / 26 reject
+        fixtures in `validate.py`, and recorded timestamp-adapter decision), and
+        offline-first registration records (draft-5 plus §4.7 `claims.aiUse` and
         §9.1 `tw1-` text references, `REG.1`/`REG.2`) are implemented and
-        cross-checked in both Rust and Go with zero divergences, while vector
-        promotion, trust policies, and optional RFC 3161 timestamp adapters
-        remain open under gates `M4.3–M4.6`. A signature authenticates the
-        record bytes separately from any similarity comparison.
+        cross-checked in both Rust and Go with zero divergences. Vector
+        promotion and non-author disclosure review remain open under gates
+        `M4.3–M4.4` and `M4.6`. A signature authenticates the record bytes
+        separately from any similarity comparison.
         {{source:research/experiment-checkpoint.md}} ·
         {{source:research/fragment-policy-checkpoint.md}} ·
         {{source:spec/attestations.md}}

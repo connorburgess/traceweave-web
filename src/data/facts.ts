@@ -10,9 +10,9 @@ export const ROADMAP_COUNTS = {
   core: {
     label: "Core M0–M5",
     total: 47,
-    met: 24,
+    met: 25,
     negativeResult: 0,
-    open: 23,
+    open: 22,
     metIds: [
       "M0.1",
       "M0.2",
@@ -38,14 +38,15 @@ export const ROADMAP_COUNTS = {
       "M3.0",
       "M4.1",
       "M4.2",
+      "M4.5",
     ],
   },
   later: {
     label: "Later profiles, EXT and RC",
     total: 55,
-    met: 12,
-    negativeResult: 1,
-    open: 42,
+    met: 13,
+    negativeResult: 2,
+    open: 40,
     metIds: [
       "TS.3",
       "PY.3",
@@ -58,6 +59,7 @@ export const ROADMAP_COUNTS = {
       "IMG.3",
       "IMG.4",
       "TXT.3",
+      "TXT.7",
       "C2PA.3",
     ],
   },
@@ -177,7 +179,7 @@ export const FACT_VALUES: Record<string, string> = {
   "milestone.m2.status": "11 of 11 met (M2.1–M2.11)",
   "milestone.m2e.status": "0 of 8 met",
   "milestone.m3.status": "1 of 7 met (M3.0)",
-  "milestone.m4.status": "2 of 6 met (M4.1, M4.2)",
+  "milestone.m4.status": "3 of 6 met (M4.1, M4.2, M4.5)",
   "milestone.m5.status": "0 of 5 met",
   "track.imgf.met": "3",
   "track.img.met": "5",
@@ -339,14 +341,14 @@ export const CITED_FACTS: readonly CitedFact[] = [
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Core M0–M5 roadmap gate counts",
-    numbers: ["47", "24", "0", "23", { value: "11", sourceMatch: "M2.1–M2.11" }],
+    numbers: ["47", "25", "0", "22", { value: "11", sourceMatch: "M2.1–M2.11" }],
   },
   {
     id: "roadmap-later-gates",
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Later profiles, EXT and RC gate counts",
-    numbers: ["55", "12", "1", "42"],
+    numbers: ["55", "13", "2", "40"],
   },
   {
     id: "python-profile-draft",
@@ -557,6 +559,12 @@ export const CITED_FACTS: readonly CitedFact[] = [
     label: "C2PA 2.5 mapping pin and Lane 15 audio/video scoping",
     numbers: ["2.5", "15"],
   },
+  {
+    id: "m4-5-intoto",
+    sourcePath: "ROADMAP.md",
+    label: "M4.5 in-toto adapter accept/reject fixture counts",
+    numbers: ["4", "26"],
+  },
 ];
 
 export interface SpecimenAsset {
@@ -652,7 +660,7 @@ export const COVERAGE_ITEMS: readonly CoverageItem[] = [
     status: "Implemented (draft)",
     statusTone: "active" as const,
     summary:
-      "Stage-1 profile text-plain is implemented in both Rust and Go with three channels (exact, folded, skeleton) pinned to Unicode 17.0.0 (gate TXT.3 met with zero differential divergences). Stage-1 prose evaluation (TXT.4, e-txt-1) closed as negative-result on repeated-structure prose; text-markdown, UC-8 wording, and Stage-2 corpus work remain open.",
+      "Stage-1 profile text-plain is implemented in both Rust and Go with three channels (exact, folded, skeleton) pinned to Unicode 17.0.0 (gate TXT.3 met; TXT.7 limits citations met). Stage-1 prose evaluation (TXT.4, e-txt-1) and Unicode text marks (TXT.8) closed as negative-result; text-markdown, UC-8 wording, and Stage-2 corpus work remain open.",
     sourcePath: "profiles/text.md",
   },
   {
@@ -698,9 +706,9 @@ export const PLANNED_CAPABILITIES = [
   {
     title: "Signed, timestamped registration records",
     gates: "M4.3–M4.6",
-    status: "Implemented offline-first (M4.3–M4.6 open)",
+    status: "M4.5 met; offline-first in Rust & Go",
     summary:
-      "Library-based DSSE signing and verification, an in-toto statement adapter, explicit trust policies, and timestamp evidence. Offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1 tw1- text reference, REG.1/REG.2) is implemented and cross-checked in both Rust and Go with zero divergences; M4.3–M4.6 stay open pending vector promotion and timestamp-service decisions.",
+      "M4.5 is met (trust-policy.md, in-toto adapter 4 accept / 26 reject fixtures in validate.py, and timestamp-adapter-decision.md). Offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1 tw1- text reference, REG.1/REG.2) is implemented and cross-checked in both Rust and Go with zero divergences; M4.3–M4.4 and M4.6 stay open.",
     sourcePath: "research/drafts/registration-record.md",
   },
   {

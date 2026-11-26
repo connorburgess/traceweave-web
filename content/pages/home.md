@@ -16,8 +16,8 @@ sections:
       - >-
         It is designed to cover any kind of work: source code, writing, images
         and audio. One shared evidence format sits underneath, with a profile
-        for each medium. Your content never leaves your machine; only
-        fingerprints are compared.
+        for each medium. The default local comparison workflow keeps content on
+        your machine and compares fingerprints locally.
     actions:
       - label: How it works
         href: /how-it-works
@@ -48,7 +48,7 @@ sections:
   - type: workflow
     id: workflow-heading
     eyebrow: How it works
-    heading: Three local steps, zero content uploads
+    heading: Three steps in the default local workflow
     intro: >-
       Each medium profile extracts fingerprints locally into a private catalogue
       that holds no raw content, then compares catalogues to emit a report
@@ -80,7 +80,7 @@ sections:
             reference and candidate where matching regions sit.
           - >-
             **Fragment and whole-file counts:** directional fragment containment
-            reported alongside whole-file Jaccard similarity so a small copied
+            reported alongside whole-file Jaccard similarity so a small matching
             region stays visible inside a larger file.
           - >-
             **Reproducible reports:** canonical report bytes and a SHA-256
@@ -106,18 +106,18 @@ sections:
     provenance:
       heading: Built for provenance
       lead: >-
-        Traceweave helps you show where your work appears, and how copies relate
-        to the original, with evidence anyone can check. It records facts. It
-        leaves the judgments to people.
+        Traceweave records profile-specific similarity in checkable reports; it
+        does not establish an original, authorship, ownership or copying. It
+        records facts. It leaves the judgments to people.
       items:
         - >-
           **Working today, in draft:** fingerprint Go and Rust code on your own
           machine, keep a private catalogue that holds no source text, and
           produce comparison reports anyone can re-run.
         - >-
-          **Coming next:** signed, timestamped registration records, so you can
-          show a version of your work existed by a given date. Licence-history
-          packets follow.
+          **Also implemented, in draft:** offline-first signed registration in
+          Rust and Go, plus review-packet spec and CLI support. Obtaining
+          external timestamps remains separately gated.
         - >-
           **What you do with it is up to you.** Traceweave produces checkable
           facts about your work. It does not lock content, and it does not make
@@ -149,8 +149,9 @@ sections:
           own machine without uploading work or publishing an identity.
       - role: Auditors & recipients
         summary: >-
-          Re-run a comparison from catalogues and pinned configuration bytes to
-          verify every count and span in a received report independently.
+          Re-run the report computation from the same catalogues and pinned
+          configuration bytes. Checking spans against the original content
+          also requires those original bytes.
       - role: Researchers & implementers
         summary: >-
           Measure how code, writing, and image profiles behave across

@@ -1,0 +1,330 @@
+{
+  "status": "Author copy-correction dispositions; pending independent review. WEB.5 remains uncertified; M3 remains held.",
+  "baseline_website_commit": "f622f0ce57343cb805004c5ac0053dc739e5c9dc",
+  "evidence_spec_commit": "a589a1bbb3d00009438376d2df40ae923317cacb",
+  "inventory": {
+    "file": "web5-claim-inventory/claim-map.json",
+    "sha256": "01532072204aff379bb565e7115d0b9c97c0273920256c54def96066588743a8"
+  },
+  "changed_claim_ids": [
+    "W-0207",
+    "W-0209",
+    "W-0214",
+    "W-0324",
+    "W-0341",
+    "W-0363",
+    "W-0378",
+    "W-0387",
+    "W-0391",
+    "W-0392",
+    "W-0409",
+    "W-0443",
+    "W-0446",
+    "W-0449",
+    "W-0450",
+    "W-0604"
+  ],
+  "findings": [
+    {
+      "family": "F01",
+      "claim_ids": [
+        "W-0341",
+        "W-0363",
+        "W-0443"
+      ],
+      "disposition": "copy corrected; independent acceptance pending",
+      "reason": "Narrowed privacy to the default local comparison workflow; removed the universal zero-upload heading. Same-catalogue/configuration reproducibility names the canonical body, not arbitrary report wrappers.",
+      "evidence_keys": [
+        "BASE",
+        "PIPE",
+        "MATCH"
+      ]
+    },
+    {
+      "family": "F02",
+      "claim_ids": [
+        "W-0209",
+        "W-0391",
+        "W-0392"
+      ],
+      "disposition": "copy corrected; independent acceptance pending",
+      "reason": "Replaced the unshipped/coming-next contradiction with implemented draft native registration and review-packet spec/CLI status. External timestamp acquisition stays gated. Renamed the mixed-status eyebrow to Draft capabilities.",
+      "evidence_keys": [
+        "BASE",
+        "STATUS",
+        "PIPE",
+        "REG",
+        "STUDY"
+      ]
+    },
+    {
+      "family": "F03",
+      "claim_ids": [
+        "W-0214",
+        "W-0324",
+        "W-0604"
+      ],
+      "disposition": "copy corrected; independent acceptance pending",
+      "reason": "Native parity is limited to the recorded registration fixture suite. Minimal-core in-toto fixtures are Python checker evidence; implementation parity is unverified. Added the pinned evidence target conformance matrix as a visible source on all three pages. Dormant compatibility copy is corrected too.",
+      "evidence_keys": [
+        "BASE",
+        "STATUS",
+        "PIPE",
+        "REG",
+        "STUDY",
+        "GOV",
+        "LIT",
+        "MATCH"
+      ]
+    },
+    {
+      "family": "F04",
+      "claim_ids": [
+        "W-0449",
+        "W-0450"
+      ],
+      "disposition": "copy corrected; independent acceptance pending",
+      "reason": "Scoped both the pipeline heading and lexing paragraph to Go/Rust token profiles. Kept the two-channel rule within that scope instead of asserting it for plain text, images or audio. W-0450 is changed by explicit context narrowing even though its own sentence is retained.",
+      "evidence_keys": [
+        "PIPE",
+        "MATCH"
+      ]
+    },
+    {
+      "family": "F13",
+      "claim_ids": [
+        "W-0378",
+        "W-0387"
+      ],
+      "disposition": "copy corrected; independent acceptance pending",
+      "reason": "Changed the general copied-region wording to matching-region wording and removed original/copy relationship inference. The separately bounded synthetic worked example remains unchanged.",
+      "evidence_keys": [
+        "BASE"
+      ]
+    },
+    {
+      "family": "F14",
+      "claim_ids": [
+        "W-0409"
+      ],
+      "disposition": "copy corrected; independent acceptance pending",
+      "reason": "Separated replay of the report computation using identical catalogues/configuration from checking span contents, which also requires original bytes.",
+      "evidence_keys": [
+        "BASE",
+        "PIPE",
+        "MATCH"
+      ]
+    }
+  ],
+  "supporting_claim_changes": [
+    {
+      "id": "W-0207",
+      "reason": "Mixed-status capabilities eyebrow corrected alongside F02."
+    },
+    {
+      "id": "W-0446",
+      "reason": "Entire token pipeline explicitly scoped alongside F04."
+    }
+  ],
+  "changed_fields": [
+    {
+      "file": "content/pages/coverage.md",
+      "key": "sections.2.eyebrow",
+      "changed_claim_ids": [
+        "W-0207"
+      ],
+      "before": "Planned extensions",
+      "after": "Draft capabilities"
+    },
+    {
+      "file": "content/pages/coverage.md",
+      "key": "sections.2.intro",
+      "changed_claim_ids": [
+        "W-0209"
+      ],
+      "before": "None of the items below is shipped yet. Each is gated behind explicit fixtures and non-author review in {{source:ROADMAP.md}}.",
+      "after": "The following features have different draft and evidence statuses. Each is gated behind explicit fixtures and non-author review in {{source:ROADMAP.md}}."
+    },
+    {
+      "file": "content/pages/coverage.md",
+      "key": "sections.2.cards.0.summary",
+      "changed_claim_ids": [
+        "W-0214"
+      ],
+      "before": "All 6 M4 gates are met: spec/registration-record.md, spec/trust-policy.md, test-vectors/registration/, and test-vectors/intoto-adapter/ (4 accept / 26 reject fixtures) are promoted, disclosure review is closed, and independent Rust and Go offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1 tw1-) passes every promoted vector with zero divergences.",
+      "after": "All 6 M4 gates are met: registration and trust-policy specifications and their fixtures are promoted, and disclosure review is closed. Independent Rust and Go offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1 tw1-) passes the recorded registration fixture suite with zero divergences. The separate minimal-core in-toto adapter has Python fixture evidence (4 accept / 26 reject); implementation parity is unverified. {{source:docs/release/conformance-matrix.md}}"
+    },
+    {
+      "file": "content/pages/evidence.md",
+      "key": "sections.6.paragraphs.1",
+      "changed_claim_ids": [
+        "W-0324"
+      ],
+      "before": "All 6 `M4` gates (`M4.1–M4.6`) are met with promoted normative files (`spec/registration-record.md`, `spec/trust-policy.md`, `test-vectors/registration/`, and `test-vectors/intoto-adapter/` with 4 accept / 26 reject fixtures, plus non-author commitment/disclosure review). Independent Rust and Go offline-first registration (draft-5 plus §4.7 `claims.aiUse` and §9.1 `tw1-` text references) passes every promoted vector with zero divergences. A signature authenticates the record bytes separately from any similarity comparison. {{source:research/experiment-checkpoint.md}} · {{source:research/fragment-policy-checkpoint.md}} · {{source:spec/registration-record.md}} · {{source:spec/trust-policy.md}} · {{source:spec/attestations.md}}",
+      "after": "All 6 `M4` gates (`M4.1–M4.6`) are met with promoted normative files (`spec/registration-record.md`, `spec/trust-policy.md`, `test-vectors/registration/`, and `test-vectors/intoto-adapter/` with 4 accept / 26 reject fixtures, plus non-author commitment/disclosure review). Independent Rust and Go offline-first registration (draft-5 plus §4.7 `claims.aiUse` and §9.1 `tw1-` text references) passes the recorded registration fixture suite with zero divergences. The separate minimal-core in-toto adapter has Python fixture evidence; implementation parity is unverified. {{source:docs/release/conformance-matrix.md}} A signature authenticates the record bytes separately from any similarity comparison. {{source:research/experiment-checkpoint.md}} · {{source:research/fragment-policy-checkpoint.md}} · {{source:spec/registration-record.md}} · {{source:spec/trust-policy.md}} · {{source:spec/attestations.md}}"
+    },
+    {
+      "file": "content/pages/home.md",
+      "key": "sections.0.leads.1",
+      "changed_claim_ids": [
+        "W-0341"
+      ],
+      "before": "It is designed to cover any kind of work: source code, writing, images and audio. One shared evidence format sits underneath, with a profile for each medium. Your content never leaves your machine; only fingerprints are compared.",
+      "after": "It is designed to cover any kind of work: source code, writing, images and audio. One shared evidence format sits underneath, with a profile for each medium. The default local comparison workflow keeps content on your machine and compares fingerprints locally."
+    },
+    {
+      "file": "content/pages/home.md",
+      "key": "sections.1.heading",
+      "changed_claim_ids": [
+        "W-0363"
+      ],
+      "before": "Three local steps, zero content uploads",
+      "after": "Three steps in the default local workflow"
+    },
+    {
+      "file": "content/pages/home.md",
+      "key": "sections.2.cards.0.items.2",
+      "changed_claim_ids": [
+        "W-0378"
+      ],
+      "before": "**Fragment and whole-file counts:** directional fragment containment reported alongside whole-file Jaccard similarity so a small copied region stays visible inside a larger file.",
+      "after": "**Fragment and whole-file counts:** directional fragment containment reported alongside whole-file Jaccard similarity so a small matching region stays visible inside a larger file."
+    },
+    {
+      "file": "content/pages/home.md",
+      "key": "sections.2.provenance.lead",
+      "changed_claim_ids": [
+        "W-0387"
+      ],
+      "before": "Traceweave helps you show where your work appears, and how copies relate to the original, with evidence anyone can check. It records facts. It leaves the judgments to people.",
+      "after": "Traceweave records profile-specific similarity in checkable reports; it does not establish an original, authorship, ownership or copying. It records facts. It leaves the judgments to people."
+    },
+    {
+      "file": "content/pages/home.md",
+      "key": "sections.2.provenance.items.1",
+      "changed_claim_ids": [
+        "W-0391",
+        "W-0392"
+      ],
+      "before": "**Coming next:** signed, timestamped registration records, so you can show a version of your work existed by a given date. Licence-history packets follow.",
+      "after": "**Also implemented, in draft:** offline-first signed registration in Rust and Go, plus review-packet spec and CLI support. Obtaining external timestamps remains separately gated."
+    },
+    {
+      "file": "content/pages/home.md",
+      "key": "sections.3.cards.3.summary",
+      "changed_claim_ids": [
+        "W-0409"
+      ],
+      "before": "Re-run a comparison from catalogues and pinned configuration bytes to verify every count and span in a received report independently.",
+      "after": "Re-run the report computation from the same catalogues and pinned configuration bytes. Checking spans against the original content also requires those original bytes."
+    },
+    {
+      "file": "content/pages/how-it-works.md",
+      "key": "sections.0.lead",
+      "changed_claim_ids": [
+        "W-0443"
+      ],
+      "before": "Traceweave puts one shared evidence format underneath profile-specific extractors. Every comparison runs in three local steps so your content stays on your machine and anyone with the same catalogues can reproduce the exact report bytes.",
+      "after": "Traceweave puts one shared evidence format underneath profile-specific extractors. In the default local comparison workflow, content stays on your machine; anyone with the same catalogues and configuration can reproduce the canonical report body."
+    },
+    {
+      "file": "content/pages/how-it-works.md",
+      "key": "sections.1.heading",
+      "changed_claim_ids": [
+        "W-0446"
+      ],
+      "before": "The three-stage pipeline",
+      "after": "The Go and Rust token-profile pipeline"
+    },
+    {
+      "file": "content/pages/how-it-works.md",
+      "key": "sections.1.stages.0.paragraphs.0",
+      "changed_claim_ids": [
+        "W-0449",
+        "W-0450"
+      ],
+      "before": "A profile lexer scans UTF-8 input bytes with pinned `Unicode {{fact:spec.unicodeVersion}}` tables — no parser, compiler, or network access. It produces two streams: an **exact** channel keeping names and literals, and a **normalized** channel clearing identifier and literal values so simple renaming still aligns.",
+      "after": "For the Go and Rust token profiles, a lexer scans UTF-8 input bytes with pinned `Unicode {{fact:spec.unicodeVersion}}` tables — no parser, compiler, or network access. It produces two streams: an **exact** channel keeping names and literals, and a **normalized** channel clearing identifier and literal values so simple renaming still aligns."
+    },
+    {
+      "file": "content/pages/roadmap.md",
+      "key": "sections.2.rows.5.summary",
+      "changed_claim_ids": [
+        "W-0604"
+      ],
+      "before": "Library-based DSSE signing and verification, independent commitment code, promoted registration and in-toto vectors (4 accept / 26 reject fixtures), trust policy, timestamp adapter decision, non-author commitment/disclosure review, and independent Rust and Go offline-first registration (draft-5 + §4.7 claims.aiUse + §9.1 tw1-) passing every promoted vector with zero divergences (all M4.1–M4.6 met).",
+      "after": "Library-based DSSE signing and verification, independent commitment code, promoted registration fixtures, trust policy, timestamp adapter decision and non-author commitment/disclosure review. Independent Rust and Go offline-first registration (draft-5 + §4.7 claims.aiUse + §9.1 tw1-) passes the recorded registration fixture suite with zero divergences (all M4.1–M4.6 met). The separate minimal-core in-toto adapter has Python fixture evidence (4 accept / 26 reject); implementation parity is unverified. {{source:docs/release/conformance-matrix.md}}"
+    }
+  ],
+  "unrendered_companion_changes": [
+    {
+      "file": "src/data/facts.ts",
+      "field": "PLANNED_CAPABILITIES[0].summary",
+      "rendered_claim_id": null,
+      "reason": "Same blanket parity text as W-0214; compatibility data is not rendered or inventoried as a claim."
+    }
+  ],
+  "evidence": [
+    {
+      "repo": "traceweave-spec",
+      "commit": "a589a1bbb3d00009438376d2df40ae923317cacb",
+      "path": "README.md",
+      "sha256": "f554cb7144c736a4503722a8dc45aef10ce16e7492e6fd822ccac48e25a94ad2"
+    },
+    {
+      "repo": "traceweave-spec",
+      "commit": "a589a1bbb3d00009438376d2df40ae923317cacb",
+      "path": "ROADMAP.md",
+      "sha256": "b8925b5d9ba05bd061472fd889d08df72ef12d6bcaf2dc0232dfe4e90930c5da"
+    },
+    {
+      "repo": "traceweave-spec",
+      "commit": "a589a1bbb3d00009438376d2df40ae923317cacb",
+      "path": "spec/core.md",
+      "sha256": "50d369c71e767b95b3acce8d8c33f1270d136e672022df66fe0ed12cfc21cb9a"
+    },
+    {
+      "repo": "traceweave-spec",
+      "commit": "a589a1bbb3d00009438376d2df40ae923317cacb",
+      "path": "spec/extraction.md",
+      "sha256": "6998a24bbb4d5d5eb94b586da02244e0aa8012da5a83be5b8bc42c6330b9d0c2"
+    },
+    {
+      "repo": "traceweave-spec",
+      "commit": "a589a1bbb3d00009438376d2df40ae923317cacb",
+      "path": "spec/catalogue-report.md",
+      "sha256": "97b6a64c861560ed1360c5c1a8253e0fe8bca65642ce732422f41084fb1f4ca9"
+    },
+    {
+      "repo": "traceweave-spec",
+      "commit": "a589a1bbb3d00009438376d2df40ae923317cacb",
+      "path": "docs/release/conformance-matrix.md",
+      "sha256": "873486eeb7a9593a6b956aca6c5d6417e21c34228c422af8423183fdd260d7e7"
+    },
+    {
+      "repo": "traceweave-spec",
+      "commit": "a589a1bbb3d00009438376d2df40ae923317cacb",
+      "path": "docs/decisions/timestamp-adapter-decision.md",
+      "sha256": "f76192a76d61f0eb95af968c4d95167ceeae7cb2c3cb794a16ed1e37860d5dd4"
+    }
+  ],
+  "limits": [
+    "No WEB.5 gate closure or complete page-wide certification.",
+    "No M3 evaluation or acquisition.",
+    "No new runtime, network, privacy, protocol, hosting or full conformance guarantee.",
+    "No Shelf, spec or documentation-site changes.",
+    "No push or deployment; all existing counts, design, licensing and historical demo pins preserved."
+  ],
+  "validation": {
+    "lint": "passed",
+    "typecheck": "passed",
+    "content_check": "passed against exact spec a589a1bbb3d00009438376d2df40ae923317cacb; 48 cited paths, 137 source-backed figures",
+    "production_build": "passed",
+    "rendered_pages": 8,
+    "internal_links_and_anchors": 160,
+    "spec_links_against_pinned_tree": 120,
+    "corrected_claim_scope_render_checks": "passed",
+    "counts_citation_registry_historical_demo_licensing_design_preservation": "passed",
+    "scope": "Local static build and copy checks only; not WEB.5 certification or deployed/runtime conformance."
+  }
+}

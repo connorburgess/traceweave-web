@@ -11,20 +11,21 @@ sections:
     heading: From local files to a deterministic, byte-identical comparison report
     lead: >-
       Traceweave puts one shared evidence format underneath profile-specific
-      extractors. Every comparison runs in three local steps so your content
-      stays on your machine and anyone with the same catalogues can reproduce
-      the exact report bytes.
+      extractors. In the default local comparison workflow, content stays on
+      your machine; anyone with the same catalogues and configuration can
+      reproduce the canonical report body.
 
   - type: pipeline
     id: pipeline-heading
-    heading: The three-stage pipeline
+    heading: The Go and Rust token-profile pipeline
     stages:
       - eyebrow: Stage 1
         title: Extract fingerprints
         paragraphs:
           - >-
-            A profile lexer scans UTF-8 input bytes with pinned `Unicode
-            {{fact:spec.unicodeVersion}}` tables — no parser, compiler, or
+            For the Go and Rust token profiles, a lexer scans UTF-8 input bytes
+            with pinned `Unicode {{fact:spec.unicodeVersion}}` tables — no parser,
+            compiler, or
             network access. It produces two streams: an **exact** channel
             keeping names and literals, and a **normalized** channel clearing
             identifier and literal values so simple renaming still aligns.

@@ -218,9 +218,12 @@ sections:
         `test-vectors/registration/`, and `test-vectors/intoto-adapter/` with 4
         accept / 26 reject fixtures, plus non-author commitment/disclosure
         review). Independent Rust and Go offline-first registration (draft-5
-        plus §4.7 `claims.aiUse` and §9.1 `tw1-` text references) passes every
-        promoted vector with zero divergences. A signature authenticates the
-        record bytes separately from any similarity comparison.
+        plus §4.7 `claims.aiUse` and §9.1 `tw1-` text references) passes the
+        recorded registration fixture suite with zero divergences. The
+        separate minimal-core in-toto adapter has Python fixture evidence;
+        implementation parity is unverified.
+        {{source:docs/release/conformance-matrix.md}}
+        A signature authenticates the record bytes separately from any similarity comparison.
         {{source:research/experiment-checkpoint.md}} ·
         {{source:research/fragment-policy-checkpoint.md}} ·
         {{source:spec/registration-record.md}} ·

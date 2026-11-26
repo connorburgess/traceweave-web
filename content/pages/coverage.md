@@ -130,22 +130,24 @@ sections:
 
   - type: planned-extensions
     id: planned-heading
-    eyebrow: Planned extensions
+    eyebrow: Draft capabilities
     heading: Provenance, review packets, and interoperability
     intro: >-
-      None of the items below is shipped yet. Each is gated behind explicit
-      fixtures and non-author review in {{source:ROADMAP.md}}.
+      The following features have different draft and evidence statuses. Each
+      is gated behind explicit fixtures and non-author review in {{source:ROADMAP.md}}.
     cards:
       - title: Signed, timestamped registration records
         gates: M4.1–M4.6
         status: Met (6 of 6 M4 gates)
         summary: >-
-          All 6 M4 gates are met: spec/registration-record.md,
-          spec/trust-policy.md, test-vectors/registration/, and
-          test-vectors/intoto-adapter/ (4 accept / 26 reject fixtures) are
-          promoted, disclosure review is closed, and independent Rust and Go
-          offline-first registration (draft-5 plus §4.7 claims.aiUse and §9.1
-          tw1-) passes every promoted vector with zero divergences.
+          All 6 M4 gates are met: registration and trust-policy specifications
+          and their fixtures are promoted, and disclosure review is closed.
+          Independent Rust and Go offline-first registration (draft-5 plus
+          §4.7 claims.aiUse and §9.1 tw1-) passes the recorded registration
+          fixture suite with zero divergences. The separate minimal-core
+          in-toto adapter has Python fixture evidence (4 accept / 26 reject);
+          implementation parity is unverified.
+          {{source:docs/release/conformance-matrix.md}}
         sourcePath: spec/registration-record.md
       - title: Review packets for licence and origin history
         gates: M2.7

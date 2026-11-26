@@ -101,12 +101,14 @@ sections:
         status: "{{fact:milestone.m4.status}}"
         summary: >-
           Library-based DSSE signing and verification, independent commitment
-          code, promoted registration and in-toto vectors (4 accept / 26 reject
-          fixtures), trust policy, timestamp adapter decision, non-author
-          commitment/disclosure review, and independent Rust and Go
-          offline-first registration (draft-5 + §4.7 claims.aiUse + §9.1 tw1-)
-          passing every promoted vector with zero divergences (all M4.1–M4.6
-          met).
+          code, promoted registration fixtures, trust policy, timestamp adapter
+          decision and non-author commitment/disclosure review. Independent
+          Rust and Go offline-first registration (draft-5 + §4.7 claims.aiUse +
+          §9.1 tw1-) passes the recorded registration fixture suite with zero
+          divergences (all M4.1–M4.6 met). The separate minimal-core in-toto
+          adapter has Python fixture evidence (4 accept / 26 reject);
+          implementation parity is unverified.
+          {{source:docs/release/conformance-matrix.md}}
       - id: M5
         name: Candidate release
         gates: M5.1–M5.5

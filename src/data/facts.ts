@@ -53,9 +53,9 @@ export const ROADMAP_COUNTS = {
   later: {
     label: "Later profiles, EXT and RC",
     total: 55,
-    met: 27,
+    met: 28,
     negativeResult: 2,
-    open: 26,
+    open: 25,
     metIds: [
       "TS.1",
       "TS.2",
@@ -81,6 +81,7 @@ export const ROADMAP_COUNTS = {
       "C2PA.3",
       "SK.1",
       "SK.2",
+      "SK.3",
       "WEB.0",
       "WEB.1",
       "WEB.2",
@@ -371,7 +372,7 @@ export const CITED_FACTS: readonly CitedFact[] = [
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Later profiles, EXT and RC gate counts",
-    numbers: ["55", "27", "2", "26"],
+    numbers: ["55", "28", "2", "25"],
   },
   {
     id: "python-profile-draft",
@@ -759,9 +760,9 @@ export const PLANNED_CAPABILITIES = [
   {
     title: "Agent interoperability skill and A2A",
     gates: "SK.1–SK.5",
-    status: "SK.1–SK.2 met; A2A planned",
+    status: "SK.1–SK.2 met; SK.3 design only",
     summary:
-      "An optional CLI-wrapping skill keeping private catalogues, paths, and keys out of model-visible transcripts (SK.1–SK.2 met with zero canary leaks across both Rust and Go CLIs), plus planned local-first A2A registration and verification skills (SK.3–SK.5).",
+      "An optional CLI-wrapping skill keeping private catalogues, paths, and keys out of model-visible transcripts (SK.1–SK.2 met with zero canary leaks across both Rust and Go CLIs), plus a reviewed local-first register/verify design (SK.3 design only). I1–I4 remain unresolved; no adapter implementation, interoperability or hosting is accepted. SK.4/SK.5, key/identity/policy defaults and namespace publication remain undecided; initial outbound contact stays held.",
     sourcePath: "ROADMAP.md",
     anchor: "later-profiles-and-sequence",
   },

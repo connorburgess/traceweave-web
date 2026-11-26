@@ -30,7 +30,7 @@ sections:
           Close when a decision record is committed — for example setting a
           false-alarm budget or choosing whether to omit embedding.
     countsHeading: Current gate counts
-    countsIntro: "Taken from published `roadmap-v2` commit `d66e4b942c8ca7da1585cc5f19932456a82f5f1d` (verified 2026-11-26; spec `main` remains at `7e30cb7`), {{source:ROADMAP.md#progress-count}}:"
+    countsIntro: "Taken from published `roadmap-v2` commit `a589a1bbb3d00009438376d2df40ae923317cacb` (verified 2026-11-26; spec `main` remains at `7e30cb7`), {{source:ROADMAP.md#progress-count}}:"
     countsHeaders:
       - Gate group
       - Total
@@ -181,9 +181,16 @@ sections:
       - track: SK (SK.1–SK.5)
         scope: Optional agent skill and A2A design
         state: >-
-          2 met (SK.1–SK.2: CLI-wrapping skill and canary leak suite met across
-          Rust and Go CLIs); SK.3–SK.5 (A2A registration/verification skills and
-          hosted-service decision) planned.
+          3 met (SK.1–SK.2: CLI-wrapping skill and canary leak suite met across
+          Rust and Go CLIs). SK.3 is also met for
+          [local-first design only](spec:research/reviews/sk3-design-gate-closure-4fa00c7.md),
+          exact design 4fa00c7 independently reviewed at 12a1459. Proposed
+          register/verify semantics hold initial outbound contact. I1–I4
+          (notice count, description enforcement, hosted extra-text bypass,
+          witness version drift) remain unresolved; C1 is a nonblocking
+          clarification. No implementation, interoperability or hosting is
+          established. SK.4/SK.5, key/identity/policy defaults and namespace
+          publication remain undecided.
       - track: WEB (WEB.0–WEB.6)
         scope: Browser tool and testing page
         state: >-

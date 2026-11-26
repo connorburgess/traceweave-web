@@ -30,7 +30,7 @@ sections:
           Close when a decision record is committed — for example setting a
           false-alarm budget or choosing whether to omit embedding.
     countsHeading: Current gate counts
-    countsIntro: "Taken from published spec commit `7e30cb7` (verified 2026-11-26), {{source:ROADMAP.md#progress-count}}:"
+    countsIntro: "Taken from published `roadmap-v2` commit `d66e4b942c8ca7da1585cc5f19932456a82f5f1d` (verified 2026-11-26; spec `main` remains at `7e30cb7`), {{source:ROADMAP.md#progress-count}}:"
     countsHeaders:
       - Gate group
       - Total
@@ -114,7 +114,16 @@ sections:
         summary: >-
           Full requirement map, README claim audit, offline clean-clone demo
           reproduction, explicit scope/limit release notes, and conformance
-          matrix.
+          matrix. [M5.1/2/4/5 closure](spec:research/reviews/m5-gate-closure-07c98ca.md)
+          and [M5.3 closure](spec:research/reviews/m5-3-gate-closure-24bb4b8.md)
+          record scoped non-author review. The
+          [pinned offline native demo](https://github.com/connorburgess/traceweave-spec/blob/d66e4b942c8ca7da1585cc5f19932456a82f5f1d/docs/release/offline-demo.md)
+          covers one synthetic Go fixture in stamped Rust and Go at dcaa0d4,
+          spec pin 9cf78ee, under OS network denial after dependency fetch.
+          Linux recipe execution is unverified; remote implementation access
+          was not tested. M3 stays held. Release approval and full
+          implementation/Shelf conformance are not implied; see the
+          [conformance matrix](spec:docs/release/conformance-matrix.md).
 
   - type: tracks-table
     id: later-heading
@@ -128,9 +137,11 @@ sections:
       - track: TS (TS.1–TS.4)
         scope: TypeScript & JavaScript profile
         state: >-
-          1 met (TS.3: ts-tokens implemented in both Rust and Go with zero
-          differential divergences); profile/vector sign-offs and M3 split
-          (TS.4) open.
+          3 met (TS.1–TS.3) for frozen Stage-1 ts-tokens/draft-2;
+          [reviewed profile and vector closure](spec:research/reviews/img-ts-txt-five-gate-closure-73b6d5c.md).
+          TSX/JSX remains deferred, with no JSX detector or exclusion/deferral
+          overlap precedence established. Two implementations agree; TS.4
+          evaluation remains open.
       - track: PY (PY.1–PY.4)
         scope: Python profile (py-tokens)
         state: >-
@@ -140,19 +151,25 @@ sections:
       - track: IMGF (IMGF.1–IMGF.6)
         scope: Still-image fingerprints (PDQ & ISCC)
         state: >-
-          {{fact:track.imgf.met}} met (IMGF.2–IMGF.4 synthetic conformance run);
-          item map, C++ comparison, and owner-gated natural-image check open.
+          {{fact:track.imgf.met}} met (IMGF.1–IMGF.4).
+          [IMGF.1 closes draft-3 research specification only](spec:research/reviews/imgf1-gate-closure-db2848c.md):
+          explicit ISCC arithmetic, finite single-host normalization checks,
+          no fresh upstream C-source verification, normative promotion or
+          universal/cross-host equivalence. Historical draft-2 results remain
+          frozen. IMGF.5 and owner-gated IMGF.6 remain open.
       - track: IMG (IMG.0–IMG.5)
         scope: Still-image embedded marks (TrustMark-Q & PixelSeal)
         state: >-
-          {{fact:track.img.met}} met (IMG.0–IMG.4, synthetic measured run
-          e-img-m-2 committed and rechecked); finding-aid record schema and
-          fixtures (IMG.5) drafted and reviewed, awaiting closure.
+          {{fact:track.img.met}} met (IMG.0–IMG.5). Synthetic e-img-m-2 remains
+          bounded; IMG.5 closes reviewed draft schema accommodation only,
+          without normative promotion, origin proof or C2PA interoperability.
       - track: TXT (TXT.0–TXT.8)
         scope: Plain text & Markdown prose
         state: >-
-          2 met (TXT.3: text-plain implemented in both Rust and Go with zero
-          divergences; TXT.7: limits citations recounted), 2 negative-result
+          4 met (TXT.1–TXT.3 for frozen Stage-1 text-plain/draft-1; TXT.7
+          limits citations). TXT.2 uses mutated-result rejections under OD-T12,
+          not rejected-input partners; Markdown masking remains deferred.
+          Two implementations agree. 2 negative-result
           (TXT.4 Stage-1 prose evaluation e-txt-1; TXT.8 Unicode text marks);
           UC-8 acceptance and Stage-2 corpus open.
       - track: C2PA (C2PA.1–C2PA.3)

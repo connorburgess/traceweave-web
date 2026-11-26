@@ -42,10 +42,11 @@ sections:
         statusTone: active
         summary: >-
           Stage-1 profile ts-tokens is implemented in both Rust and Go (gate
-          TS.3 met, matching all vendored vectors with zero differential
+          TS.1–TS.3 met for frozen Stage-1 ts-tokens/draft-2, matching all vendored vectors with zero differential
           divergences) and covers TypeScript plus plain JavaScript (.js, .mjs,
           .cjs) without JSX. tsx-tokens stays a deferred draft; own M3 split
-          (TS.4) is open.
+          (TS.4) is open. The [profile/vector closure](spec:research/reviews/img-ts-txt-five-gate-closure-73b6d5c.md)
+          establishes no JSX detector or exclusion/deferral overlap precedence.
         sourcePath: profiles/typescript.md
       - kind: Python
         profiles: py-tokens (draft-1, promoted & implemented)
@@ -65,10 +66,11 @@ sections:
         summary: >-
           Stage-1 profile text-plain is implemented in both Rust and Go with
           three channels (exact, folded, skeleton) pinned to Unicode
-          {{fact:spec.unicodeVersion}} (gate TXT.3 met; TXT.7 limits citations
+          {{fact:spec.unicodeVersion}} (gates TXT.1–TXT.3 met for frozen Stage-1 text-plain/draft-1; TXT.7 limits citations
           met). Stage-1 prose evaluation (TXT.4, e-txt-1) and Unicode text marks
           (TXT.8) closed as negative-result; text-markdown, UC-8 wording, and
-          Stage-2 corpus work remain open.
+          Stage-2 corpus work remain open. TXT.2 pairs mutated-result
+          rejections under OD-T12, not rejected-input partners.
         sourcePath: profiles/text.md
       - kind: Still images — fingerprints
         profiles: PDQ and ISCC Image-Code v0 (draft research)
@@ -79,6 +81,10 @@ sections:
           synthetic conformance run (e-img-f-2, gates IMGF.2–IMGF.4 met). No
           natural-image false-match measurement has been run; deep crops and PDQ
           screenshots failed on synthetic inputs.
+          [IMGF.1 is met for draft-3 research specification only](spec:research/reviews/imgf1-gate-closure-db2848c.md),
+          with finite single-host normalization checks; no fresh upstream
+          C-source verification, normative promotion or universal/cross-host
+          equivalence. Historical draft-2 evidence retains its identity.
         sourcePath: research/experiments/image-fingerprint/results/e-img-f-2/RESULTS.md
       - kind: Still images — embedded marks
         profiles: TrustMark-Q and PixelSeal (study e-img-m-2)
@@ -91,6 +97,8 @@ sections:
           {{fact:imgm.reembed}} for both and residual transplant succeeded
           {{fact:imgm.transplantTm}} and {{fact:imgm.transplantPs}} — confirming
           an embedded mark is only a finding aid, not evidence of origin.
+          IMG.5 is met through reviewed draft schema accommodation only; no
+          normative promotion or C2PA interoperability is claimed.
         sourcePath: research/experiments/image-mark/results/e-img-m-2/RESULTS.md
       - kind: Audio
         profiles: None (scoping note only)

@@ -4,15 +4,15 @@ export const SPEC_DRAFT_VERSION = "0.1.0-draft.1";
 
 export const ROADMAP_COUNTS = {
   asOf: "2026-11-25",
-  updated: "2026-11-25",
+  updated: "2026-11-26",
   sourcePath: "ROADMAP.md",
   anchor: "progress-count",
   core: {
     label: "Core M0–M5",
     total: 47,
-    met: 28,
+    met: 29,
     negativeResult: 0,
-    open: 19,
+    open: 18,
     metIds: [
       "M0.1",
       "M0.2",
@@ -35,6 +35,7 @@ export const ROADMAP_COUNTS = {
       "M2.9",
       "M2.10",
       "M2.11",
+      "M2E.0",
       "M3.0",
       "M4.1",
       "M4.2",
@@ -188,7 +189,7 @@ export const FACT_VALUES: Record<string, string> = {
   "milestone.m0.status": "4 of 4 met",
   "milestone.m1.status": "6 of 6 met (M1.1–M1.6; M1.4 with A16 caveat)",
   "milestone.m2.status": "11 of 11 met (M2.1–M2.11)",
-  "milestone.m2e.status": "0 of 8 met",
+  "milestone.m2e.status": "1 of 8 met; 7 deferred",
   "milestone.m3.status": "1 of 7 met (M3.0)",
   "milestone.m4.status": "6 of 6 met (M4.1–M4.6)",
   "milestone.m5.status": "0 of 5 met",
@@ -352,7 +353,7 @@ export const CITED_FACTS: readonly CitedFact[] = [
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Core M0–M5 roadmap gate counts",
-    numbers: ["47", "28", "0", "19", { value: "11", sourceMatch: "M2.1–M2.11" }],
+    numbers: ["47", "29", "0", "18", { value: "11", sourceMatch: "M2.1–M2.11" }],
   },
   {
     id: "roadmap-later-gates",

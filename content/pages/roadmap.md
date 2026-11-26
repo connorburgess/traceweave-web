@@ -30,7 +30,7 @@ sections:
           Close when a decision record is committed — for example setting a
           false-alarm budget or choosing whether to omit embedding.
     countsHeading: Current gate counts
-    countsIntro: "Taken directly from {{source:ROADMAP.md#progress-count}}:"
+    countsIntro: "Taken from published spec commit `7e30cb7` (verified 2026-11-26), {{source:ROADMAP.md#progress-count}}:"
     countsHeaders:
       - Gate group
       - Total
@@ -82,9 +82,10 @@ sections:
         gates: M2E.0–M2E.7
         status: "{{fact:milestone.m2e.status}}"
         summary: >-
-          Owner decision to select a new carrier candidate or omit embedding
-          from the next release, plus reproducibility, quality, normalization,
-          and transplant controls.
+          The owner [decided to omit source-code embedding from the next
+          release](spec:docs/decisions/code-embedding-decision.md), closing
+          M2E.0. M2E.1–M2E.7 remain deferred and are not counted as met.
+          Still-image finding-aid research remains separate.
       - id: M3
         name: Measure usefulness
         gates: M3.0–M3.6

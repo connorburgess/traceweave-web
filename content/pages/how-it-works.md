@@ -13,7 +13,13 @@ sections:
       Traceweave puts one shared evidence format underneath profile-specific
       extractors. In the default local comparison workflow, content stays on
       your machine; anyone with the same catalogues and configuration can
-      reproduce the canonical report body.
+      reproduce the canonical report body. [Shelf](https://shelf.traceweave.org)
+      now publishes Fingerprint, Catalogue comparison and Replay report tabs,
+      with [bounded fixed-fixture acceptance](spec:research/reviews/web3-bounded-gate-closure-99a1a8b.md).
+      Replay recomputes comparison bodies; checking spans against original
+      content still requires those original bytes. Registration verification
+      is separate. Its testing page is published, but WEB.4–WEB.6 remain
+      planned at the cited spec pin; WEB.5 is uncertified and M3 stays held.
 
   - type: pipeline
     id: pipeline-heading

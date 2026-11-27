@@ -30,7 +30,7 @@ sections:
           Close when a decision record is committed — for example setting a
           false-alarm budget or choosing whether to omit embedding.
     countsHeading: Current gate counts
-    countsIntro: "Taken from published `roadmap-v2` commit `a589a1bbb3d00009438376d2df40ae923317cacb` (verified 2026-11-26; spec `main` remains at `7e30cb7`), {{source:ROADMAP.md#progress-count}}:"
+    countsIntro: "Taken from published `roadmap-v2` commit `b1177b6623ebcc218b5430ae35074ee9499b3c07` (verified 2026-11-27; spec `main` remains at `7e30cb7`), {{source:ROADMAP.md#progress-count}}:"
     countsHeaders:
       - Gate group
       - Total
@@ -196,9 +196,23 @@ sections:
       - track: WEB (WEB.0–WEB.6)
         scope: Browser tool and testing page
         state: >-
-          3 met (WEB.0 approved; WEB.1–WEB.2 met: 1.13 MB pure-Rust WebAssembly
-          engine, 0 imports, 0 network/storage calls, byte-identical to CLI);
-          WEB.3–WEB.6 browser UI flows planned.
+          4 met (WEB.0–WEB.3). Earlier WEB.1–WEB.2 engine evidence remains
+          scoped to its harness. [WEB.3 bounded acceptance](spec:research/reviews/web3-bounded-gate-closure-99a1a8b.md)
+          on Shelf 99a1a8b covers fixed catalogue/body/replay fixtures, not
+          physical-device, privacy or full provenance construction acceptance.
+          [Open Shelf](https://shelf.traceweave.org): published source c0c34cc
+          includes Fingerprint, Catalogue comparison, Replay report and Testing
+          page tabs. Replay is separate from registration verification. The
+          [testing-page source notes](https://github.com/connorburgess/traceweave-shelf/blob/c0c34cc407e39b80b293ccec6e255db0207acd4a/docs/testing-page.md)
+          describe six scoped Go lexical operations and six synthetic demos,
+          with three both-mode misses and two distinct controls. Ambiguity is
+          not counted as a miss; operations can produce invalid or
+          behavior-changing Go. WEB.4 remains planned at this published spec
+          pin despite the published page. WEB.5 is uncertified; WEB.6 remains
+          planned. Its [prospective timing decision](spec:docs/decisions/web6-prospective-timing-2026-11-27.md)
+          permits protocol preparation, not conformance execution, budget
+          freeze or retrospective compliance. Native registration evidence is
+          private; no public native signing tool is announced. M3 stays held.
       - track: BIN, RES, STRUCT, KEYED
         scope: Binaries, resolver threat model, structural & keyed matching
         state: >-

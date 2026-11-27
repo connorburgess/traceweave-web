@@ -65,6 +65,7 @@ const ALLOWED_COPYRIGHT_NAMES = new Set([
 const ALLOWED_EXTERNAL_HOSTS = new Set([
   "traceweave.org",
   "docs.traceweave.org",
+  "shelf.traceweave.org",
   "github.com",
   "seatbeltlabs.com",
   "schema.org",

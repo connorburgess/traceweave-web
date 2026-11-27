@@ -3,8 +3,8 @@ import type { CitedFact } from "@/lib/sources";
 export const SPEC_DRAFT_VERSION = "0.1.0-draft.1";
 
 export const ROADMAP_COUNTS = {
-  asOf: "2026-11-26",
-  updated: "2026-11-26",
+  asOf: "2026-11-27",
+  updated: "2026-11-27",
   sourcePath: "ROADMAP.md",
   anchor: "progress-count",
   core: {
@@ -53,9 +53,9 @@ export const ROADMAP_COUNTS = {
   later: {
     label: "Later profiles, EXT and RC",
     total: 55,
-    met: 28,
+    met: 29,
     negativeResult: 2,
-    open: 25,
+    open: 24,
     metIds: [
       "TS.1",
       "TS.2",
@@ -85,6 +85,7 @@ export const ROADMAP_COUNTS = {
       "WEB.0",
       "WEB.1",
       "WEB.2",
+      "WEB.3",
     ],
   },
 } as const;
@@ -372,7 +373,7 @@ export const CITED_FACTS: readonly CitedFact[] = [
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Later profiles, EXT and RC gate counts",
-    numbers: ["55", "28", "2", "25"],
+    numbers: ["55", "29", "2", "24"],
   },
   {
     id: "python-profile-draft",

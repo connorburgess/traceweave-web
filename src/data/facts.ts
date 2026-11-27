@@ -53,9 +53,9 @@ export const ROADMAP_COUNTS = {
   later: {
     label: "Later profiles, EXT and RC",
     total: 55,
-    met: 30,
+    met: 31,
     negativeResult: 2,
-    open: 23,
+    open: 22,
     metIds: [
       "TS.1",
       "TS.2",
@@ -87,6 +87,7 @@ export const ROADMAP_COUNTS = {
       "WEB.2",
       "WEB.3",
       "WEB.4",
+      "WEB.5",
     ],
   },
 } as const;
@@ -374,7 +375,7 @@ export const CITED_FACTS: readonly CitedFact[] = [
     sourcePath: "ROADMAP.md",
     anchor: "progress-count",
     label: "Later profiles, EXT and RC gate counts",
-    numbers: ["55", "30", "2", "23"],
+    numbers: ["55", "31", "2", "22"],
   },
   {
     id: "python-profile-draft",

@@ -20,8 +20,11 @@ sections:
       content still requires those original bytes. Registration verification
       is separate. Its testing page has [bounded WEB.4 acceptance](spec:research/reviews/web4-bounded-gate-closure-c0c34cc.md);
       synthetic browser checks do not establish physical-device, privacy,
-      accessibility or performance acceptance. WEB.5–WEB.6 remain planned
-      at the cited spec pin; WEB.5 is uncertified and M3 stays held.
+      accessibility or performance acceptance. [WEB.5 source mapping](spec:research/reviews/web5-retention-a2a7c9f-review.md)
+      is accepted for the browser-tool page at published Shelf 4e092c8,
+      not whole-domain sentence or runtime certification. Its local-registration
+      wording qualifies selected-file processing and separate downloads/backups.
+      WEB.6 remains planned at the cited spec pin and M3 stays held.
 
   - type: pipeline
     id: pipeline-heading

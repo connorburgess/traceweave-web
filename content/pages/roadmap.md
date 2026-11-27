@@ -30,7 +30,7 @@ sections:
           Close when a decision record is committed — for example setting a
           false-alarm budget or choosing whether to omit embedding.
     countsHeading: Current gate counts
-    countsIntro: "Taken from published `roadmap-v2` commit `170cf5df3150874dc8f11ad9903e485285ccec97` (verified 2026-11-27; spec `main` remains at `7e30cb7`), {{source:ROADMAP.md#progress-count}}:"
+    countsIntro: "Taken from published `roadmap-v2` commit `84e30dc99bc219fdd81080831b6017b5d3383af5` (verified 2026-11-27; spec `main` remains at `7e30cb7`), {{source:ROADMAP.md#progress-count}}:"
     countsHeaders:
       - Gate group
       - Total
@@ -196,11 +196,11 @@ sections:
       - track: WEB (WEB.0–WEB.6)
         scope: Browser tool and testing page
         state: >-
-          5 met (WEB.0–WEB.4). Earlier WEB.1–WEB.2 engine evidence remains
+          6 met (WEB.0–WEB.5). Earlier WEB.1–WEB.2 engine evidence remains
           scoped to its harness. [WEB.3 bounded acceptance](spec:research/reviews/web3-bounded-gate-closure-99a1a8b.md)
           on Shelf 99a1a8b covers fixed catalogue/body/replay fixtures, not
           physical-device, privacy or full provenance construction acceptance.
-          [Open Shelf](https://shelf.traceweave.org): published source c0c34cc
+          [Open Shelf](https://shelf.traceweave.org): published source 4e092c8
           includes Fingerprint, Catalogue comparison, Replay report and Testing
           page tabs. Replay is separate from registration verification. The
           [testing-page source notes](https://github.com/connorburgess/traceweave-shelf/blob/c0c34cc407e39b80b293ccec6e255db0207acd4a/docs/testing-page.md)
@@ -216,7 +216,17 @@ sections:
           do not prove physical chooser/drag, full keyboard/AT/device support,
           an independent matching oracle, privacy, offline reload or current
           live interaction. Input/output refusals are not WEB.6 performance
-          certification. WEB.5 is uncertified; WEB.6 remains
+          certification. [WEB.5 source-mapping acceptance](spec:research/reviews/web5-retention-a2a7c9f-review.md)
+          covers the complete browser-tool page at Shelf 4e092c8, not whole-domain
+          sentence certification of the marketing/docs sites or external pages.
+          The [portable mapping](spec:research/reviews/web5-current-map-4e092c8/README.md)
+          retains overlapping static records with no remaining semantically
+          unsupported/unresolved included records, accepted by independent
+          semantic review; this is not a DOM/runtime census or proof from
+          reference checks alone. Shelf now qualifies local registration as
+          selected-file processing, with downloads/backups as separate copies.
+          No runtime privacy, accessibility, performance or full conformance
+          certification follows. WEB.6 remains
           planned. Its [prospective timing decision](spec:docs/decisions/web6-prospective-timing-2026-11-27.md)
           permits protocol preparation, not conformance execution, budget
           freeze or retrospective compliance. Native registration evidence is

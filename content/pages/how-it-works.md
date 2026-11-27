@@ -18,8 +18,10 @@ sections:
       with [bounded fixed-fixture acceptance](spec:research/reviews/web3-bounded-gate-closure-99a1a8b.md).
       Replay recomputes comparison bodies; checking spans against original
       content still requires those original bytes. Registration verification
-      is separate. Its testing page is published, but WEB.4–WEB.6 remain
-      planned at the cited spec pin; WEB.5 is uncertified and M3 stays held.
+      is separate. Its testing page has [bounded WEB.4 acceptance](spec:research/reviews/web4-bounded-gate-closure-c0c34cc.md);
+      synthetic browser checks do not establish physical-device, privacy,
+      accessibility or performance acceptance. WEB.5–WEB.6 remain planned
+      at the cited spec pin; WEB.5 is uncertified and M3 stays held.
 
   - type: pipeline
     id: pipeline-heading

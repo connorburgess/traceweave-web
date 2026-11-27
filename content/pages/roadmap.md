@@ -30,7 +30,7 @@ sections:
           Close when a decision record is committed — for example setting a
           false-alarm budget or choosing whether to omit embedding.
     countsHeading: Current gate counts
-    countsIntro: "Taken from published `roadmap-v2` commit `b1177b6623ebcc218b5430ae35074ee9499b3c07` (verified 2026-11-27; spec `main` remains at `7e30cb7`), {{source:ROADMAP.md#progress-count}}:"
+    countsIntro: "Taken from published `roadmap-v2` commit `170cf5df3150874dc8f11ad9903e485285ccec97` (verified 2026-11-27; spec `main` remains at `7e30cb7`), {{source:ROADMAP.md#progress-count}}:"
     countsHeaders:
       - Gate group
       - Total
@@ -196,7 +196,7 @@ sections:
       - track: WEB (WEB.0–WEB.6)
         scope: Browser tool and testing page
         state: >-
-          4 met (WEB.0–WEB.3). Earlier WEB.1–WEB.2 engine evidence remains
+          5 met (WEB.0–WEB.4). Earlier WEB.1–WEB.2 engine evidence remains
           scoped to its harness. [WEB.3 bounded acceptance](spec:research/reviews/web3-bounded-gate-closure-99a1a8b.md)
           on Shelf 99a1a8b covers fixed catalogue/body/replay fixtures, not
           physical-device, privacy or full provenance construction acceptance.
@@ -207,8 +207,16 @@ sections:
           describe six scoped Go lexical operations and six synthetic demos,
           with three both-mode misses and two distinct controls. Ambiguity is
           not counted as a miss; operations can produce invalid or
-          behavior-changing Go. WEB.4 remains planned at this published spec
-          pin despite the published page. WEB.5 is uncertified; WEB.6 remains
+          behavior-changing Go. [WEB.4 is bounded met](spec:research/reviews/web4-bounded-gate-closure-c0c34cc.md)
+          at this published spec pin. Its separate evidence layers include
+          8 body/16 catalogue comparisons plus 8 repeats; 6 operation outputs,
+          6 repeats, 6 actual-WASM body cases and 30 refusals; and 7 browser
+          operation/chaining steps in one custom source scenario, not seven
+          demos. Synthetic DOM/CDP input and finite/shared-ancestry comparisons
+          do not prove physical chooser/drag, full keyboard/AT/device support,
+          an independent matching oracle, privacy, offline reload or current
+          live interaction. Input/output refusals are not WEB.6 performance
+          certification. WEB.5 is uncertified; WEB.6 remains
           planned. Its [prospective timing decision](spec:docs/decisions/web6-prospective-timing-2026-11-27.md)
           permits protocol preparation, not conformance execution, budget
           freeze or retrospective compliance. Native registration evidence is

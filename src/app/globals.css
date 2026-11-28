@@ -1306,7 +1306,11 @@ html.lenis.lenis-smooth {
   transform: translate3d(0, 0, 0);
 }
 
-/* Hero subcopy and specimen media entrance (cohesive fluid cadence) */
+/* Hero subcopy and specimen media entrance (structural selectors prevent first-paint flash) */
+.has-motion main .hero-copy > .eyebrow,
+.has-motion main .hero-copy > p,
+.has-motion main .hero-copy > .actions,
+.has-motion main .hero .card-muted,
 .has-motion [data-hero-reveal] {
   opacity: 0;
   transform: translateY(16px);
@@ -1315,31 +1319,41 @@ html.lenis.lenis-smooth {
     transform 820ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.has-motion main .hero-copy > .eyebrow,
 .has-motion [data-hero-reveal="1"] {
   transition-delay: 0ms;
 }
 
+.has-motion main .hero-copy > p:first-of-type,
 .has-motion [data-hero-reveal="2"] {
   transition-delay: 110ms;
 }
 
+.has-motion main .hero-copy > p:nth-of-type(2),
 .has-motion [data-hero-reveal="3"] {
   transition-delay: 185ms;
 }
 
+.has-motion main .hero-copy > .actions,
 .has-motion [data-hero-reveal="4"] {
   transition-delay: 255ms;
 }
 
+.has-motion main .hero .card-muted,
 .has-motion [data-hero-reveal="5"] {
   transition-delay: 320ms;
 }
 
+.has-motion.hero-entered main .hero-copy > .eyebrow,
+.has-motion.hero-entered main .hero-copy > p,
+.has-motion.hero-entered main .hero-copy > .actions,
+.has-motion.hero-entered main .hero .card-muted,
 .has-motion.hero-entered [data-hero-reveal] {
   opacity: 1;
   transform: translateY(0);
 }
 
+.has-motion main .hero-media,
 .has-motion [data-hero-media] {
   opacity: 0;
   clip-path: inset(10% 0 0 0);
@@ -1350,6 +1364,7 @@ html.lenis.lenis-smooth {
     transform 1.15s cubic-bezier(0.16, 1, 0.3, 1) 180ms;
 }
 
+.has-motion.hero-entered main .hero-media,
 .has-motion.hero-entered [data-hero-media] {
   opacity: 1;
   clip-path: inset(0 0 0 0);

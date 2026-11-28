@@ -65,7 +65,7 @@ export const metadata: Metadata = {
   },
 };
 
-const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem("traceweave-theme");if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();`;
+const THEME_INIT_SCRIPT = `(function(){try{var t=localStorage.getItem("traceweave-theme");if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){document.documentElement.classList.add("has-motion");setTimeout(function(){document.documentElement.classList.add("hero-entered");},1500);}}catch(e){}})();`;
 
 const STRUCTURED_DATA = {
   "@context": "https://schema.org",

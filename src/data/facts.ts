@@ -765,7 +765,7 @@ export const PLANNED_CAPABILITIES = [
     gates: "SK.1–SK.5",
     status: "SK.1–SK.2 met; SK.3 design only",
     summary:
-      "An optional CLI-wrapping skill keeping private catalogues, paths, and keys out of model-visible transcripts (SK.1–SK.2 met with zero canary leaks across both Rust and Go CLIs), plus a reviewed local-first register/verify design (SK.3 design only). I1–I4 remain unresolved; no adapter implementation, interoperability or hosting is accepted. SK.4/SK.5, key/identity/policy defaults and namespace publication remain undecided; initial outbound contact stays held.",
+      "An optional CLI-wrapping skill keeping private catalogues, paths, and keys out of model-visible transcripts (SK.1–SK.2 met with zero canary leaks across both Rust and Go CLIs), plus a reviewed local-first register/verify design (SK.3 design only). I2/I3 are fixed only for the bounded offline fixture checker, and C1 is clarified; I1/I4 remain unresolved; no adapter implementation, interoperability or hosting is accepted. SK.4/SK.5, key/identity/policy defaults and namespace publication remain undecided; initial outbound contact stays held.",
     sourcePath: "ROADMAP.md",
     anchor: "later-profiles-and-sequence",
   },

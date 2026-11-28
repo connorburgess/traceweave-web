@@ -30,7 +30,7 @@ sections:
           Close when a decision record is committed — for example setting a
           false-alarm budget or choosing whether to omit embedding.
     countsHeading: Current gate counts
-    countsIntro: "Taken from published `roadmap-v2` commit `84e30dc99bc219fdd81080831b6017b5d3383af5` (verified 2026-11-27; spec `main` remains at `7e30cb7`), {{source:ROADMAP.md#progress-count}}:"
+    countsIntro: "Taken from published `roadmap-v2` commit `b2c0830ab52c9d37dae94f303d4dc76d9d5d0b06` (verified 2026-11-28; spec `main` remains at `7e30cb7`), {{source:ROADMAP.md#progress-count}}:"
     countsHeaders:
       - Gate group
       - Total
@@ -187,10 +187,10 @@ sections:
           Rust and Go CLIs). SK.3 is also met for
           [local-first design only](spec:research/reviews/sk3-design-gate-closure-4fa00c7.md),
           exact design 4fa00c7 independently reviewed at 12a1459. Proposed
-          register/verify semantics hold initial outbound contact. I1–I4
-          (notice count, description enforcement, hosted extra-text bypass,
-          witness version drift) remain unresolved; C1 is a nonblocking
-          clarification. No implementation, interoperability or hosting is
+          register/verify semantics hold initial outbound contact. [I2/I3 are fixed for the bounded offline fixture checker](spec:research/reviews/agent-registration-checker-i2-i3-dispositions.md),
+          and C1 is clarified. I1 (notice-count wording) and I4 (witness-version
+          alignment) remain unresolved normative choices; this establishes no
+          native/client/hosting or full privacy conformance. No implementation, interoperability or hosting is
           established. SK.4/SK.5, key/identity/policy defaults and namespace
           publication remain undecided.
       - track: WEB (WEB.0–WEB.6)

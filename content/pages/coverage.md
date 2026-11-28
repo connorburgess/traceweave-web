@@ -175,7 +175,8 @@ sections:
           keys out of model-visible transcripts (SK.1–SK.2 met with zero canary
           leaks across both Rust and Go CLIs), plus a
           [reviewed local-first register/verify design](spec:research/drafts/agent-registration-local-first.md)
-          (SK.3 design only). I1–I4 remain unresolved; no adapter implementation,
+          (SK.3 design only). [I2/I3 are fixed only for the bounded offline fixture checker](spec:research/reviews/agent-registration-checker-i2-i3-dispositions.md),
+          and C1 is clarified; I1/I4 remain unresolved; no adapter implementation,
           interoperability or hosting is accepted. SK.4/SK.5, key/identity/policy
           defaults and namespace publication remain undecided; initial
           outbound contact stays held.

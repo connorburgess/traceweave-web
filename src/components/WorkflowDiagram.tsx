@@ -19,7 +19,7 @@ export function WorkflowDiagram() {
         </desc>
 
         {/* Step 1 */}
-        <g>
+        <g className="wf-step wf-step-1">
           <rect
             x="10"
             y="14"
@@ -86,13 +86,13 @@ export function WorkflowDiagram() {
         </g>
 
         {/* Arrow 1 -> 2 */}
-        <g stroke="var(--tw-accent)" strokeWidth="1.6" fill="none">
+        <g className="wf-arrow wf-arrow-1" stroke="var(--tw-accent)" strokeWidth="1.6" fill="none">
           <line x1="274" y1="118" x2="304" y2="118" />
           <polyline points="296,111 304,118 296,125" strokeLinecap="square" strokeLinejoin="miter" />
         </g>
 
         {/* Step 2 */}
-        <g>
+        <g className="wf-step wf-step-2">
           <rect
             x="312"
             y="14"
@@ -182,13 +182,13 @@ export function WorkflowDiagram() {
         </g>
 
         {/* Arrow 2 -> 3 */}
-        <g stroke="var(--tw-accent)" strokeWidth="1.6" fill="none">
+        <g className="wf-arrow wf-arrow-2" stroke="var(--tw-accent)" strokeWidth="1.6" fill="none">
           <line x1="576" y1="118" x2="606" y2="118" />
           <polyline points="598,111 606,118 598,125" strokeLinecap="square" strokeLinejoin="miter" />
         </g>
 
         {/* Step 3 */}
-        <g>
+        <g className="wf-step wf-step-3">
           <rect
             x="614"
             y="14"

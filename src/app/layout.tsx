@@ -10,6 +10,7 @@ import type { Metadata, Viewport } from "next";
 import { resolveHref } from "@/components/RichText";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { TraceweaveMotion } from "@/components/TraceweaveMotion";
 import { SPEC_DRAFT_VERSION } from "@/data/facts";
 import { getSiteFooterContent, getSiteHeaderContent } from "@/lib/content";
 import { DOCS_URL, SITE_URL, SPEC_REPO_URL } from "@/lib/sources";
@@ -114,6 +115,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <TraceweaveMotion />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
